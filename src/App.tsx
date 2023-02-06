@@ -3,7 +3,8 @@ import AppContext from 'antd/es/app/context';
 import React, { Suspense } from 'react';
 import { Route } from 'react-router';
 import { BrowserRouter, Routes } from 'react-router-dom';
-import { Dashboard } from './pages/dashboard';
+import Dashboard from './pages/dashboard';
+
 import { Login } from './pages/login';
 
 function App() {
