@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -9,12 +9,12 @@ import "swiper/css/pagination";
 
 
 // import required modules
+import { ContainerOutlined, DesktopOutlined, PieChartOutlined } from "@ant-design/icons";
+import { FloatButton, Menu, MenuProps, MenuTheme } from "antd";
 import { EffectCoverflow, Pagination } from "swiper";
-import { Avatar, Breadcrumb, Button, Card, Layout, Menu, MenuProps } from "antd";
-import { AppstoreOutlined, ContainerOutlined, DesktopOutlined, EditOutlined, EllipsisOutlined, HomeOutlined, MailOutlined, MenuFoldOutlined, MenuUnfoldOutlined, PieChartOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
-import Sider from "antd/es/layout/Sider";
-import { Content, Header } from "antd/es/layout/layout";
-import Meta from "antd/es/card/Meta";
+import Dash from "./dash";
+
+
 type MenuItem = Required<MenuProps>['items'][number];
 
 function getItem(
@@ -44,11 +44,15 @@ export default function Dashboard() {
     const toggleCollapsed = () => {
         setCollapsed(!collapsed);
     };
+    const [theme, setTheme] = useState<MenuTheme>('dark');
+    const changeTheme = (value: boolean) => {
+        setTheme(value ? 'dark' : 'light');
+    };
+
     return (
         <>
             <Menu mode="horizontal" items={items} />
             <div className="Dashboard">
-
                 <Swiper
                     effect={"coverflow"}
                     grabCursor={true}
@@ -93,31 +97,9 @@ export default function Dashboard() {
                         <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
                     </SwiperSlide>
                 </Swiper>
-
-
-                <br />
-                <Card
-                    style={{ width: 300 }}
-                    cover={
-                        <img
-                            alt="example"
-                            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-                        />
-                    }
-                    actions={[
-                        <SettingOutlined key="setting" />,
-                        <EditOutlined key="edit" />,
-                        <EllipsisOutlined key="ellipsis" />,
-                    ]}
-                >
-                    <Meta
-                        avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                        title="Card title"
-                        description="This is the description"
-                    />
-                </Card>
-
             </div>
+            <Dash />
+            <FloatButton onClick={() => console.log('click')} />
         </>
     );
 }

@@ -4,6 +4,7 @@ import Button from 'antd/es/button'
 import Checkbox from 'antd/es/checkbox'
 import Divider from 'antd/es/divider'
 import Input from 'antd/es/input'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -16,6 +17,7 @@ export const Login = () => {
         console.log('Failed:', errorInfo);
     };
 
+    const navigate = useNavigate();
     return (
         <div className="loginContainer">
             <div className="loginCard">
@@ -75,7 +77,7 @@ export const Login = () => {
                         </Form.Item>
                         <Divider>Register Now </Divider>
                         <Form.Item >
-                            <p>havent register register now?  <Button type="link">   Register now </Button></p>
+                            <p>havent register register now?  </p><Button type="link" onClick={() => navigate("/register")}>   Register now </Button>
                         </Form.Item>
                     </Form >
                     {/* </Col>
@@ -85,6 +87,5 @@ export const Login = () => {
         </div >
     );
 };
-
 
 
