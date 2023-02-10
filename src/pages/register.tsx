@@ -1,44 +1,29 @@
 
-import { CloseCircleFilled, InboxOutlined, LoginOutlined, SaveFilled } from '@ant-design/icons';
-import { Button, Space, UploadProps } from 'antd';
-import { Col, Form, Input, InputNumber, message, Row, Tabs, Upload } from 'antd';
+import { ClockCircleFilled, InboxOutlined, SaveFilled } from '@ant-design/icons';
+import { Button, Col, Form, Input, InputNumber, message, Row, Steps, Tabs, Upload, UploadProps } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import FormGroupButtonSpacing from '../Shared/Commoncomponent';
+import { FormSubmitButton } from '../Shared/Commoncomponent';
 import { FORMROWGUTTER } from '../Shared/constants';
 
-const { Dragger } = Upload;
-interface formSubmitButtonProps {
-    submitLoading?: boolean;
-    cancleLoading?: boolean;
-    onClickSubmit?: () => void;
-    onClickCancle?: () => void;
-    isNextButton?: boolean
+
+interface registration {
+    firstname: string,
+    lastName: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    activeKey: string
 
 }
-export const FormSubmitButton = (props: formSubmitButtonProps) => {
+const { Dragger } = Upload;
 
 
-    return (
-        <Space>
-            <Button
-                icon={<SaveFilled />}
-                type="primary"
-                htmlType='submit'
-                loading={props.submitLoading}
-                onClick={props.onClickSubmit}
-            >
-                {props.isNextButton ? ("Next") : ("Save")}
-            </Button>
 
-            <Button
-                type="default"
-                icon={<CloseCircleFilled />}
-                onClick={props.onClickCancle}
-                disabled={props.cancleLoading}
-            >
-                {"Cancel"}
-            </Button>
-        </Space>
-    );
-};
+// const postData = async (url = '', data = {}) => { });
+
 const props: UploadProps = {
     name: 'file',
     multiple: true,
@@ -61,7 +46,17 @@ const props: UploadProps = {
 
 
 const Register = () => {
+    const [state, setState] = useState<registration>({ firstname: '', lastName: '', email: '', password: '', confirmPassword: '', activeKey: '1' })
+    const tabChange = async (activeKey: string) => {
 
+        if (Number(activeKey) < Number(state.activeKey)) {
+            setState({ ...state, activeKey: activeKey })
+            return activeKey;
+        }
+
+        const values = await form.validateFields();
+        if (values) setState({ ...state, activeKey });
+    }
     const AccountInfoForm = (
         <>
 
@@ -131,6 +126,8 @@ const Register = () => {
                     </Col>
 
 
+
+
                 </Row>
             </Form >
 
@@ -171,16 +168,27 @@ const Register = () => {
                         </Dragger>
                     </Form.Item>
                 </Col>
+
             </Row>
 
 
         </>
     )
+    const [current, setCurrent] = useState(0);
+
+    const next = () => {
+        setCurrent(current + 1);
+    };
+    const prev = () => {
+        setCurrent(current - 1);
+    };
+
+    const navigate = useNavigate();
     const [form] = Form.useForm();
     return (
         <>
             {/* <h1>CREATE NEW ACCOUNT</h1> */}
-            <div className="registerContainer">
+            < div className="registerContainer" >
                 <div className="register">
 
                     <Form
@@ -189,7 +197,9 @@ const Register = () => {
                         layout='vertical'
                         style={{ marginTop: "2rem" }}
                     >
-                        <Tabs size='large'>
+
+                        <Tabs activeKey={state.activeKey} onChange={tabChange} centered>
+
                             <Tabs.TabPane key="1" tab={"AccountInfo"}>
                                 {AccountInfoForm}
                             </Tabs.TabPane>
@@ -198,22 +208,14 @@ const Register = () => {
                                 {Attachments}
                             </Tabs.TabPane>
                         </Tabs>
-
-                        {/* <div className='mt_1 mb_1'>
+                        <div className='mt_1 mb_1'>
                             <FormSubmitButton
-                                isNextButton={activeKey == "1" ? true : false}
+                                isNextButton={state.activeKey == "1" ? true : false}
                             />
                         </div>
-
-                        <Button>
-                            Cancel
-                        </Button> */}
-
-
                     </Form>
-
                 </div>
-            </div>
+            </div >
         </>
 
     )
