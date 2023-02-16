@@ -4,15 +4,13 @@ import Button from 'antd/es/button'
 import Checkbox from 'antd/es/checkbox'
 import Divider from 'antd/es/divider'
 import Input from 'antd/es/input'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthContext from '../Services/Authprovider'
-import axios from '../Services/axios'
 
 
 const LOGIN_URL = '/auth';
 
-export const Login = () => {
+export const AdminLogin = () => {
 
     // const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
@@ -68,15 +66,8 @@ export const Login = () => {
     return (
         <div className="loginContainer">
             <div className="loginCard">
-                {/* <Row gutter={10} justify="center">
-                <Col span={8} className="img"> */}
-                <div className='first-child'>
-                    <img src='https://img.freepik.com/free-vector/skeleton-rigind-motorbike_1415-115.jpg?w=826&t=st=1672655650~exp=1672656250~hmac=82ad28b19fffc37fd8c1341aaafa1a43618cbb1b162ca66686e010a1b36a1b66'
-                        width={"100%"} height={"100%"} />
-                    {/* </Col>
 
-                <Col span={8} > */}
-                </div>
+
                 <div className='last-child'>
                     <Form
                         name="basic"

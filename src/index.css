@@ -2,9 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  font-size: 14px;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 20px;
 }
+
+
 .loginContainer {
   width: 100vw;
   height: 100vh;
@@ -66,10 +68,10 @@ input {
   }
 }
 
-.swiper {
+.mySwiper {
   width: 40%;
-  padding-top: 100rem;
-  padding-bottom: 50px;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
 }
 
 .swiper-slide {
@@ -91,12 +93,6 @@ input {
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* background: linear-gradient(
-    to right,
-    #fff,
-    #ddd,
-    #fff
-  ); */
   background-image: url("./image/wave\ \(2\).png");
   background-position: center;
   background-repeat: no-repeat;
@@ -105,47 +101,16 @@ input {
 
 }
 
-
-
-/* .box{
- 
-  position: absolute;
-  height: 40rem;
-  width: 300rem;
-  background: #e0efe3;
-} */
-
-/* 
-.registerContainer {
-  position: relative;
-  height: 35rem;
-  width: 300rem;
-  background: #e0efe3;
+.theme-light {
+  background-color: #fff;
+  color: #000;
 }
 
-.registerContainer:before {
-        content: "";
-        display: block;
-        position: absolute;
-        border-radius: 100% 50%;
-        width: 130rem;
-    height: 40rem;
-    background-color: white;
-    right: -5px;
-    top: 40px;
+.theme-dark {
+  background-color: #000;
+  color: #fff;
 }
 
-.registerContainer:after {
-        content: "";
-        display: block;
-        position: absolute;
-        border-radius: 100% 50%;
-        width: 150rem;
-    height: 35rem;
-    background-color: #e0efe3;
-    left: 0;
-    top: 27px;
-} */
 
 .register {
   width: 50vw;
@@ -179,12 +144,4 @@ h1 {
   float: right;
 }
 
-/* .Dashboard {
-  min-width: auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  flex-direction: row;
- } */
+

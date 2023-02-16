@@ -1,0 +1,35 @@
+
+.main_root {
+  padding: 0;
+  // margin: 0 2em;
+  //  background: #c8d1e2;
+  .menu_bar{
+    position: fixed;
+   }
+  .header_wrapper {
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: rgb(255, 255, 255);
+    // padding: 1.2rem 1rem 0.4rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 50;
+    box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.05);
+    .refenenceTitle {
+      color: red;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    h1 {
+      color: blue;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+
+
+
+

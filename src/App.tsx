@@ -1,12 +1,9 @@
-import { Loading3QuartersOutlined } from '@ant-design/icons';
-import AppContext from 'antd/es/app/context';
-import React, { Suspense } from 'react';
 import { Route } from 'react-router';
 import { BrowserRouter, Routes } from 'react-router-dom';
-import Dashboard from './pages/dashboard';
-
-import { Login } from './pages/login';
-import Register from './pages/register';
+import { AdminLogin } from './pages/Admin/login';
+import Dashboard from './pages/Login client/dashboard';
+import { Login } from './pages/Login client/login';
+import Register from './pages/Login client/register';
 
 function App() {
 
@@ -15,8 +12,9 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/admin' element={<AdminLogin />} />
+        <Route path='/' element={<Dashboard />} />
         <Route path='/register' element={<Register />} />
       </Routes>
     </BrowserRouter>

@@ -1,12 +1,9 @@
 
-import { ClockCircleFilled, InboxOutlined, SaveFilled } from '@ant-design/icons';
-import { Button, Col, Form, Input, InputNumber, message, Row, Steps, Tabs, Upload, UploadProps } from 'antd';
-import FormItem from 'antd/es/form/FormItem';
+import { InboxOutlined } from '@ant-design/icons';
+import { Col, Form, Input, InputNumber, message, Row, Tabs, Upload, UploadProps } from 'antd';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import FormGroupButtonSpacing from '../Shared/Commoncomponent';
-import { FormSubmitButton } from '../Shared/Commoncomponent';
-import { FORMROWGUTTER } from '../Shared/constants';
+import { FormSubmitButton } from '../../Shared/Commoncomponent';
+import { FORMROWGUTTER } from '../../Shared/constants';
 
 
 interface registration {
@@ -174,16 +171,7 @@ const Register = () => {
 
         </>
     )
-    const [current, setCurrent] = useState(0);
 
-    const next = () => {
-        setCurrent(current + 1);
-    };
-    const prev = () => {
-        setCurrent(current - 1);
-    };
-
-    const navigate = useNavigate();
     const [form] = Form.useForm();
     return (
         <>
@@ -210,7 +198,7 @@ const Register = () => {
                         </Tabs>
                         <div className='mt_1 mb_1'>
                             <FormSubmitButton
-                                isNextButton={state.activeKey == "1" ? true : false}
+                                isNextButton={state.activeKey === "1" ? true : false}
                             />
                         </div>
                     </Form>
