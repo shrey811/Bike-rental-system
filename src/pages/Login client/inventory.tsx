@@ -1,11 +1,16 @@
-import { Card } from 'antd'
+import { Card, Pagination } from 'antd'
 import React from 'react'
+import Swiper, { EffectCoverflow } from 'swiper';
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 
-const inventory = () => {
+const Inventory = () => {
+
     return (
         <div>inventory
-            {/* <Card >
-                <Swiper
+            <Card >
+                {/* <Swiper
                     effect={"coverflow"}
                     grabCursor={true}
                     centeredSlides={true}
@@ -21,7 +26,7 @@ const inventory = () => {
                     modules={[EffectCoverflow, Pagination]}
                     className="mySwiper"
                 >
-                    <SwiperSlide style={{ width: "300px", height: "300px" }}>
+                    {/* <SwiperSlide style={{ width: "300px", height: "300px" }}>
                         <img src="https://images.unsplash.com/photo-1611429532458-f8bf8f6121fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
                     </SwiperSlide>
                     <SwiperSlide style={{ width: "300px", height: "300px" }} >
@@ -47,11 +52,11 @@ const inventory = () => {
                     </SwiperSlide>
                     <SwiperSlide style={{ width: "300px", height: "300px" }}>
                         <img src="https://images.unsplash.com/photo-1627366197691-e0d5cee520bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJpa2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=2000&q=60" />
-                    </SwiperSlide>
-                </Swiper>
-            </Card> */}
-        </div>
+                    </SwiperSlide> */}
+                {/* </Swiper>  */}
+            </Card>
+        </div >
     )
 }
 
-export default inventory
+export default Inventory

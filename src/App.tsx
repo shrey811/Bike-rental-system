@@ -1,8 +1,11 @@
 import { Route } from 'react-router';
 import { BrowserRouter, Routes } from 'react-router-dom';
 import { AdminLogin } from './pages/Admin/login';
+import About from './pages/Login client/about';
 import Dashboard from './pages/Login client/dashboard';
-import { Login } from './pages/Login client/login';
+import Login from './pages/Login client/login';
+
+
 import Register from './pages/Login client/register';
 
 function App() {
@@ -14,6 +17,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/admin' element={<AdminLogin />} />
+        <Route path='/about' element={<About />} />
         <Route path='/' element={<Dashboard />} />
         <Route path='/register' element={<Register />} />
       </Routes>

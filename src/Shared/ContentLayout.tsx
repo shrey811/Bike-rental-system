@@ -107,7 +107,6 @@ export const MakeBgblue = ({ padding, children }: makeProps) => {
     <div
       style={{
         background: "#e1e2c8",
-
         padding: padding ? padding : "1rem",
         margin: " 2rem",
         borderRadius: "0.2rem",

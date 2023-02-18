@@ -6,7 +6,6 @@
   font-size: 20px;
 }
 
-
 .loginContainer {
   width: 100vw;
   height: 100vh;
@@ -15,11 +14,11 @@
   align-items: center;
   text-align: center;
   background: #c8e2e0;
-   background-image: url("./image/wave\ \(1\).png");
+  background-image: url("./image/wave\ \(1\).png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  position: relative; 
+  position: relative;
 }
 .loginContainer {
   font-size: 14px;
@@ -49,7 +48,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
 }
 input {
   text-rendering: auto;
@@ -60,7 +58,6 @@ input {
   text-indent: 0px;
   text-shadow: none;
 }
-
 
 @media screen and (max-width: 800px) {
   .loginCard > div:first-child {
@@ -97,8 +94,6 @@ input {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-
 }
 
 .theme-light {
@@ -111,7 +106,6 @@ input {
   color: #fff;
 }
 
-
 .register {
   width: 50vw;
   height: 40vh;
@@ -122,7 +116,6 @@ input {
   padding-left: 2rem;
 }
 h1 {
-  
   font-size: 50px;
   font-weight: 450;
   color: #000;
@@ -144,4 +137,15 @@ h1 {
   float: right;
 }
 
-
+.carousel {
+  position: relative;
+  width: 40%;
+  border: 2px solid rgb(0, 0, 0);
+}
+.click {
+  position: absolute;
+  /* padding:20px; */
+  border-radius: 16px;
+  bottom: 5rem;
+  left: 100px;
+}

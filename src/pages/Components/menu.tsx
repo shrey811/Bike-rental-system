@@ -1,5 +1,5 @@
-import { ContactsOutlined, DashboardOutlined, EnvironmentOutlined, InfoCircleOutlined, LoginOutlined, MailOutlined, PhoneOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
-import { Col, Menu, MenuProps, Row } from 'antd';
+import { DashboardOutlined, EnvironmentOutlined, InfoCircleOutlined, LoginOutlined, MailOutlined, PhoneOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
+import { Col, Menu, MenuProps, Row, Select } from 'antd';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -60,6 +60,7 @@ const itemslogin: MenuProps['items'] = [
         icon: < LoginOutlined />,
 
     }
+
 ]
 
 
@@ -78,41 +79,26 @@ const MenuList = () => {
     return (
         <div >
             <Row  >
-                <Col span={24} style={{ backgroundColor: "rgba(0, 0, 0, 0.08)" }} >
-
-                    <Row>
-                        <Col span={3}></Col>
-                        <Col span={3} >
-                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU'
-                                width={"100rem"} height={"120rem"} />
-                        </Col>
-                        <Col span={5} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <EnvironmentOutlined sizes={"0.5rem"} style={{ color: "rgba(46, 60, 187, 0.8)" }} /> <p> Nepal Kathmandu</p>
-                        </Col>
-                        <Col span={5} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <PhoneOutlined sizes={"0.5rem"} style={{ color: "rgba(46, 60, 187, 0.8)" }} /> <p>Contact Us 98444444444</p>
-                        </Col>
-                        <Col span={5} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                            <MailOutlined sizes={"0.5rem"} style={{ color: "rgba(46, 60, 187, 0.8)" }} /><p> Abc@gmail.com</p>
-                        </Col>
-                    </Row>
-
-
-
-                </Col>
-
-
                 <Col span={24} >
-                    <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "center" }} >
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }} >
+                        <Col span={2}></Col>
+                        <Col span={2}>
+                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU'
+                                width={"100rem"} height={"77rem"} />
+                        </Col>
+                        <Col >
+                            <Select className="user_search_box" showSearch ></Select>
+                        </Col>
 
-                        <Menu style={{
-                            height: "4rem", width: '100vw', display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#c8cfe2"
-                        }}
+                        <Menu className='menu'
+
                             mode="horizontal" items={items} />
 
-                        <Menu style={{ width: '90vw', height: "4rem", display: "flex", justifyContent: "center", alignItems: "center", backgroundColor: "#c8cfe2" }}
+                        <Menu className='menu'
                             mode="horizontal" items={itemslogin} onClick={onClick} selectedKeys={[current]} />
+
                     </div>
+
                 </Col>
             </Row >
 

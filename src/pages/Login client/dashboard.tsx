@@ -2,16 +2,15 @@ import React, { useState } from "react";
 // Import Swiper React components
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
+
 
 
 // import required modules
-import { CalendarOutlined, ContainerOutlined, DesktopOutlined, EditOutlined, EllipsisOutlined, EnvironmentOutlined, LockOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
-import { Avatar, Button, Card, Carousel, Col, FloatButton, Form, Input, Row } from "antd";
+import { CalendarOutlined, ContainerOutlined, DesktopOutlined, EditOutlined, EllipsisOutlined, EnvironmentOutlined, SettingOutlined } from "@ant-design/icons";
+import { Avatar, Button, Card, Carousel, Col, FloatButton, Row } from "antd";
 import Meta from "antd/es/card/Meta";
 import ContentLayout, { MakeBgblue, MakeBgWhite, MakeBgyellow } from "../../Shared/ContentLayout";
+import Textstyles from "../Components/textstyles";
 
 
 
@@ -25,33 +24,58 @@ export default function Dashboard() {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
     const contentStyle: React.CSSProperties = {
-        height: '35rem',
-        width: '99vw',
+        height: '93vh',
+        width: '100vw',
         color: '#fff',
         lineHeight: '160px',
         textAlign: 'center',
         background: '#364d79',
+
     };
     return (
 
         <>
             {/* <MenuList></MenuList> */}
             <ContentLayout pageTitle="" returnNode={<FloatButton onClick={toggleTheme} icon={theme === 'light' ? <DesktopOutlined /> : <ContainerOutlined />} />}>
-                <Carousel arrows autoplay style={{ marginBottom: "2rem" }}>
-                    <div>
+                <Carousel autoplay style={{ marginBottom: "2rem" }} >
+                    <div className="carousel">
                         <img style={contentStyle} src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
+                        <div className="click">
+                            <Textstyles></Textstyles>
 
+
+                        </div>
                     </div>
-                    <div>
-                        <img style={contentStyle} src="https://images.unsplash.com/photo-1559051992-824a1d4353fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODZ8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" />
+                    <div className="carousel" >
+                        <img style={contentStyle} src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
+                        <div className="click">
+                            <Textstyles></Textstyles>
+
+
+
+
+                        </div>
                     </div>
-                    <div>
+                    <div className="carousel" >
                         <img style={contentStyle} src="https://images.unsplash.com/photo-1619771914272-e3c1ba17ba4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" />
+
+                        <div className="click">
+                            <Textstyles></Textstyles>
+
+
+                        </div>
                     </div>
-                    <div>
+                    <div className="carousel">
                         <img style={contentStyle} src="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" />
+                        <div className="click">
+                            <Textstyles></Textstyles>
+
+
+                        </div>
                     </div>
+
                 </Carousel>
+
 
 
                 <MakeBgblue>
@@ -144,10 +168,6 @@ export default function Dashboard() {
                 <MakeBgyellow>
                     <Row gutter={16}>
                         <h1>20+ BIKE TYPE & BRANDS </h1>
-
-
-
-
                         <Col xs={12} md={12} lg={6} xl={6}>
                             <Card hoverable style={{ width: 300, height: "250px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 <CalendarOutlined style={{ display: "flex", justifyContent: "center", alignItems: "center" }} />
