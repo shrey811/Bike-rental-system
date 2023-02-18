@@ -8,8 +8,8 @@ import "swiper/css/pagination";
 
 
 // import required modules
-import { CalendarOutlined, ContainerOutlined, DesktopOutlined, EditOutlined, EllipsisOutlined, EnvironmentOutlined, SettingOutlined } from "@ant-design/icons";
-import { Avatar, Button, Card, Carousel, Col, FloatButton, Row } from "antd";
+import { CalendarOutlined, ContainerOutlined, DesktopOutlined, EditOutlined, EllipsisOutlined, EnvironmentOutlined, LockOutlined, SettingOutlined, UserOutlined } from "@ant-design/icons";
+import { Avatar, Button, Card, Carousel, Col, FloatButton, Form, Input, Row } from "antd";
 import Meta from "antd/es/card/Meta";
 import ContentLayout, { MakeBgblue, MakeBgWhite, MakeBgyellow } from "../../Shared/ContentLayout";
 
@@ -37,7 +37,7 @@ export default function Dashboard() {
         <>
             {/* <MenuList></MenuList> */}
             <ContentLayout pageTitle="" returnNode={<FloatButton onClick={toggleTheme} icon={theme === 'light' ? <DesktopOutlined /> : <ContainerOutlined />} />}>
-                <Carousel autoplay style={{ marginBottom: "2rem" }}>
+                <Carousel arrows autoplay style={{ marginBottom: "2rem" }}>
                     <div>
                         <img style={contentStyle} src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
 
@@ -55,7 +55,26 @@ export default function Dashboard() {
 
 
                 <MakeBgblue>
-
+                    {/* <Col>
+                        <Form name="horizontal_login" layout="inline" >
+                            <Form.Item
+                                name="username"
+                                rules={[{ required: true, message: 'Please input your username!' }]}
+                            >
+                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                            </Form.Item>
+                            <Form.Item
+                                name="password"
+                                rules={[{ required: true, message: 'Please input your password!' }]}
+                            >
+                                <Input
+                                    prefix={<LockOutlined className="site-form-item-icon" />}
+                                    type="password"
+                                    placeholder="Password"
+                                />
+                            </Form.Item>
+                        </Form>
+                    </Col> */}
                     <Row gutter={16}>
                         <Col span={10} >
                             <Card
@@ -129,7 +148,7 @@ export default function Dashboard() {
 
 
 
-                        <Col xs={12} md={12} lg={8} xl={6}>
+                        <Col xs={12} md={12} lg={6} xl={6}>
                             <Card hoverable style={{ width: 300, height: "250px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 <CalendarOutlined style={{ display: "flex", justifyContent: "center", alignItems: "center" }} />
                                 <p>Reservation Anytime You Want
@@ -137,7 +156,7 @@ export default function Dashboard() {
                                 <p>24/7 Online Reservationt</p>
                             </Card>
                         </Col>
-                        <Col xs={12} md={12} lg={8} xl={6}>
+                        <Col xs={12} md={12} lg={6} xl={6}>
                             <Card hoverable style={{ width: 300, height: "250px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 <EnvironmentOutlined style={{ display: "flex", justifyContent: "center", alignItems: "center" }} />
                                 <p>Lots of Picking Locations
