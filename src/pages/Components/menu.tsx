@@ -1,7 +1,7 @@
 import { DashboardOutlined, EnvironmentOutlined, InfoCircleOutlined, LoginOutlined, MailOutlined, PhoneOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
 import { Col, Menu, MenuProps, Row, Select } from 'antd';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -33,9 +33,10 @@ const items: MenuProps['items'] = [
         icon: < PieChartOutlined />,
     },
     {
-        label: 'Inventory',
-        key: 'Inventory',
+        label: 'inventory',
+        key: 'inventory',
         icon: < DashboardOutlined />,
+
     },
     {
         label: 'About',
@@ -70,12 +71,21 @@ const MenuList = () => {
     const [current, setCurrent] = useState('home');
     const navigate = useNavigate()
 
-    const onClick: MenuProps['onClick'] = (e) => {
-        // console.log('click ', e);
-        setCurrent(e.key);
-        navigate('/login')
+    // const history = useHistory();
 
-    };
+    // function handleMenuClick(router) {
+    //     history.push(router);
+
+
+
+
+
+    // const onClick: MenuProps['onClick'] = (e) => {
+    //     // console.log('click ', e);
+    //     setCurrent(e.key);
+    //     navigate('/login')
+
+
     return (
         <div >
             <Row  >
@@ -92,10 +102,32 @@ const MenuList = () => {
 
                         <Menu className='menu'
 
-                            mode="horizontal" items={items} />
+                            mode="horizontal"  >
+                            <Menu.Item >
+                                <Link to="/"> < PieChartOutlined /> Home</Link>
+                            </Menu.Item>
+                            <Menu.Item >
+                                <Link to="/about">  < InfoCircleOutlined /> About</Link>
 
+                            </Menu.Item>
+                            <Menu.Item>
+                                <Link to="/inventory">  < DashboardOutlined />  Inventory</Link>
+
+                            </Menu.Item>
+
+                        </Menu>
+                            
                         <Menu className='menu'
-                            mode="horizontal" items={itemslogin} onClick={onClick} selectedKeys={[current]} />
+                            mode="horizontal" >
+                            <Menu.Item >
+                                <Link to="/login"> <UserOutlined /> Login</Link>
+                            </Menu.Item>
+                            <Menu.Item >
+                                <Link to="/register"> < LoginOutlined /> Sign UP</Link>
+
+                            </Menu.Item>
+                        </Menu>
+
 
                     </div>
 

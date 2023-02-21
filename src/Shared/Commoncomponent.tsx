@@ -27,6 +27,7 @@ export const FormSubmitButton = (props: formSubmitButtonProps) => {
             <Button
                 icon={<SaveFilled />}
                 type="primary"
+                size="large"
                 htmlType='submit'
                 loading={props.submitLoading}
                 onClick={props.onClickSubmit}
@@ -36,6 +37,7 @@ export const FormSubmitButton = (props: formSubmitButtonProps) => {
 
             <Button
                 type="default"
+                size="large"
                 icon={<CloseCircleFilled />}
                 onClick={props.onClickCancle}
                 disabled={props.cancleLoading}

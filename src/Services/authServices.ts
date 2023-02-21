@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/auth/";
+const API_URL = "http://localhost:5279/api/user/login";
 
-class AuthService {
+export class AuthService {
     login(username: string, password: string) {
         return axios
             .post(API_URL + "signin", {
@@ -38,4 +38,3 @@ class AuthService {
     }
 }
 
-export default new AuthService();

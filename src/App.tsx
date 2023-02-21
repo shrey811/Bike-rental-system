@@ -3,6 +3,7 @@ import { BrowserRouter, Routes } from 'react-router-dom';
 import { AdminLogin } from './pages/Admin/login';
 import About from './pages/Login client/about';
 import Dashboard from './pages/Login client/dashboard';
+import Inventory from './pages/Login client/inventory';
 import Login from './pages/Login client/login';
 
 
@@ -15,9 +16,10 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path='/admin' element={<AdminLogin />} />
         <Route path='/about' element={<About />} />
+        <Route path='/inventory' element={<Inventory />} />
         <Route path='/' element={<Dashboard />} />
         <Route path='/register' element={<Register />} />
       </Routes>

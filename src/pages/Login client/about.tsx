@@ -1,8 +1,12 @@
 import React from 'react'
+import ContentLayout from '../../Shared/ContentLayout'
 
 const About = () => {
     return (
-        <div>about</div>
+
+        <div>
+            <ContentLayout pageTitle={'About us and our services'} > </ContentLayout>
+            about</div>
     )
 }
 

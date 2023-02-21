@@ -1,122 +1,38 @@
-import { LockOutlined, LoginOutlined, UserOutlined } from '@ant-design/icons'
-import { Form, Space } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
+import { Form } from 'antd'
 import Button from 'antd/es/button'
 import Checkbox from 'antd/es/checkbox'
-import Divider from 'antd/es/divider'
 import Input from 'antd/es/input'
-import { Component } from 'react'
-import { Navigate } from 'react-router-dom'
-import * as Yup from "yup"
-import AuthService from '../../Services/authServices'
-import { FormSubmitButton } from '../../Shared/Commoncomponent'
+import axios from 'axios'
+import { useState } from 'react'
+import { LoginData } from '../../models/user'
 import MenuList from '../Components/menu'
 
-
-type Props = {};
-
-type State = {
-    redirect: string | null,
-    username: string,
-    password: string,
-    loading: boolean,
-    message: string
-};
-
-//     const LOGIN_URL = '/auth';
-
-
-
-// // const { setAuth } = useContext(AuthContext);
-// const userRef = useRef();
-// const errRef = useRef();
-
-// const [user, setUser] = useState('');
-// const [pwd, setPwd] = useState('');
-// const [errMsg, setErrMsg] = useState('');
-// const [success, setSuccess] = useState(false);
+import { AuthService } from '../../Services/authServices'
 
 
 const Login = () => {
+    const authService = new AuthService();
+    const [token, setToken] = useState<string>("");
+
+    const handleFormSubmit = async (values: LoginData) => {
+        try {
+            const response = await axios.post("http://localhost:5279/api/user/login", values);
+            setToken(response.data.token);
+            // do something with the token
+        } catch (error) {
+            console.error(error);
+            // handle error
+        }
+    };
+    if (token) {
+        return (
+            <MenuList />
+        )
+    }
 
 
-    // constructor(props: Props) {
-    //     super(props);
-    //     this.handleLogin = this.handleLogin.bind(this);
 
-    //     this.state = {
-    //         redirect: null,
-    //         username: "",
-    //         password: "",
-    //         loading: false,
-    //         message: ""
-    //     };
-    // }
-
-    // componentDidMount() {
-    //     const currentUser = AuthService.getCurrentUser();
-
-    //     if (currentUser) {
-    //         this.setState({ redirect: "/profile" });
-    //     };
-    // }
-
-    // componentWillUnmount() {
-    //     window.location.reload();
-    // }
-
-    // validationSchema() {
-    //     return Yup.object().shape({
-    //         username: Yup.string().required("This field is required!"),
-    //         password: Yup.string().required("This field is required!"),
-    //     });
-    // }
-
-    // handleLogin(formValue: { username: string; password: string }) {
-    //     const { username, password } = formValue;
-
-    //     this.setState({
-    //         message: "",
-    //         loading: true
-    //     });
-
-
-    //     AuthService.login(username, password).then(
-    //         () => {
-    //             this.setState({
-    //                 redirect: "/profile"
-    //             });
-    //         },
-    //         error => {
-    //             const resMessage =
-    //                 (error.response &&
-    //                     error.response.data &&
-    //                     error.response.data.message) ||
-    //                 error.message ||
-    //                 error.toString();
-
-    //             this.setState({
-    //                 loading: false,
-    //                 message: resMessage
-    //             });
-    //         }
-    //     );
-    // }
-
-    // render() {
-    //     if (this.state.redirect) {
-    //         return <Navigate to={this.state.redirect} />
-    //     }
-
-    //     const { loading, message } = this.state;
-
-    //     const initialValues = {
-    //         username: "",
-    //         password: "",
-    //     };
-
-    // const onFinish = values => {
-    //     console.log('Received values of form: ', values);
-    // };
 
     return (
         <>
@@ -141,13 +57,14 @@ const Login = () => {
                         <Form
                             name="Login"
                             className="login-form"
-                            initialValues={{
-                                remember: true,
-                            }}
-
+                            labelCol={{ span: 8 }}
+                            wrapperCol={{ span: 20 }}
+                            initialValues={{ remember: true }}
+                            onFinish={handleFormSubmit}
+                            autoComplete="off"
                         >
                             <Form.Item
-                                name="username"
+                                name="email"
                                 rules={[
                                     {
                                         required: true,
@@ -155,9 +72,10 @@ const Login = () => {
                                     },
                                 ]}
                             >
-                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                <Input name="email" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                             </Form.Item>
                             <Form.Item
+
                                 name="password"
                                 rules={[
                                     {
@@ -165,15 +83,17 @@ const Login = () => {
                                         message: 'Please input your Password!',
                                     },
                                 ]}
+
                             >
                                 <Input.Password
+
 
                                     type="password"
                                     placeholder="Password"
                                 />
                             </Form.Item>
                             <Form.Item>
-                                <Form.Item name="remember" valuePropName="checked" noStyle>
+                                <Form.Item valuePropName="checked" noStyle>
                                     <Checkbox>Remember me</Checkbox>
                                 </Form.Item>
 
@@ -183,7 +103,7 @@ const Login = () => {
                             </Form.Item>
 
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" className="login-form-button">
+                                <Button size='large' type="primary" htmlType="submit" className="login-form-button">
                                     Log in
                                 </Button>
                                 Or <a href="/register">register now!</a>

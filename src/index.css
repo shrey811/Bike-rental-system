@@ -149,3 +149,18 @@ h1 {
   bottom: 5rem;
   left: 100px;
 }
+
+.site-card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+.search_box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 20rem;
+}
