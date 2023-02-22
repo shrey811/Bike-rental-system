@@ -17,6 +17,8 @@
     .letter {
       transition: ease-out 1s;
       transform: translateY(40%);
+      font-size: 20px;
+        color: rgb(0, 0, 0);
     }
     .shadow {
       transform: scale(1, -1);
@@ -38,14 +40,14 @@
 .filled_edit_button {
   padding: 0.3rem 0.4rem;
   height: 50px;
-  width: 500px;
-  background: white;
-  color: black;
+  width: 250px;
+    background: rgb(0, 0, 0);
+    color: rgb(232, 223, 223);
 }
 
 .filled_edit_button:hover {
-  color: white;
-  background-color: white;
+  color: rgb(7, 7, 7);
+    background-color: rgb(9, 9, 9);
 }
 .menu {
   width: 90vw;
@@ -53,7 +55,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: white;
+  background-color: rgb(247, 245, 245);
   color: black;
 }
 

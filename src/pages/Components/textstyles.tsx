@@ -1,11 +1,12 @@
-import { Button } from 'antd';
+import { Button, Col } from 'antd';
 import React from 'react';
 import "../Components/Components.scss"
 
 const Textstyles = () => {
     return (
         <>
-            <div className="overlay">
+            <div className="overlay" style={{ fontSize: "25px" }}>
+                <Col style={{fontSize:"25px"}}>
                 <div className="text">
                     <div className="wrapper">
                         <div id="W" className="letter">W</div>
@@ -91,8 +92,10 @@ const Textstyles = () => {
 
 
                 </div>
-
-                <Button className="filled_edit_button"  > RENT NOW </Button>
+                </Col>
+                    <Col>
+                    <Button className="filled_edit_button"  > RENT NOW </Button>
+                    </Col>
             </div>
 
 

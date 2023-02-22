@@ -1,40 +1,38 @@
-import axios from "axios";
+import axios, { AxiosResponse } from 'axios';
 
-const API_URL = "http://localhost:5279/api/user/login";
-
-export class AuthService {
-    login(username: string, password: string) {
-        return axios
-            .post(API_URL + "signin", {
-                username,
-                password
-            })
-            .then(response => {
-                if (response.data.accessToken) {
-                    localStorage.setItem("user", JSON.stringify(response.data));
-                }
-
-                return response.data;
-            });
-    }
-
-    logout() {
-        localStorage.removeItem("user");
-    }
-
-    register(username: string, email: string, password: string) {
-        return axios.post(API_URL + "signup", {
-            username,
-            email,
-            password
-        });
-    }
-
-    getCurrentUser() {
-        const userStr = localStorage.getItem("user");
-        if (userStr) return JSON.parse(userStr);
-
-        return null;
-    }
+interface LoginPayload {
+  email: string;
+  password: string;
 }
 
+export class AuthService {
+  private readonly API_URL: string = 'http://localhost:5279/api/user/login';
+  private readonly LOCAL_STORAGE_KEY: string = 'auth_token';
+
+  async login(payload: LoginPayload): Promise<boolean> {
+    try {
+      const response: AxiosResponse<{ access_token: string }> = await axios.post(
+        `${this.API_URL}/login`,
+        payload
+      );
+
+      localStorage.setItem(this.LOCAL_STORAGE_KEY, response.data.access_token);
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.LOCAL_STORAGE_KEY);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.LOCAL_STORAGE_KEY);
+  }
+
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  }
+}

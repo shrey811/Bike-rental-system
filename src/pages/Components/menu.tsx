@@ -1,7 +1,8 @@
 import { DashboardOutlined, EnvironmentOutlined, InfoCircleOutlined, LoginOutlined, MailOutlined, PhoneOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
 import { Col, Menu, MenuProps, Row, Select } from 'antd';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link,  } from 'react-router-dom';
+import { useAuth } from '../../Services/Authprovider';
 
 
 type MenuItem = Required<MenuProps>['items'][number];
@@ -69,8 +70,8 @@ const itemslogin: MenuProps['items'] = [
 
 const MenuList = () => {
     const [current, setCurrent] = useState('home');
-    const navigate = useNavigate()
-
+    
+    const { isAuthenticated } = useAuth();
     // const history = useHistory();
 
     // function handleMenuClick(router) {
@@ -90,7 +91,7 @@ const MenuList = () => {
         <div >
             <Row  >
                 <Col span={24} >
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }} >
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" ,backgroundColor: "rgba(247, 245, 245)"  }} >
                         <Col span={2}></Col>
                         <Col span={2}>
                             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU'
@@ -100,7 +101,7 @@ const MenuList = () => {
                             <Select className="user_search_box" showSearch ></Select>
                         </Col>
 
-                        <Menu className='menu'
+                        {/* <Menu className='menu'
 
                             mode="horizontal"  >
                             <Menu.Item >
@@ -126,7 +127,34 @@ const MenuList = () => {
                                 <Link to="/register"> < LoginOutlined /> Sign UP</Link>
 
                             </Menu.Item>
-                        </Menu>
+                        </Menu> */}
+                        <Menu  mode="horizontal" className='menu'>
+      <Menu.Item key="home">
+        <Link to="/dashboardx`x"> < PieChartOutlined /> Home</Link>
+      </Menu.Item>
+      <Menu.Item key="about">
+        <Link to="/about"> < InfoCircleOutlined /> About</Link>
+      </Menu.Item>
+      <Menu.Item key="inventory">
+        <Link to="/inventory"> < DashboardOutlined /> Inventory</Link>
+      </Menu.Item>
+      {isAuthenticated ? (
+        <>
+          <Menu.Item key="logout" style={{ float: 'right' }}>
+            <Link to="/">Logout</Link>
+          </Menu.Item>
+        </>
+      ) : (
+        <>
+          <Menu.Item key="login" style={{ float: 'right' }}>
+            <Link to="/">  <UserOutlined /> Login</Link>
+          </Menu.Item>
+          <Menu.Item key="register" style={{ float: 'right' }}>
+            <Link to="/register"> < LoginOutlined /> Sign In</Link>
+          </Menu.Item>
+        </>
+      )}
+    </Menu>
 
 
                     </div>

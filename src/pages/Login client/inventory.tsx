@@ -7,6 +7,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import ContentLayout from '../../Shared/ContentLayout';
 
+
 const Inventory = () => {
 
     return (
@@ -27,7 +28,9 @@ const Inventory = () => {
                                 </Button>
 
                             ]}>
-                            Card content
+                            {/* {carsdata.map((item: { id: any; }) => (
+              <Bikes item={item} key={item.id} /> */}
+            {/* ))} */}
                         </Card>
                     </Col>
                     <Col span={8}>
@@ -72,3 +75,5 @@ const Inventory = () => {
 }
 
 export default Inventory
+
+

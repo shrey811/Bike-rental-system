@@ -3,33 +3,31 @@ import { Form } from 'antd'
 import Button from 'antd/es/button'
 import Checkbox from 'antd/es/checkbox'
 import Input from 'antd/es/input'
-import axios from 'axios'
 import { useState } from 'react'
-import { LoginData } from '../../models/user'
-import MenuList from '../Components/menu'
-
+import { useHistory } from 'react-router-dom'
 import { AuthService } from '../../Services/authServices'
 
 
 const Login = () => {
+    const history = useHistory();
+    const [loading, setLoading] = useState<boolean>(false);
     const authService = new AuthService();
-    const [token, setToken] = useState<string>("");
-
-    const handleFormSubmit = async (values: LoginData) => {
-        try {
-            const response = await axios.post("http://localhost:5279/api/user/login", values);
-            setToken(response.data.token);
-            // do something with the token
-        } catch (error) {
-            console.error(error);
-            // handle error
+  
+    const handleSubmit = async (values: any) => {
+        setLoading (true);
+      try {
+        const isLoggedIn = await authService.login(values);
+        if (isLoggedIn) {
+          history.push('/dashboard');
+        } else {
+          console.error('Invalid login credentials');
         }
-    };
-    if (token) {
-        return (
-            <MenuList />
-        )
-    }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+      };
 
 
 
@@ -60,7 +58,7 @@ const Login = () => {
                             labelCol={{ span: 8 }}
                             wrapperCol={{ span: 20 }}
                             initialValues={{ remember: true }}
-                            onFinish={handleFormSubmit}
+                            onFinish={handleSubmit}
                             autoComplete="off"
                         >
                             <Form.Item
@@ -103,7 +101,7 @@ const Login = () => {
                             </Form.Item>
 
                             <Form.Item>
-                                <Button size='large' type="primary" htmlType="submit" className="login-form-button">
+                                <Button size='large' type="primary" htmlType="submit" loading={loading}>
                                     Log in
                                 </Button>
                                 Or <a href="/register">register now!</a>

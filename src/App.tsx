@@ -1,29 +1,32 @@
-import { Route } from 'react-router';
-import { BrowserRouter, Routes } from 'react-router-dom';
-import { AdminLogin } from './pages/Admin/login';
-import About from './pages/Login client/about';
+import { Router, Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import { AuthProvider } from './Services/Authprovider';
+import Login from './pages/Login client/login';
+import Register from './pages/Login client/register';
 import Dashboard from './pages/Login client/dashboard';
 import Inventory from './pages/Login client/inventory';
-import Login from './pages/Login client/login';
+import About from './pages/Login client/about';
+import { AdminLogin } from './pages/Admin/login';
 
-
-import Register from './pages/Login client/register';
-
+const history = createBrowserHistory();
 function App() {
 
-
+ 
   return (
 
-    <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path='/admin' element={<AdminLogin />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/inventory' element={<Inventory />} />
-        <Route path='/' element={<Dashboard />} />
-        <Route path='/register' element={<Register />} />
-      </Routes>
-    </BrowserRouter>
+    <Router history={history}>
+        <AuthProvider >
+         <Switch>
+        <Route exact path="/" component={Login} />
+        <Route path='/admin' component={AdminLogin}/>
+        <Route path='/about' component={About}/>
+        <Route path='/inventory' component={Inventory} />
+        <Route exact path='/dashboard' component={Dashboard} />
+        <Route path='/register' component={Register} />
+        </Switch>
+      </AuthProvider>
+     
+    </Router>
 
 
 

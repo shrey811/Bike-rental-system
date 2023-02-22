@@ -41,8 +41,7 @@ export default function Dashboard() {
                     <div className="carousel">
                         <img style={contentStyle} src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
                         <div className="click">
-                            <Textstyles></Textstyles>
-
+                            <Textstyles/>
 
                         </div>
                     </div>
