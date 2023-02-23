@@ -36,7 +36,7 @@ function About(this: any) {
         <div
         >
             <ContentLayout pageTitle={'About'}  >
-    <LoadScript
+    {/* <LoadScript
       googleMapsApiKey=" https://maps-api.apple.com/v1/search"
     >
       <GoogleMap
@@ -45,10 +45,10 @@ function About(this: any) {
         zoom={10}
       >
               { /* Child components, such as markers, info windows, etc. */}
-              <UserOutlined/>
+              {/* <UserOutlined/>
         <></>
       </GoogleMap>
-                </LoadScript>
+                </LoadScript> */}
             </ContentLayout>
             
     </div>

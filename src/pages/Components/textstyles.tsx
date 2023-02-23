@@ -1,8 +1,13 @@
 import { Button, Col } from 'antd';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import "../Components/Components.scss"
 
 const Textstyles = () => {
+    const history = useHistory();
+    function handleNavigate() {
+        history.push('/inventory');
+      }
     return (
         <>
             <div className="overlay" style={{ fontSize: "25px" }}>
@@ -94,7 +99,7 @@ const Textstyles = () => {
                 </div>
                 </Col>
                     <Col>
-                    <Button className="filled_edit_button"  > RENT NOW </Button>
+                    <Button className="filled_edit_button"  onClick={handleNavigate}> RENT NOW </Button>
                     </Col>
             </div>
 

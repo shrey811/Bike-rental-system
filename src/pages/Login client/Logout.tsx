@@ -1,8 +1,8 @@
 import React from 'react';
 import { useAuth } from '../../Services/Authprovider';
 
-const Dashboard: React.FC = () => {
-  const { authService } = useAuth();
+const Logout: React.FC = () => {
+  const { authService ,isAuthenticated } = useAuth();
 
   const handleLogout = () => {
     authService.logout();
@@ -10,11 +10,28 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <>
-      <h1>Dashboard</h1>
-      <button onClick={handleLogout}>Logout</button>
+      <>
+          {isAuthenticated ? (
+        <><p>You are logged in.</p><button onClick={handleLogout}>Logout</button></>
+      ) : (
+        <p>Please log in.</p>
+      )}
     </>
   );
 };
 
-export default Dashboard;
+// const MyComponent: React.FC = () => {
+//     const { authService, isAuthenticated } = useAuth();
+  
+//     const handleLogout = () => {
+//       authService.logout();
+//     };
+  
+//     return (
+//       <>
+       
+//       </>
+//     );
+
+  
+export default Logout;

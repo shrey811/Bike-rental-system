@@ -25,45 +25,45 @@ function getItem(
 
 
 
-const items: MenuProps['items'] = [
+// const items: MenuProps['items'] = [
 
 
-    {
-        label: ' Home',
-        key: 'home',
-        icon: < PieChartOutlined />,
-    },
-    {
-        label: 'inventory',
-        key: 'inventory',
-        icon: < DashboardOutlined />,
+//     {
+//         label: ' Home',
+//         key: 'home',
+//         icon: < PieChartOutlined />,
+//     },
+//     {
+//         label: 'inventory',
+//         key: 'inventory',
+//         icon: < DashboardOutlined />,
 
-    },
-    {
-        label: 'About',
-        key: 'about',
-        icon: < InfoCircleOutlined />,
-    },
+//     },
+//     {
+//         label: 'About',
+//         key: 'about',
+//         icon: < InfoCircleOutlined />,
+//     },
 
 
 
-]
+// ]
 
-const itemslogin: MenuProps['items'] = [
-    {
-        label: ' Login',
-        key: "login",
-        icon: <UserOutlined />,
+// const itemslogin: MenuProps['items'] = [
+//     {
+//         label: ' Login',
+//         key: "login",
+//         icon: <UserOutlined />,
 
-    },
-    {
-        label: ' Sign UP',
-        key: 'signup',
-        icon: < LoginOutlined />,
+//     },
+//     {
+//         label: ' Sign UP',
+//         key: 'signup',
+//         icon: < LoginOutlined />,
 
-    }
+//     }
 
-]
+// ]
 
 
 
@@ -130,7 +130,7 @@ const MenuList = () => {
                         </Menu> */}
                         <Menu  mode="horizontal" className='menu'>
       <Menu.Item key="home">
-        <Link to="/dashboardx`x"> < PieChartOutlined /> Home</Link>
+        <Link to="/dashboard"> < PieChartOutlined /> Home</Link>
       </Menu.Item>
       <Menu.Item key="about">
         <Link to="/about"> < InfoCircleOutlined /> About</Link>

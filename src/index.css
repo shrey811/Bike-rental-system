@@ -108,7 +108,7 @@ input {
 
 .register {
   width: 50vw;
-  height: 40vh;
+  height: 70vh;
   box-shadow: rgb(0 0 0 / 40%) 0px 3px 8px;
   display: flex;
   text-align: center;
@@ -163,4 +163,9 @@ h1 {
   justify-content: flex-end;
   align-items: center;
   width: 20rem;
+}
+
+b.utton1 {
+  display: "flex";
+  align-items: "center";
 }
