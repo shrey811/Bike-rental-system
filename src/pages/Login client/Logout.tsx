@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../../Services/Authprovider';
 
 const Logout: React.FC = () => {
-  const { authService ,isAuthenticated } = useAuth();
+  const { authService, isAuthenticated } = useAuth();
 
   const handleLogout = () => {
     authService.logout();
@@ -10,8 +10,8 @@ const Logout: React.FC = () => {
   };
 
   return (
-      <>
-          {isAuthenticated ? (
+    <>
+      {isAuthenticated ? (
         <><p>You are logged in.</p><button onClick={handleLogout}>Logout</button></>
       ) : (
         <p>Please log in.</p>
@@ -22,16 +22,16 @@ const Logout: React.FC = () => {
 
 // const MyComponent: React.FC = () => {
 //     const { authService, isAuthenticated } = useAuth();
-  
+
 //     const handleLogout = () => {
 //       authService.logout();
 //     };
-  
+
 //     return (
 //       <>
-       
+
 //       </>
 //     );
 
-  
+
 export default Logout;

@@ -1,4 +1,5 @@
 import { Typography } from "antd";
+import { Footer } from "antd/es/layout/layout";
 import React, { ReactNode } from "react";
 import MenuList from "../pages/Components/menu";
 import "./ContentStyle.scss";
@@ -50,6 +51,7 @@ const ContentLayout = ({
 
         <div className="body_part">{children}</div>
       </div>
+      <Footer style={{ textAlign: 'center' }}>Bikers Choice Since 2013 @ABC ABC</Footer>
     </React.Fragment>
   );
 };

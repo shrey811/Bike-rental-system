@@ -1,6 +1,8 @@
 // import axios, { AxiosResponse } from 'axios';
 
 import axios, { AxiosResponse } from "axios";
+import { registration } from "../models/registration";
+
 
 interface LoginPayload {
   email: string;
@@ -38,6 +40,10 @@ export class AuthService {
     return !!this.getToken();
   }
 }
+
+
+
+
 //  export class AuthService {
 //     private readonly AUTH_TOKEN_KEY = 'authToken';
   

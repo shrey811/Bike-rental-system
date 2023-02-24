@@ -12,22 +12,28 @@ const Login = () => {
     const history = useHistory();
     const [loading, setLoading] = useState<boolean>(false);
     const authService = new AuthService();
-  
+
     const handleSubmit = async (values: any) => {
-        setLoading (true);
-      try {
-        const isLoggedIn = await authService.login(values);
-        if (isLoggedIn) {
-          history.push('/dashboard');
-        } else {
-          console.error('Invalid login credentials');
+        setLoading(true);
+        try {
+
+            // check if the email and password are "admin" and "admin"
+            if (values.email === "admin" && values.password === "admin") {
+                history.push('/admin');
+                return;
+            }
+            const isLoggedIn = await authService.login(values);
+            if (isLoggedIn) {
+                history.push('/dashboard');
+            } else {
+                console.error('Invalid login credentials');
+            }
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
         }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-      };
+    };
 
 
 

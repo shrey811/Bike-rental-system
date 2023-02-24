@@ -8,11 +8,12 @@ import PrivateRoute from './pages/Login client/Privateroute';
 import { AuthProvider } from './Services/Authprovider';
 import Dashboard from './pages/Login client/dashboard';
 import about from './pages/Login client/about';
+import Admin from './pages/Admin/login';
 
 const history = createBrowserHistory();
 function App() {
 
- 
+
   return (
 
     // <Router history={history}>
@@ -26,19 +27,20 @@ function App() {
     //     <Route path='/register' component={Register} />
     //     </Switch>
     //   </AuthProvider>
-     
+
     // </Router>
- <BrowserRouter>
- <AuthProvider>
-   <Switch>
-     <Route exact path="/" component={Login} />
-     <PrivateRoute path='/dashboard' component={Dashboard}/>
-     <PrivateRoute path='/about' component={about}/>
-     <PrivateRoute path='/inventory' component={Inventory} />
-     <Route path='/register' component={Register} />
-   </Switch>
- </AuthProvider>
-</BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <PrivateRoute path='/dashboard' component={Dashboard} />
+          <PrivateRoute path='/about' component={about} />
+          <PrivateRoute path='/inventory' component={Inventory} />
+          <Route path='/register' component={Register} />
+          <PrivateRoute path='/admin' component={Admin} />
+        </Switch>
+      </AuthProvider>
+    </BrowserRouter>
 
 
   )

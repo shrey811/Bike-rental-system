@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // Import Swiper React components
 
 // Import Swiper styles
@@ -7,10 +7,12 @@ import React, { useState } from "react";
 
 // import required modules
 import { CalendarOutlined, ContainerOutlined, DesktopOutlined, EditOutlined, EllipsisOutlined, EnvironmentOutlined, SettingOutlined } from "@ant-design/icons";
-import { Avatar, Button, Card, Carousel, Col, FloatButton, Row } from "antd";
+import { Avatar, Button, Card, Carousel, Col, FloatButton, Pagination, PaginationProps, Row } from "antd";
 import Meta from "antd/es/card/Meta";
 import ContentLayout, { MakeBgblue, MakeBgWhite, MakeBgyellow } from "../../Shared/ContentLayout";
 import Textstyles from "../Components/textstyles";
+import { getCards } from "../../Services/axios";
+import CustomCard from "../Context /Card";
 
 
 
@@ -19,7 +21,31 @@ import Textstyles from "../Components/textstyles";
 export default function Dashboard() {
     const [collapsed, setCollapsed] = useState(false);
     const [theme, setTheme] = useState('light');
-
+    const [cardData, setCardData] = useState<any[]>([]);
+    const [page, setPage] = useState<number>(1);
+    const [pageSize, setPageSize] = useState<number>(3);
+    const [total, setTotal] = useState<number>(0);
+    useEffect(() => {
+        async function fetchCards() {
+            const { data, total } = await getCards(page, pageSize);
+            setCardData(data);
+            setTotal(total);
+        };
+        fetchCards();
+    }, [page, pageSize]);
+    function handlePageChange(page: number, pageSize?: number) {
+        setPage(page);
+        // default to 10 if pageSize is not specified
+    }
+    const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
+        if (type === 'prev') {
+            return <a>Previous</a>;
+        }
+        if (type === 'next') {
+            return <a>Next</a>;
+        }
+        return originalElement;
+    };
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
@@ -41,7 +67,7 @@ export default function Dashboard() {
                     <div className="carousel">
                         <img style={contentStyle} src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
                         <div className="click">
-                            <Textstyles/>
+                            <Textstyles />
 
                         </div>
                     </div>
@@ -78,91 +104,33 @@ export default function Dashboard() {
 
 
                 <MakeBgblue>
-                    {/* <Col>
-                        <Form name="horizontal_login" layout="inline" >
-                            <Form.Item
-                                name="username"
-                                rules={[{ required: true, message: 'Please input your username!' }]}
-                            >
-                                <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-                            </Form.Item>
-                            <Form.Item
-                                name="password"
-                                rules={[{ required: true, message: 'Please input your password!' }]}
-                            >
-                                <Input
-                                    prefix={<LockOutlined className="site-form-item-icon" />}
-                                    type="password"
-                                    placeholder="Password"
-                                />
-                            </Form.Item>
-                        </Form>
-                    </Col> */}
-                    <Row gutter={16}>
-                        <Col span={10} >
-                            <Card
-                                hoverable
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1622185135505-2d795003994a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
-                                }
-                                actions={[
-                                    <SettingOutlined key="setting" />,
-                                    <EditOutlined key="edit" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
 
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Bike1"
-                                    description="hello 1234"
-                                />
-                            </Card>
-                        </Col>
-                        <Col span={10} >
-                            <Card
-                                hoverable
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1622185135505-2d795003994a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
+                    {
+                        cardData.map((card) => (
+                            <Col xs={24} md={12} lg={6} key={card.id} style={{ marginRight: "10px" }}>
+                                <CustomCard
 
-                                }
-                                actions={[
-                                    <SettingOutlined key="setting" />,
-                                    <EditOutlined key="edit" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Card title"
-                                    description="This is the description"
+                                    title={card.title}
+                                    body={card.body}
+                                    imageUrl1="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=601" imageUrl2={''}
                                 />
-                            </Card>
-                        </Col>
-                        <Col span={4} >
-                            <Card
-                                hoverable
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1622185135505-2d795003994a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
+                            </Col>
+                        ))
+                    }
 
-                                }
-                                actions={[
-                                    <SettingOutlined key="setting" />,
-                                    <EditOutlined key="edit" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Card title"
-                                    description="This is the description"
-                                />
-                            </Card>
-                        </Col>
-                    </Row>
+                    <Pagination
+                        style={{ textAlign: 'end', marginTop: "20px", marginBottom: "20px" }}
+                        current={page}
+                        // pageSize={pageSize}
+                        total={total}
+                        onChange={handlePageChange}
+                        // showSizeChanger
+                        // pageSizeOptions={['10', '20', '50']}
+                        itemRender={itemRender}
+
+                    />
+
+
                 </MakeBgblue>
                 <MakeBgyellow>
                     <Row gutter={16}>
@@ -211,6 +179,9 @@ export default function Dashboard() {
 
 
                         </Col>
+
+
+
                     </Row>
                 </MakeBgWhite>
 
