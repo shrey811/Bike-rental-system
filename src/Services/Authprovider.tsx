@@ -12,9 +12,9 @@ export const AuthContext = createContext<AuthContextProps>({
   isAuthenticated: false,
 });
 type AuthProviderProps = {
-    children: React.ReactNode;
-  };
-  
+  children: React.ReactNode;
+};
+
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const authService = new AuthService();
