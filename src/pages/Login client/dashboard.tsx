@@ -12,7 +12,9 @@ import Meta from "antd/es/card/Meta";
 import ContentLayout, { MakeBgblue, MakeBgWhite, MakeBgyellow } from "../../Shared/ContentLayout";
 import Textstyles from "../Components/textstyles";
 import { getCards } from "../../Services/axios";
-import CustomCard from "../Context /Card";
+import { CustomCard } from "../Context /Card";
+import MenuList from "../Components/menu";
+
 
 
 
@@ -25,6 +27,13 @@ export default function Dashboard() {
     const [page, setPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>(3);
     const [total, setTotal] = useState<number>(0);
+
+
+    const handleRentClick = () => {
+        // logic for opening rental page goes here
+        console.log("Opening rental page...");
+    };
+
     useEffect(() => {
         async function fetchCards() {
             const { data, total } = await getCards(page, pageSize);
@@ -61,11 +70,15 @@ export default function Dashboard() {
     return (
 
         <>
+            <MenuList />
             {/* <MenuList></MenuList> */}
             <ContentLayout pageTitle="" returnNode={<FloatButton onClick={toggleTheme} icon={theme === 'light' ? <DesktopOutlined /> : <ContainerOutlined />} />}>
+
                 <Carousel autoplay style={{ marginBottom: "2rem" }} >
                     <div className="carousel">
+
                         <img style={contentStyle} src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
+
                         <div className="click">
                             <Textstyles />
 
@@ -105,21 +118,32 @@ export default function Dashboard() {
 
                 <MakeBgblue>
 
-                    {
-                        cardData.map((card) => (
-                            <Col xs={24} md={12} lg={6} key={card.id} style={{ marginRight: "10px" }}>
-                                <CustomCard
+                    <h4 style={{ fontFamily: "merriweather" }}> Trending Now</h4>
+                    <div style={{
 
-                                    title={card.title}
-                                    body={card.body}
-                                    imageUrl1="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=601" imageUrl2={''}
-                                />
-                            </Col>
-                        ))
-                    }
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}>
+
+                        {
+                            cardData.map((card) => (
+                                <Col xs={24} md={12} lg={6} key={card.id} style={{ marginRight: "10px" }}>
+                                    <CustomCard
+
+                                        title={card.title}
+                                        body={card.body}
+                                        imageUrl1="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=601"
+                                        imageUrl2={''}
+                                        onRent={handleRentClick}
+                                    />
+                                </Col>
+                            ))
+                        }
+                    </div>
 
                     <Pagination
-                        style={{ textAlign: 'end', marginTop: "20px", marginBottom: "20px" }}
+                        style={{ alignSelf: "end" }}
                         current={page}
                         // pageSize={pageSize}
                         total={total}
@@ -166,8 +190,8 @@ export default function Dashboard() {
                                 in the tourism and business industry, stand out for their quality and good taste.
 
                                 We working since 2016
-                                All brand & type cars in our garage
-                                1.000+ picking locations around the world
+                                All brand & type bike in our garage
+                                1.000+ picking locations around the nepal
                             </p>
 
                         </Col>
@@ -186,101 +210,7 @@ export default function Dashboard() {
                 </MakeBgWhite>
 
 
-                {/* <Row gutter={16}>
-                        <Col span={8} xs={24} md={12} lg={10} xl={4}>
-                            <Card
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1622185135505-2d795003994a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
-                                }
 
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Card title"
-                                    description="This is the description"
-                                />
-                            </Card>
-                        </Col>
-                        <Col span={8} xs={24} md={12} lg={10} xl={4}>
-                            <Card
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1622185135505-2d795003994a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
-
-                                }
-                                actions={[
-                                    <SettingOutlined key="setting" />,
-                                    <EditOutlined key="edit" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Card title"
-                                    description="This is the description"
-                                />
-                            </Card>
-                        </Col>
-                        <Col span={8} xs={24} md={12} lg={10} xl={4}>
-                            <Card
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1622185135505-2d795003994a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
-                                }
-                                actions={[
-                                    <SettingOutlined key="setting" />,
-                                    <EditOutlined key="edit" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Card title"
-                                    description="This is the description"
-                                />
-                            </Card>
-                        </Col>
-                        <Col span={8} xs={24} md={12} lg={10} xl={4}>
-                            <Card
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1622185135505-2d795003994a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YmlrZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60" />
-
-                                }
-                                actions={[
-                                    <SettingOutlined key="setting" />,
-                                    <EditOutlined key="edit" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Card title"
-                                    description="This is the description"
-                                />
-                            </Card>
-                        </Col>
-                        <Col span={8} xs={24} md={12} lg={10} xl={4}>
-                            <Card
-                                style={{ width: 300 }}
-                                cover={
-                                    <img src="https://images.unsplash.com/photo-1627366197691-e0d5cee520bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fGJpa2VzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=2000&q=60" />
-                                }
-                                actions={[
-                                    <SettingOutlined key="setting" />,
-                                    <EditOutlined key="edit" />,
-                                    <EllipsisOutlined key="ellipsis" />,
-                                ]}
-                            >
-                                <Meta
-                                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                                    title="Card title"
-                                    description="This is the description"
-                                />
-                            </Card>
-                        </Col>
-                    </Row> */}
                 <div className={`theme-${theme}`}>
                     <FloatButton onClick={toggleTheme} />
                 </div>

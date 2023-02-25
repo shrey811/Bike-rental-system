@@ -138,6 +138,18 @@ h2 {
   text-align: center;
   margin-left: 10px;
 }
+h4 {
+  color: rgb(0, 0, 0);
+  font-size: 2rem;
+  font-family: 'Mouse Memoirs', sans-serif;
+
+  font-weight: 450;
+  display: flex;
+  text-align: center;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
 .upload-list-inline .ant-upload-list-item {
   float: left;
   width: 200px;
@@ -226,3 +238,12 @@ b.utton1 {
   margin: 5px;
   background: rgba(255, 255, 255, 0.3);
 }
+
+
+
+
+
+
+
+
+

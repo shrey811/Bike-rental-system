@@ -9,6 +9,7 @@ import { AuthProvider } from './Services/Authprovider';
 import Dashboard from './pages/Login client/dashboard';
 import about from './pages/Login client/about';
 import Admin from './pages/Admin/login';
+import Rental from './pages/Login client/Rental';
 
 const history = createBrowserHistory();
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <PrivateRoute path='/dashboard' component={Dashboard} />
           <PrivateRoute path='/about' component={about} />
           <PrivateRoute path='/inventory' component={Inventory} />
+          <PrivateRoute path='/rent-now' component={Rental} />
           <Route path='/register' component={Register} />
           <PrivateRoute path='/admin' component={Admin} />
         </Switch>

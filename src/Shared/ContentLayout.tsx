@@ -4,6 +4,9 @@ import React, { ReactNode } from "react";
 import MenuList from "../pages/Components/menu";
 import "./ContentStyle.scss";
 
+
+
+
 interface Props {
   pageTitle: string;
   children: ReactNode;
@@ -32,27 +35,29 @@ const ContentLayout = ({
   // };
 
   return (
-    <React.Fragment>
-      <div className="menu_bar">
-        <MenuList />
-      </div>
-      <div className="main_root">
-        {/* <div className="menu_bar">
+    <>
+      <React.Fragment>
+
+
+
+        <div className="main_root">
+          {/* <div className="menu_bar">
           <MenuList />
         </div> */}
-        <div className="header_wrapper" >
-          <div>
-            <h1>{pageTitle}</h1>
-            {isReferenceTitle() && (<Paragraph className="refenenceTitle">{`( ${referenceTitle} )`}</Paragraph>)}
+          <div className="header_wrapper" >
+            <div>
+              <h1>{pageTitle}</h1>
+              {isReferenceTitle() && (<Paragraph className="refenenceTitle">{`( ${referenceTitle} )`}</Paragraph>)}
+            </div>
+
+            <div>{returnNode}</div>
           </div>
 
-          <div>{returnNode}</div>
+          <div className="body_part">{children}</div>
         </div>
-
-        <div className="body_part">{children}</div>
-      </div>
-      <Footer style={{ textAlign: 'center' }}>Bikers Choice Since 2013 @ABC ABC</Footer>
-    </React.Fragment>
+        <Footer style={{ padding: "10em", textAlign: 'center', marginTop: "2em", backgroundColor: "grey" }}>Bikers Choice Since 2013 @ABC ABC</Footer>
+      </React.Fragment>
+    </>
   );
 };
 
@@ -108,16 +113,43 @@ export const MakeBgblue = ({ padding, children }: makeProps) => {
   return (
     <div
       style={{
-        background: "#e1e2c8",
+        background: "#91c0bc",
         padding: padding ? padding : "1rem",
         margin: " 2rem",
         borderRadius: "0.2rem",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        flexDirection: "column",
+        gap: "1rem"
       }}
     >
       {children}
     </div>
   );
 };
+
+
+interface LayoutProps {
+  imageUrl: string;
+  header: string;
+  description: string;
+  imageRight?: boolean;
+}
+
+export const Layout: React.FC<LayoutProps> = ({ imageUrl, header, description, imageRight = false }) => {
+  return (
+    <div className="layout">
+      <div className={`row ${imageRight ? 'reverse' : ''}`}>
+        <div className="col">
+          <img src={imageUrl} alt="Content Image" />
+        </div>
+        <div className="col">
+          <h1>{header}</h1>
+          <p>{description}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+

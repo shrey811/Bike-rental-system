@@ -9,9 +9,10 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { getCards } from '../../Services/axios';
 import MenuList from '../Components/menu';
-import CustomCard from '../Context /Card';
+
 
 import { Input } from 'antd';
+import { CustomCard } from '../Context /Card';
 
 
 const Inventory: React.FC = () => {
@@ -21,6 +22,12 @@ const Inventory: React.FC = () => {
   const [pageSize, setPageSize] = useState<number>(12);
   const [total, setTotal] = useState<number>(0);
   const { Search } = Input;
+
+
+  const handleRentClick = () => {
+    // logic for opening rental page goes here
+    console.log("Opening rental page...");
+  };
 
   const [collapsed, setCollapsed] = useState(false);
   useEffect(() => {
@@ -75,9 +82,9 @@ const Inventory: React.FC = () => {
           <div className="logo" >
             <Row>
               <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU'
-                width={"70rem"} height={"60rem"} />
+                width={"150rem"} height={"60rem"} style={{ marginLeft: "20px" }} />
 
-              <h3>  BIKERS CHOICE</h3>
+              <h3 style={{ marginLeft: "30px" }}>  BIKERS CHOICE</h3>
             </Row>
           </div>
 
@@ -167,7 +174,9 @@ const Inventory: React.FC = () => {
 
                     title={card.title}
                     body={card.body}
-                    imageUrl1="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=601" imageUrl2={''}
+                    imageUrl1="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=601"
+                    imageUrl2={''}
+                    onRent={handleRentClick}
                   />
                 </Col>
               ))

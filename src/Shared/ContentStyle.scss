@@ -1,5 +1,5 @@
 .main_root {
-  padding: 0;
+
   // margin: 0 2em;
   //  background: #c8d1e2;
 
@@ -7,7 +7,7 @@
     position: sticky;
     top: 0;
     left: 0;
-    padding: 1.2rem 1rem 0.4rem 1rem;
+    padding: 0rem 1rem 0.4rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,6 +25,118 @@
       font-size: 1.3rem;
     }
 
+    .footer {
+      padding: 2em;
+      margin-top: 2em;
+      background-color: grey;
+      text-align: center;
+    }
+
 
   }
 }
+
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  .col {
+    flex: 1;
+    padding: 24px;
+  }
+
+  .col:first-child {
+    max-width: 50%;
+  }
+
+  .col:last-child {
+    max-width: 45%;
+    text-align: left;
+    /* add text-align property to align text to left */
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .row.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+
+// container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   margin-top: 2rem;
+//   margin-left: auto;
+//   /* move towards the right */
+//   width: 80%;
+//   max-width: 1200px;
+//   height: auto;
+//   background-color: #f7f7f7;
+//   padding: 2rem;
+//   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+// }
+
+// .row {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   margin-bottom: 2rem;
+
+//   .image {
+//     flex: 1;
+//     max-width: 50%;
+//     margin-right: 2rem;
+
+//     img {
+//       width: 100%;
+//     }
+//   }
+
+//   .content {
+//     flex: 1;
+//     max-width: 50%;
+
+//     h2 {
+//       font-size: 2rem;
+//       margin-bottom: 1rem;
+//     }
+
+//     p {
+//       font-size: 1.2rem;
+//     }
+//   }
+
+//   &.reverse {
+//     flex-direction: row-reverse;
+
+//     .image {
+//       margin-right: 0;
+//       margin-left: 2rem;
+//     }
+
+//     .content {
+//       margin-right: 2rem;
+//       margin-left: 0;
+//     }
+//   }
+// }

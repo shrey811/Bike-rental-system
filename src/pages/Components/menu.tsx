@@ -5,6 +5,9 @@ import React, { useState } from 'react';
 import { Link, } from 'react-router-dom';
 import { useAuth } from '../../Services/Authprovider';
 
+import Logo from "./Logo.png";
+
+
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -90,44 +93,25 @@ const MenuList = () => {
 
 
   return (
-    <div >
+    <div style={{
+      position: "sticky",
+      top: 0,
+      zIndex: 1
+    }}>
       <Row  >
         <Col span={24} >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "rgba(247, 245, 245)" }} >
             <Col span={2}></Col>
-            <Col span={2}>
-              <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU'
-                width={"100rem"} height={"77rem"} />
+            <Col span={5} >
+
+
+              <img src={Logo}
+                width={"150rem"} height={"77rem"} />
+
+
             </Col>
 
 
-            {/* <Menu className='menu'
-
-                            mode="horizontal"  >
-                            <Menu.Item >
-                                <Link to="/"> < PieChartOutlined /> Home</Link>
-                            </Menu.Item>
-                            <Menu.Item >
-                                <Link to="/about">  < InfoCircleOutlined /> About</Link>
-
-                            </Menu.Item>
-                            <Menu.Item>
-                                <Link to="/inventory">  < DashboardOutlined />  Inventory</Link>
-
-                            </Menu.Item>
-
-                        </Menu>
-                            
-                        <Menu className='menu'
-                            mode="horizontal" >
-                            <Menu.Item >
-                                <Link to="/login"> <UserOutlined /> Login</Link>
-                            </Menu.Item>
-                            <Menu.Item >
-                                <Link to="/register"> < LoginOutlined /> Sign UP</Link>
-
-                            </Menu.Item>
-                        </Menu> */}
             <Menu mode="horizontal" className='menu'>
               <Menu.Item key="home">
                 <Link to="/dashboard"> < PieChartOutlined /> Home</Link>
@@ -139,8 +123,9 @@ const MenuList = () => {
                 <Link to="/inventory"> < DashboardOutlined /> Inventory</Link>
               </Menu.Item>
             </Menu>
+
             <Col >
-              <Search style={{ width: "20rem", marginLeft: "10px" }} ></Search>
+              <Search style={{ width: "20rem", marginLeft: "20px" }} ></Search>
             </Col>
             <Menu className='menu'>
               {isAuthenticated ? (

@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
 import { Card, Button, Rate } from 'antd';
+import { useHistory } from 'react-router-dom';
 
 interface Cards {
   title: string;
   body: string;
   imageUrl1: string;
   imageUrl2: string;
+  onRent: () => void;
 }
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
-const CustomCard: React.FC<Cards> = ({ title, body, imageUrl1 }) => {
+export const CustomCard: React.FC<Cards> = ({ title, body, imageUrl1 }) => {
   const [value, setValue] = useState(3);
+  const handleRentClick = () => {
+
+    history.push('/rent-now');
+  }
+
+
+  const history = useHistory();
+
   return (
     <Card
 
@@ -32,9 +42,12 @@ const CustomCard: React.FC<Cards> = ({ title, body, imageUrl1 }) => {
 
 
       <p>{body}</p>
-      <Button className='button1' type="primary">Rent Now</Button>
+      <Button className='button1' type="primary" onClick={handleRentClick}>Rent Now</Button>
     </Card>
   );
 };
 
-export default CustomCard;
+
+
+
+
