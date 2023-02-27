@@ -14,84 +14,84 @@ const Textstyles = () => {
                 <Col style={{ fontSize: "25px" }}>
                     <div className="text">
                         <div className="wrapper">
-                            <div id="W" className="letter">W</div>
+                            <div id="W" >W</div>
                             <div className="shadow">W</div>
                         </div>
                         <div className="wrapper">
-                            <div id="E" className="letter">E</div>
+                            <div id="E" >E</div>
                             <div className="shadow">E</div>
                         </div>
                         <div className="wrapper">
-                            <div id="L" className="letter">L</div>
+                            <div id="L" >L</div>
                             <div className="shadow">L</div>
                         </div>
                         <div className="wrapper">
-                            <div id="C" className="letter">C</div>
+                            <div id="C" >C</div>
                             <div className="shadow">C</div>
                         </div>
                         <div className="wrapper">
-                            <div id="O" className="letter">O</div>
+                            <div id="O" >O</div>
                             <div className="shadow">O</div>
                         </div>
                         <div className="wrapper">
-                            <div id="M" className="letter">M</div>
+                            <div id="M" >M</div>
                             <div className="shadow">M</div>
                         </div>
                         <div className="wrapper">
-                            <div id="E" className="letter">E</div>
+                            <div id="E" >E</div>
                             <div className="shadow">E</div>
                         </div>
                         <br></br>
                         <div className="wrapper">
-                            <div id="T" className="letter">T</div>
+                            <div id="T" >T</div>
                             <div className="shadow">T</div>
                         </div>
                         <div className="wrapper">
-                            <div id="O" className="letter">O</div>
+                            <div id="O" >O</div>
                             <div className="shadow">O</div>
                         </div>
                         <div className="wrapper">
-                            <div id="B" className="letter">B</div>
+                            <div id="B" >B</div>
                             <div className="shadow">B</div>
                         </div>
                         <div className="wrapper">
-                            <div id="I" className="letter">I</div>
+                            <div id="I" >I</div>
                             <div className="shadow">I</div>
                         </div>
                         <div className="wrapper">
-                            <div id="K" className="letter">K</div>
+                            <div id="K" >K</div>
                             <div className="shadow">K</div>
                         </div>
                         <div className="wrapper">
-                            <div id="E" className="letter">E</div>
+                            <div id="E" >E</div>
                             <div className="shadow">E</div>
                         </div>
                         <div className="wrapper">
-                            <div id="R" className="letter">R</div>
+                            <div id="R" >R</div>
                             <div className="shadow">R</div>
                         </div>
                         <div className="wrapper">
-                            <div id="C" className="letter">C</div>
+                            <div id="C" >C</div>
                             <div className="shadow">C</div>
                         </div>
                         <div className="wrapper">
-                            <div id="H" className="letter">H</div>
+                            <div id="H" >H</div>
                             <div className="shadow">H</div>
                         </div>
                         <div className="wrapper">
-                            <div id="O" className="letter">O</div>
+                            <div id="O" >O</div>
                             <div className="shadow">O</div>
                         </div>
                         <div className="wrapper">
-                            <div id="I" className="letter">I</div>
+                            <div id="I" >I</div>
                             <div className="shadow">I</div>
                         </div>
                         <div className="wrapper">
-                            <div id="C" className="letter">C</div>
+                            <div id="C" >C</div>
                             <div className="shadow">C</div>
                         </div>
                         <div className="wrapper">
-                            <div id="E" className="letter">E</div>
+                            <div id="E" >E</div>
                             <div className="shadow">E</div>
                         </div>
 

@@ -1,4 +1,4 @@
-import { DashboardOutlined, InfoCircleOutlined, LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, PieChartOutlined } from '@ant-design/icons';
+import { DashboardOutlined, InfoCircleOutlined, LogoutOutlined, MenuFoldOutlined, MenuUnfoldOutlined, PhoneOutlined, PieChartOutlined } from '@ant-design/icons';
 import { Avatar, Badge, Col, Divider, Layout, Menu, Pagination, PaginationProps, Row, Select, Space } from 'antd';
 import { Content, Footer, Header } from 'antd/es/layout/layout';
 import Sider from 'antd/es/layout/Sider';
@@ -13,7 +13,19 @@ import MenuList from '../Components/menu';
 
 import { Input } from 'antd';
 import { CustomCard } from '../Context /Card';
-
+import axios from 'axios';
+import { API_URL } from '../../Services/ajaxservice';
+interface Cards {
+  id: number;
+  title: string;
+  body: string;
+  imageUrl1: string;
+  imageUrl2: string;
+  onRent: () => void;
+  rating: number;
+  kmRun: number;
+  milage: number;
+}
 
 const Inventory: React.FC = () => {
 
@@ -22,6 +34,32 @@ const Inventory: React.FC = () => {
   const [pageSize, setPageSize] = useState<number>(12);
   const [total, setTotal] = useState<number>(0);
   const { Search } = Input;
+
+  async function fetchCards(searchTerm?: string, sortOrder?: string) {
+    const response = await axios.get(`${API_URL}/bike`, {
+      params: {
+        q: searchTerm,
+        _sort: sortOrder,
+        _page: page,
+        _limit: pageSize,
+      },
+    });
+    const { data, headers } = response;
+    const total = Number(headers['x-total-count']);
+    setCardData(data);
+    setTotal(total);
+  };
+
+
+  const handleSearch = async (value: string) => {
+    await fetchCards(value);
+    setPage(1);
+  };
+
+  const handleSort = async (value: string) => {
+    await fetchCards(undefined, value);
+    setPage(1);
+  };
 
 
   const handleRentClick = () => {
@@ -77,6 +115,7 @@ const Inventory: React.FC = () => {
             left: 0,
             top: 0,
             bottom: 0,
+
           }}
         >
           <div className="logo" >
@@ -107,80 +146,104 @@ const Inventory: React.FC = () => {
                 {collapsed ? <DashboardOutlined style={{ fontSize: "19px" }} /> : null}
                 <span> <DashboardOutlined style={{ fontSize: "19px" }} /> Inventory</span>
               </Link>
+
             </Menu.Item>
-            <Divider style={{ backgroundColor: "black", marginTop: "30rem" }} />
+            <Menu.Item key="Contact">
+              <Link to="/contact">
+                {collapsed ? <DashboardOutlined style={{ fontSize: "19px" }} /> : null}
+                <span> <PhoneOutlined style={{ fontSize: "19px" }} /> Contact</span></Link>
+            </Menu.Item>
+            <Divider style={{ backgroundColor: "black", marginTop: "25rem" }} />
             <Menu.Item key="logout" >
               <Link to="/">
                 {collapsed ? <LogoutOutlined style={{ fontSize: "15px" }} /> : null}
                 <span style={{ fontSize: "15px" }}><LogoutOutlined style={{ fontSize: "15px" }} /> Logout</span>
               </Link>
+
             </Menu.Item>
           </Menu>
         </Sider>
       </Layout>
-      <Layout className="site-layout" >
+      <Layout style={{
+        marginLeft: collapsed ? 90 : 200,
+        transition: 'margin 0.2s',
+      }}  >
 
         <Header style={{ padding: 0, background: "rgb(230, 227, 227)", display: "flex", alignItems: "center", justifyContent: "START" }}>
 
-
+          <h2> INVENTORY </h2>
 
         </Header>
 
 
         <Content
           style={{
-            margin: '24px 16px',
+            // margin: collapsed ? '24px 16px' : '24px calc(15% + 10px)',
             padding: 24,
             minHeight: 280,
-            background: ' rgb(255, 255, 255)'
+            background: ' rgb(255, 255, 255)',
+            transition: 'margin 0.2s',
+            maxWidth: collapsed ? '90vw' : '100vw',
           }}
         >
 
 
 
-          <Row gutter={[16, 16]} style={{ marginLeft: " 12rem", display: "flex", justifyContent: "center", alignItems: "center", marginTop: "10px" }} >
+          <Row gutter={[16, 16]} style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }} >
             <Col xs={24} sm={26} md={24} lg={24} xl={12} style={{ display: "flex", justifyContent: "flex-start" }}>
               <Select
                 dropdownMatchSelectWidth
                 defaultValue="Price"
                 style={{ width: "20rem" }}
-                onChange={handleChange}
+                onChange={handleSort}
                 options={[
                   {
-                    value: 'Price',
-                    label: 'Price',
+                    value: 'rating',
+                    label: 'rating',
                   },
                   {
-                    value: 'Rating',
-                    label: 'Rating',
+                    value: 'kmRun',
+                    label: 'kmRun',
                   },
                   {
-                    value: 'KM/Milage',
-                    label: 'Disabled',
+                    value: 'milage',
+                    label: 'milage',
                   },
 
                 ]}
               />
+              {/* <Select defaultValue="sort" onChange={handleSort} style={{ width: 120 }}>
+       <Option value="title">Title</Option>
+  <Option value="rating">Rating</Option>
+  <Option value="kmRun">Kilometers</Option>
+  <Option value="milage">Mileage</Option> */}
+              {/* </Select> */}
             </Col>
             <Col xs={24} sm={26} md={24} lg={24} xl={12} style={{ display: "flex", justifyContent: "flex-end" }}>
               <Search
-                style={{ width: "20rem" }} ></Search>
+                placeholder="Search bikes"
+                allowClear
+                onSearch={handleSearch}
+                style={{ width: 200, margin: '0 20px' }}
+              ></Search>
             </Col>
 
-            {
-              cardData.map((card) => (
-                <Col xs={24} md={12} lg={6} key={card.id} style={{ marginRight: "10px" }}>
-                  <CustomCard
-
-                    title={card.title}
-                    body={card.body}
-                    imageUrl1="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=601"
-                    imageUrl2={''}
-                    onRent={handleRentClick}
-                  />
-                </Col>
-              ))
-            }
+            {cardData.map((card) => (
+              <Col xs={24} md={12} lg={6} key={card.id}>
+                <CustomCard
+                  id={card.id}
+                  name={card.name}
+                  imageUrl={card.imageUrl}
+                  rating={card.rating}
+                  kmRun={card.kmRun}
+                  milage={card.milage} onRent={function (): void {
+                    throw new Error('Function not implemented.');
+                  }} numberPlate={''}
+                  brandId={0}
+                  // brandName={card.brandName}
+                  description={card.description} />
+              </Col>
+            ))}
           </Row>
 
 

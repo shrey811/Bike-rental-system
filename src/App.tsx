@@ -10,6 +10,10 @@ import Dashboard from './pages/Login client/dashboard';
 import about from './pages/Login client/about';
 import Admin from './pages/Admin/login';
 import Rental from './pages/Login client/Rental';
+import Moreinfo from './pages/Login client/Moreinfo';
+import AddEntry from './pages/Admin/addentry';
+import InventoryAdmin from './pages/Admin/inentory';
+import userList from './pages/Admin/userList';
 
 const history = createBrowserHistory();
 function App() {
@@ -37,7 +41,11 @@ function App() {
           <PrivateRoute path='/dashboard' component={Dashboard} />
           <PrivateRoute path='/about' component={about} />
           <PrivateRoute path='/inventory' component={Inventory} />
+          <PrivateRoute path='/inventory-admin' component={InventoryAdmin} />
+          <PrivateRoute path='/add-entry' component={AddEntry} />
+          <PrivateRoute path='/user-list' component={userList} />
           <PrivateRoute path='/rent-now' component={Rental} />
+          <PrivateRoute path='/more-info/:id' component={Moreinfo} />
           <Route path='/register' component={Register} />
           <PrivateRoute path='/admin' component={Admin} />
         </Switch>

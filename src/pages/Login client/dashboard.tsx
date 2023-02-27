@@ -116,46 +116,52 @@ export default function Dashboard() {
 
 
 
-                <MakeBgblue>
-
-                    <h4 style={{ fontFamily: "merriweather" }}> Trending Now</h4>
-                    <div style={{
-
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center"
-                    }}>
-
-                        {
-                            cardData.map((card) => (
-                                <Col xs={24} md={12} lg={6} key={card.id} style={{ marginRight: "10px" }}>
-                                    <CustomCard
-
-                                        title={card.title}
-                                        body={card.body}
-                                        imageUrl1="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=601"
-                                        imageUrl2={''}
-                                        onRent={handleRentClick}
-                                    />
-                                </Col>
-                            ))
-                        }
-                    </div>
-
-                    <Pagination
-                        style={{ alignSelf: "end" }}
-                        current={page}
-                        // pageSize={pageSize}
-                        total={total}
-                        onChange={handlePageChange}
-                        // showSizeChanger
-                        // pageSizeOptions={['10', '20', '50']}
-                        itemRender={itemRender}
-
-                    />
 
 
-                </MakeBgblue>
+                <h4 style={{ fontFamily: "merriweather" }}> Trending Now</h4>
+                <div style={{
+
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}>
+
+                    {
+                        cardData.map((card) => (
+                            <Col xs={24} md={12} lg={12} key={card.id} style={{}}>
+                                <CustomCard
+                                    id={card.id}
+                                    name={card.name}
+                                    imageUrl={card.imageUrl}
+                                    rating={card.rating}
+
+                                    kmRun={card.kmRun}
+                                    milage={card.milage} onRent={function (): void {
+                                        throw new Error('Function not implemented.');
+                                    }} numberPlate={card.numberPlate}
+                                    brandId={0}
+                                    // brandName={card.brandName}
+                                    description={card.description}
+                                />
+                            </Col>
+                        ))
+                    }
+
+                </div>
+                <Pagination
+                    style={{ alignSelf: "end" }}
+                    current={page}
+                    // pageSize={pageSize}
+                    total={total}
+                    onChange={handlePageChange}
+                    // showSizeChanger
+                    // pageSizeOptions={['10', '20', '50']}
+                    itemRender={itemRender}
+
+                />
+
+
+
                 <MakeBgyellow>
                     <Row gutter={16}>
                         <h1>20+ BIKE TYPE & BRANDS </h1>
@@ -206,6 +212,30 @@ export default function Dashboard() {
 
 
 
+
+
+                    </Row>
+                    <h4 style={{ fontFamily: "merriweather", display: "flex", alignItems: "center", justifyContent: "center", }}>  Why choose us ?</h4>
+                    <Row>
+                        <Col span={10} style={{ display: "flex", alignItems: "center", justifyContent: "center", }}>
+
+                            <img src="https://img.freepik.com/free-vector/custom-style-script-website-optimization-coding-software-development-female-programmer-cartoon-character-working-adding-javascript-css-code_335657-2370.jpg?w=2000"
+                                width={"50%"} height={"100%"} />
+
+
+                        </Col>
+                        <Col span={10} style={{ display: "flex", alignItems: "center", justifyContent: "center", }} >
+
+                            <p >
+                                We know the difference is in the details and thats why our bike rental services,
+                                in the tourism and business industry, stand out for their quality and good taste.
+
+                                We working since 2016
+                                All brand & type bike in our garage
+                                1.000+ picking locations around the nepal
+                            </p>
+
+                        </Col>
                     </Row>
                 </MakeBgWhite>
 

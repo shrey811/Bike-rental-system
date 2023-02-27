@@ -1,5 +1,12 @@
 export interface Bike {
-    id: number;
-    title: string;
-    body: string;
-  }
+  id: number,
+  name: string,
+  numberPlate: string,
+  brandId: number,
+  // brandName: string,
+  rating: number,
+  kmRun: number,
+  description: string,
+  milage: number,
+  imageUrl: string
+}

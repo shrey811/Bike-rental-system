@@ -2,9 +2,9 @@ import React, { ComponentType } from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 import { useAuth } from '../../Services/Authprovider';
 
-interface PrivateRouteProps extends RouteProps {
-  // Define any additional props that you want to pass to the component
-}
+// interface PrivateRouteProps extends RouteProps {
+
+// }
 interface PrivateRouteProps extends RouteProps {
   component: ComponentType<any>;
 }

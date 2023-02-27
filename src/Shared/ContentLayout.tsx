@@ -1,4 +1,5 @@
-import { Typography } from "antd";
+import { MailOutlined, PhoneOutlined, PushpinOutlined, UserOutlined } from "@ant-design/icons";
+import { Col, Row, Typography } from "antd";
 import { Footer } from "antd/es/layout/layout";
 import React, { ReactNode } from "react";
 import MenuList from "../pages/Components/menu";
@@ -55,7 +56,32 @@ const ContentLayout = ({
 
           <div className="body_part">{children}</div>
         </div>
-        <Footer style={{ padding: "10em", textAlign: 'center', marginTop: "2em", backgroundColor: "grey" }}>Bikers Choice Since 2013 @ABC ABC</Footer>
+        <Footer style={{ padding: "10em", textAlign: 'center', marginTop: "2em", backgroundColor: "#E7E8D1", gap: "10px" }}>
+          <h3>Bikers Choice Since 2013 @ABC</h3>
+          {/* <Row>
+            <Col>
+
+            </Col>
+            <h3> <PushpinOutlined />
+              Address:</h3><br></br>
+            Lalitpur - 14, Chapagau
+            <Col></Col>
+
+            <Col>
+              <h3> <MailOutlined />
+
+                Email: </h3>
+              Bikerchoice@gmail.com
+            </Col>
+            <Col>
+              <h3> <PhoneOutlined />
+
+                Contact:</h3>
+              01-5230380 / 9847337476 / 9811308122 /
+            </Col>
+
+          </Row> */}
+        </Footer>
       </React.Fragment>
     </>
   );
@@ -91,7 +117,7 @@ export const MakeBgyellow = ({ padding, children }: makeProps) => {
   return (
     <div
       style={{
-        background: "#e1e2c8",
+        background: "#FCF6F5FF",
 
         padding: padding ? padding : "1rem",
         margin: " 2rem",
@@ -113,7 +139,7 @@ export const MakeBgblue = ({ padding, children }: makeProps) => {
   return (
     <div
       style={{
-        background: "#91c0bc",
+        background: "#FCF6F5FF",
         padding: padding ? padding : "1rem",
         margin: " 2rem",
         borderRadius: "0.2rem",

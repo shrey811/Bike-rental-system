@@ -1,8 +1,8 @@
-import { DashboardOutlined, EnvironmentOutlined, InfoCircleOutlined, LoginOutlined, LogoutOutlined, MailOutlined, PhoneOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
-import { Col, Input, Menu, MenuProps, Row, Select } from 'antd';
+import { DashboardOutlined, InfoCircleOutlined, LoginOutlined, LogoutOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
+import { Col, Input, Menu, MenuProps, Row } from 'antd';
 
 import React, { useState } from 'react';
-import { Link, } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../Services/Authprovider';
 
 import Logo from "./Logo.png";
@@ -99,10 +99,10 @@ const MenuList = () => {
       zIndex: 1
     }}>
       <Row  >
-        <Col span={24} >
+        <Col  >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "rgba(247, 245, 245)" }} >
             <Col span={2}></Col>
-            <Col span={5} >
+            <Col span={3}  >
 
 
               <img src={Logo}
@@ -122,10 +122,14 @@ const MenuList = () => {
               <Menu.Item key="inventory">
                 <Link to="/inventory"> < DashboardOutlined /> Inventory</Link>
               </Menu.Item>
+              <Menu.Item key="Contact">
+                <Link to="/contact"> < DashboardOutlined /> Contact</Link>
+              </Menu.Item>
+
             </Menu>
 
             <Col >
-              <Search style={{ width: "20rem", marginLeft: "20px" }} ></Search>
+              <Search style={{ width: "20rem", marginLeft: "8rem" }} ></Search>
             </Col>
             <Menu className='menu'>
               {isAuthenticated ? (
@@ -145,9 +149,9 @@ const MenuList = () => {
                 </>
               )}
             </Menu>
-
-
           </div>
+
+
 
         </Col>
       </Row >

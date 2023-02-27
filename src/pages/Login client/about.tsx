@@ -8,7 +8,7 @@ const MyComponent: React.FC = () => {
   return (
     <div>
       <MenuList />
-      <ContentLayout pageTitle={''} >
+      <ContentLayout pageTitle={' '} >
         <Layout
           imageUrl="https://img.freepik.com/free-vector/custom-style-script-website-optimization-coding-software-development-female-programmer-cartoon-character-working-adding-javascript-css-code_335657-2370.jpg?w=2000"
           header="About The Company"

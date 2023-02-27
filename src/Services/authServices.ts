@@ -44,30 +44,4 @@ export class AuthService {
 
 
 
-//  export class AuthService {
-//     private readonly AUTH_TOKEN_KEY = 'authToken';
-  
-//     public isAuthenticated(): boolean {
-//       const authToken = localStorage.getItem(this.AUTH_TOKEN_KEY);
-//       return !!authToken;
-//     }
-  
-//     public async login(email: string, password: string): Promise<string> {
-//       // make API call to authenticate user
-//       const response = await axios.post('/login', { email, password });
-  
-//       // store the token in local storage
-//       const authToken = response.data.token;
-//       localStorage.setItem(this.AUTH_TOKEN_KEY, authToken);
-  
-//       // return the token for future API requests
-//       return authToken;
-//     }
-  
-//     public logout(): void {
-//       localStorage.removeItem(this.AUTH_TOKEN_KEY);
-//     }
-//   }
-  
- 
-  
+
