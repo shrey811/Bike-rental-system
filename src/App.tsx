@@ -14,6 +14,7 @@ import Moreinfo from './pages/Login client/Moreinfo';
 import AddEntry from './pages/Admin/addentry';
 import InventoryAdmin from './pages/Admin/inentory';
 import userList from './pages/Admin/userList';
+import Payment from './pages/Login client/Payment';
 
 const history = createBrowserHistory();
 function App() {
@@ -45,6 +46,7 @@ function App() {
           <PrivateRoute path='/add-entry' component={AddEntry} />
           <PrivateRoute path='/user-list' component={userList} />
           <PrivateRoute path='/rent-now' component={Rental} />
+          {/* <PrivateRoute path='/modal-page' component={Payment} /> */}
           <PrivateRoute path='/more-info/:id' component={Moreinfo} />
           <Route path='/register' component={Register} />
           <PrivateRoute path='/admin' component={Admin} />

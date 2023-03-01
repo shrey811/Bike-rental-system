@@ -34,10 +34,17 @@ export default function Dashboard() {
         console.log("Opening rental page...");
     };
 
+
+
+
     useEffect(() => {
         async function fetchCards() {
             const { data, total } = await getCards(page, pageSize);
-            setCardData(data);
+            // sort the cards by rating in descending order
+            const sortedData = data.sort((a, b) => b.rating - a.rating);
+            // display only the first 6 cards
+            const slicedData = sortedData.slice(0, 4);
+            setCardData(slicedData);
             setTotal(total);
         };
         fetchCards();
@@ -116,51 +123,50 @@ export default function Dashboard() {
 
 
 
+                <MakeBgblue>
 
+                    <h4 style={{ fontFamily: "merriweather" }}> Trending Now</h4>
+                    <div style={{
 
-                <h4 style={{ fontFamily: "merriweather" }}> Trending Now</h4>
-                <div style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}>
 
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}>
+                        {
+                            cardData.map((card) => (
+                                <Col xs={24} md={12} lg={12} key={card.id}>
+                                    <CustomCard
+                                        id={card.id}
+                                        name={card.name}
+                                        imageUrl={card.imageUrl}
+                                        rating={card.rating}
 
-                    {
-                        cardData.map((card) => (
-                            <Col xs={24} md={12} lg={12} key={card.id} style={{}}>
-                                <CustomCard
-                                    id={card.id}
-                                    name={card.name}
-                                    imageUrl={card.imageUrl}
-                                    rating={card.rating}
+                                        kmRun={card.kmRun}
+                                        milage={card.milage}
+                                        numberPlate={card.numberPlate}
+                                        brandId={0}
+                                        // brandName={card.brandName}
+                                        description={card.description}
+                                    />
+                                </Col>
+                            ))
+                        }
 
-                                    kmRun={card.kmRun}
-                                    milage={card.milage} onRent={function (): void {
-                                        throw new Error('Function not implemented.');
-                                    }} numberPlate={card.numberPlate}
-                                    brandId={0}
-                                    // brandName={card.brandName}
-                                    description={card.description}
-                                />
-                            </Col>
-                        ))
-                    }
+                    </div>
+                    <Pagination
+                        style={{ alignSelf: "end" }}
+                        current={page}
+                        // pageSize={pageSize}
+                        total={total}
+                        onChange={handlePageChange}
+                        // showSizeChanger
+                        // pageSizeOptions={['10', '20', '50']}
+                        itemRender={itemRender}
 
-                </div>
-                <Pagination
-                    style={{ alignSelf: "end" }}
-                    current={page}
-                    // pageSize={pageSize}
-                    total={total}
-                    onChange={handlePageChange}
-                    // showSizeChanger
-                    // pageSizeOptions={['10', '20', '50']}
-                    itemRender={itemRender}
+                    />
 
-                />
-
-
+                </MakeBgblue>
 
                 <MakeBgyellow>
                     <Row gutter={16}>

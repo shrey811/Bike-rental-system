@@ -103,13 +103,11 @@ import { useHistory } from 'react-router-dom';
 
 import { Bike } from '../../models/Inventory';
 
-interface Cards extends Bike {
-  onRent: () => void;
-}
+
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
-export const CustomCard: React.FC<Cards> = ({ id, name, description, rating, kmRun, imageUrl, milage, numberPlate, onRent }) => {
+export const CustomCard: React.FC<Bike> = ({ id, name, description, rating, kmRun, imageUrl, milage, numberPlate, }) => {
   const [value, setValue] = useState(rating);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -121,23 +119,13 @@ export const CustomCard: React.FC<Cards> = ({ id, name, description, rating, kmR
 
   };
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+
 
   const handleClick = () => {
 
   };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
-  const handleOk = () => {
-    <Modal>
-      <p>dfjalufhapieuh</p>
-    </Modal>
-  };
 
   const history = useHistory();
 
@@ -189,31 +177,7 @@ export const CustomCard: React.FC<Cards> = ({ id, name, description, rating, kmR
         </Button> */}
       </Card>
 
-      <Modal
-        style={{ justifyContent: "center", display: "flex", alignItems: "center" }}
-        title="Choose a payment method"
-        open={isModalOpen}
-        onOk={handleCancel}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Return
-          </Button>,
-          <Button key="submit" type="primary" onClick={handleOk}>
-            Next
-          </Button>
-        ]}
-      >
-        <Row >
-          <Col style={{ marginRight: "4rem" }}>
-            <QRCode value="https://ant.design/" />
-          </Col>
-          <Col style={{ fontSize: "25px" }}>
-            <p>OR</p>
-            <Radio style={{ fontSize: "25px" }}>Cash in hand</Radio>
-          </Col>
-        </Row>
-      </Modal>
+
     </>
   );
 };

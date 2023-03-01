@@ -15,31 +15,51 @@ import { Input } from 'antd';
 import { CustomCard } from '../Context /Card';
 import axios from 'axios';
 import { API_URL } from '../../Services/ajaxservice';
-interface Cards {
-  id: number;
-  title: string;
-  body: string;
-  imageUrl1: string;
-  imageUrl2: string;
-  onRent: () => void;
-  rating: number;
-  kmRun: number;
-  milage: number;
-}
 
 const Inventory: React.FC = () => {
 
   const [cardData, setCardData] = useState<any[]>([]);
   const [page, setPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(12);
+  const [pageSize, setPageSize] = useState<number>(4);
   const [total, setTotal] = useState<number>(0);
   const { Search } = Input;
 
+  // async function fetchCards(searchTerm?: string, sortOrder?: string) {
+  //   const response = await axios.get(`${API_URL}/bike`, {
+  //     params: {
+  //       q: searchTerm,
+  //       _sort: sortOrder,
+  //       _page: page,
+  //       _limit: pageSize,
+  //     },
+  //   });
+  //   const { data, headers } = response;
+  //   const total = Number(headers['x-total-count']);
+  //   setCardData(data);
+  //   setTotal(total);
+  // };
+
   async function fetchCards(searchTerm?: string, sortOrder?: string) {
+    let sortField;
+    switch (sortOrder) {
+      case 'rating':
+        sortField = 'rating';
+        break;
+      case 'kmRun':
+        sortField = 'kmRun';
+        break;
+      case 'milage':
+        sortField = 'milage';
+        break;
+      default:
+        sortField = 'price';
+        break;
+    }
     const response = await axios.get(`${API_URL}/bike`, {
       params: {
         q: searchTerm,
-        _sort: sortOrder,
+        _sort: sortField, // set the sort field based on the selected option
+        _order: sortOrder === 'price' ? 'asc' : 'desc', // set the sort order based on the selected option
         _page: page,
         _limit: pageSize,
       },
@@ -90,6 +110,8 @@ const Inventory: React.FC = () => {
     }
     return originalElement;
   };
+
+
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
   };
@@ -236,9 +258,8 @@ const Inventory: React.FC = () => {
                   imageUrl={card.imageUrl}
                   rating={card.rating}
                   kmRun={card.kmRun}
-                  milage={card.milage} onRent={function (): void {
-                    throw new Error('Function not implemented.');
-                  }} numberPlate={''}
+                  milage={card.milage}
+                  numberPlate={card.numberPlate}
                   brandId={0}
                   // brandName={card.brandName}
                   description={card.description} />
@@ -250,11 +271,11 @@ const Inventory: React.FC = () => {
           <Pagination
             style={{ textAlign: 'end', marginTop: "20px", marginBottom: "20px" }}
             current={page}
-            // pageSize={pageSize}
+            pageSize={pageSize}
             total={total}
             onChange={handlePageChange}
             showSizeChanger
-            // pageSizeOptions={['10', '20', '50']}
+            pageSizeOptions={['10', '20', '50']}
             itemRender={itemRender}
 
           />
