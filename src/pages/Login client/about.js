@@ -1,5 +1,4 @@
 
-import { Col, Row } from 'antd';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import ContentLayout, { Layout } from '../../Shared/ContentLayout';
 import MenuList from '../Components/menu';
@@ -8,10 +7,10 @@ import MenuList from '../Components/menu';
 
 
 
-const About = () => {
+const MyComponent = () => {
 
+  const position = [4.5991, 101.0726];
 
-  const position = [27.6915, 85.3420];
   return (
     <div>
       <MenuList />
@@ -36,40 +35,21 @@ const About = () => {
         />
 
 
-
-
-
-        <Row>
-          <Col>
-            <MapContainer style={{
-              height: "50vh",
-              width: "70vw"
-            }}
-              center={position} zoom={13} scrollWheelZoom={false}>
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={position} >
-                <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-              </Marker>
-            </MapContainer>
-          </Col>
-          <Col style={{ marginLeft: "20px", marginTop: "10rem" }}>
-            <h4 style={{
-              display: "flex", alignItems: "center", justifyContent: "center"
-            }}>FIND US HERE </h4>
-            <h4 style={{
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}>AVILABLE FROM SUNDAY </h4>
-            <h4 style={{
-              display: "flex", alignItems: "center", justifyContent: "center"
-            }}> TO FRIDAY</h4>
-          </Col>
-        </Row>
-
+        <MapContainer style={{
+          height: "30vh",
+          width: "97vw"
+        }}
+          center={position} zoom={13} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={position} >
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
 
       </ContentLayout>
     </div>
@@ -77,4 +57,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default MyComponent;
