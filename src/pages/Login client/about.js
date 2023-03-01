@@ -1,10 +1,17 @@
 
-import React from 'react';
+import { Col, Row } from 'antd';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import ContentLayout, { Layout } from '../../Shared/ContentLayout';
 import MenuList from '../Components/menu';
 
 
-const MyComponent: React.FC = () => {
+
+
+
+const About = () => {
+
+
+  const position = [27.6915, 85.3420];
   return (
     <div>
       <MenuList />
@@ -28,9 +35,46 @@ const MyComponent: React.FC = () => {
           imageRight={false}
         />
 
+
+
+
+
+        <Row>
+          <Col>
+            <MapContainer style={{
+              height: "50vh",
+              width: "70vw"
+            }}
+              center={position} zoom={13} scrollWheelZoom={false}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={position} >
+                <Popup>
+                  A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+              </Marker>
+            </MapContainer>
+          </Col>
+          <Col style={{ marginLeft: "20px", marginTop: "10rem" }}>
+            <h4 style={{
+              display: "flex", alignItems: "center", justifyContent: "center"
+            }}>FIND US HERE </h4>
+            <h4 style={{
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>AVILABLE FROM SUNDAY </h4>
+            <h4 style={{
+              display: "flex", alignItems: "center", justifyContent: "center"
+            }}> TO FRIDAY</h4>
+          </Col>
+        </Row>
+
+
       </ContentLayout>
     </div>
+
   );
 };
 
-export default MyComponent;
+export default About;

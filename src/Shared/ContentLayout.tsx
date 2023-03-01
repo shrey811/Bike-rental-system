@@ -56,31 +56,33 @@ const ContentLayout = ({
 
           <div className="body_part">{children}</div>
         </div>
-        <Footer style={{ padding: "10em", textAlign: 'center', marginTop: "2em", backgroundColor: "#E7E8D1", gap: "10px" }}>
+        <Footer style={{ padding: "5em", textAlign: 'center', marginTop: "1em", backgroundColor: "black", color: "white", gap: "10px" }}>
           <h3>Bikers Choice Since 2013 @ABC</h3>
-          {/* <Row>
-            <Col>
 
+          <br></br>
+          <br></br>
+
+          <Row>
+            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 5, offset: 2 }}>
+              <h5> <PushpinOutlined />   Address:
+              </h5>
+              <br></br>
+              <p style={{ fontSize: "17px" }}> Lalitpur - 14, Chapagau</p>
             </Col>
-            <h3> <PushpinOutlined />
-              Address:</h3><br></br>
-            Lalitpur - 14, Chapagau
-            <Col></Col>
-
-            <Col>
-              <h3> <MailOutlined />
-
-                Email: </h3>
-              Bikerchoice@gmail.com
+            <Col xs={{ span: 11, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+              <h5> <MailOutlined />   Email:
+              </h5>
+              <br></br>
+              <p style={{ fontSize: "17px" }}> Bikerchoice@gmail.com</p>
+              <br></br>
             </Col>
-            <Col>
-              <h3> <PhoneOutlined />
-
-                Contact:</h3>
-              01-5230380 / 9847337476 / 9811308122 /
+            <Col xs={{ span: 5, offset: 1 }} lg={{ span: 6, offset: 2 }}>
+              <h5> <PhoneOutlined />   Contact:
+              </h5>
+              <br></br>
+              <p style={{ fontSize: "17px" }}> 01-5230380 / 9847337476 / 9811308122 </p>
             </Col>
-
-          </Row> */}
+          </Row>
         </Footer>
       </React.Fragment>
     </>

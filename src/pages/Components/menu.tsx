@@ -101,12 +101,12 @@ const MenuList = () => {
       <Row  >
         <Col  >
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "rgba(247, 245, 245)" }} >
-            <Col span={2}></Col>
-            <Col span={3}  >
+            <Col span={1}></Col>
+            <Col span={2}  >
 
 
               <img src={Logo}
-                width={"150rem"} height={"77rem"} />
+                width={"120rem"} height={"77rem"} />
 
 
             </Col>
@@ -129,7 +129,7 @@ const MenuList = () => {
             </Menu>
 
             <Col >
-              <Search style={{ width: "20rem", marginLeft: "8rem" }} ></Search>
+              <Search style={{ width: "20rem", marginLeft: "15em" }} ></Search>
             </Col>
             <Menu className='menu'>
               {isAuthenticated ? (

@@ -24,42 +24,11 @@ const Inventory: React.FC = () => {
   const [total, setTotal] = useState<number>(0);
   const { Search } = Input;
 
-  // async function fetchCards(searchTerm?: string, sortOrder?: string) {
-  //   const response = await axios.get(`${API_URL}/bike`, {
-  //     params: {
-  //       q: searchTerm,
-  //       _sort: sortOrder,
-  //       _page: page,
-  //       _limit: pageSize,
-  //     },
-  //   });
-  //   const { data, headers } = response;
-  //   const total = Number(headers['x-total-count']);
-  //   setCardData(data);
-  //   setTotal(total);
-  // };
-
   async function fetchCards(searchTerm?: string, sortOrder?: string) {
-    let sortField;
-    switch (sortOrder) {
-      case 'rating':
-        sortField = 'rating';
-        break;
-      case 'kmRun':
-        sortField = 'kmRun';
-        break;
-      case 'milage':
-        sortField = 'milage';
-        break;
-      default:
-        sortField = 'price';
-        break;
-    }
     const response = await axios.get(`${API_URL}/bike`, {
       params: {
         q: searchTerm,
-        _sort: sortField, // set the sort field based on the selected option
-        _order: sortOrder === 'price' ? 'asc' : 'desc', // set the sort order based on the selected option
+        _sort: sortOrder,
         _page: page,
         _limit: pageSize,
       },
@@ -70,16 +39,47 @@ const Inventory: React.FC = () => {
     setTotal(total);
   };
 
+  // async function fetchCards(searchTerm?: string, sortOrder?: string) {
+  //   let sortField;
+  //   switch (sortOrder) {
+  //     case 'rating':
+  //       sortField = 'rating';
+  //       break;
+  //     case 'kmRun':
+  //       sortField = 'kmRun';
+  //       break;
+  //     case 'milage':
+  //       sortField = 'milage';
+  //       break;
+  //     default:
+  //       sortField = 'price';
+  //       break;
+  // }
+  //   const response = await axios.get(`${API_URL}/bike`, {
+  //     params: {
+  //       q: searchTerm,
+  //       _sort: sortField, // set the sort field based on the selected option
+  //       _order: sortOrder === 'price' ? 'asc' : 'desc', // set the sort order based on the selected option
+  //       _page: page,
+  //       _limit: pageSize,
+  //     },
+  //   });
+  //   const { data, headers } = response;
+  //   const total = Number(headers['x-total-count']);
+  //   setCardData(data);
+  //   setTotal(total);
+  // };
 
-  const handleSearch = async (value: string) => {
-    await fetchCards(value);
-    setPage(1);
-  };
 
-  const handleSort = async (value: string) => {
-    await fetchCards(undefined, value);
-    setPage(1);
-  };
+  // const handleSearch = async (value: string) => {
+  //   await fetchCards(value);
+  //   setPage(1);
+  // };
+
+  // const handleSort = async (value: string) => {
+  //   await fetchCards(undefined, value);
+  //   setPage(1);
+  // };
 
 
   const handleRentClick = () => {
@@ -217,7 +217,7 @@ const Inventory: React.FC = () => {
                 dropdownMatchSelectWidth
                 defaultValue="Price"
                 style={{ width: "20rem" }}
-                onChange={handleSort}
+                // onChange={handleSort}
                 options={[
                   {
                     value: 'rating',
@@ -245,7 +245,7 @@ const Inventory: React.FC = () => {
               <Search
                 placeholder="Search bikes"
                 allowClear
-                onSearch={handleSearch}
+                // onSearch={handleSearch}
                 style={{ width: 200, margin: '0 20px' }}
               ></Search>
             </Col>

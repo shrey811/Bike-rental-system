@@ -17,16 +17,21 @@ import MenuList from "../Components/menu";
 
 
 
-
+const PAGE_SIZE = 10;
 
 
 export default function Dashboard() {
     const [collapsed, setCollapsed] = useState(false);
     const [theme, setTheme] = useState('light');
+    // const [cardData, setCardData] = useState<any[]>([]);
+    // const [page, setPage] = useState<number>(1);
+    // const [pageSize, setPageSize] = useState<number>(3);
+    // const [total, setTotal] = useState<number>(0);
     const [cardData, setCardData] = useState<any[]>([]);
-    const [page, setPage] = useState<number>(1);
-    const [pageSize, setPageSize] = useState<number>(3);
-    const [total, setTotal] = useState<number>(0);
+    const [total, setTotal] = useState(0);
+    const [page, setPage] = useState(1);
+
+
 
 
     const handleRentClick = () => {
@@ -39,29 +44,35 @@ export default function Dashboard() {
 
     useEffect(() => {
         async function fetchCards() {
-            const { data, total } = await getCards(page, pageSize);
+            const { data, total } = await getCards(page, PAGE_SIZE);
             // sort the cards by rating in descending order
             const sortedData = data.sort((a, b) => b.rating - a.rating);
             // display only the first 6 cards
-            const slicedData = sortedData.slice(0, 4);
+            const slicedData = sortedData.slice(0, 3);
             setCardData(slicedData);
             setTotal(total);
         };
         fetchCards();
-    }, [page, pageSize]);
-    function handlePageChange(page: number, pageSize?: number) {
+    }, [page]);
+
+
+    function handlePageChange(page: number) {
         setPage(page);
         // default to 10 if pageSize is not specified
     }
-    const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
-        if (type === 'prev') {
+
+
+    const itemRender = (current: number, type: string, originalElement: any) => {
+        if (type === "prev") {
             return <a>Previous</a>;
         }
-        if (type === 'next') {
+        if (type === "next") {
             return <a>Next</a>;
         }
         return originalElement;
     };
+
+
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
@@ -141,7 +152,6 @@ export default function Dashboard() {
                                         name={card.name}
                                         imageUrl={card.imageUrl}
                                         rating={card.rating}
-
                                         kmRun={card.kmRun}
                                         milage={card.milage}
                                         numberPlate={card.numberPlate}
@@ -157,11 +167,11 @@ export default function Dashboard() {
                     <Pagination
                         style={{ alignSelf: "end" }}
                         current={page}
-                        // pageSize={pageSize}
+                        pageSize={PAGE_SIZE}
                         total={total}
                         onChange={handlePageChange}
-                        // showSizeChanger
-                        // pageSizeOptions={['10', '20', '50']}
+                        showSizeChanger
+                        pageSizeOptions={["10", "20", "50"]}
                         itemRender={itemRender}
 
                     />
