@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { Form } from 'antd'
+import { Divider, Form } from 'antd'
 import Button from 'antd/es/button'
 import Checkbox from 'antd/es/checkbox'
 import Input from 'antd/es/input'
@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { AuthService } from '../../Services/authServices'
 
-
+import Logo from "./Logo.png";
 const Login = () => {
     const history = useHistory();
     const [loading, setLoading] = useState<boolean>(false);
@@ -54,15 +54,16 @@ const Login = () => {
                     </div>
                     <div className='last-child'>
                         <div style={{ display: "flex", justifyContent: "cener", alignItems: "center", marginBottom: "1rem" }}>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU" width="100px" height="50px" alt="logo" />
-                            BikersChoice
+                            <img src={Logo}
+                                width={"170rem"} height={"85rem"} />
+
 
                         </div>
                         <Form
                             name="Login"
                             className="login-form"
-                            labelCol={{ span: 8 }}
-                            wrapperCol={{ span: 20 }}
+                            labelCol={{ span: 24 }}
+                            wrapperCol={{ span: 24 }}
                             initialValues={{ remember: true }}
                             onFinish={handleSubmit}
                             autoComplete="off"
@@ -76,7 +77,7 @@ const Login = () => {
                                     },
                                 ]}
                             >
-                                <Input name="email" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                <Input size='middle' name="email" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                             </Form.Item>
                             <Form.Item
 
@@ -91,7 +92,7 @@ const Login = () => {
                             >
                                 <Input.Password
 
-
+                                    size='middle'
                                     type="password"
                                     placeholder="Password"
                                 />
@@ -107,11 +108,17 @@ const Login = () => {
                             </Form.Item>
 
                             <Form.Item>
-                                <Button size='large' type="primary" htmlType="submit" loading={loading}>
-                                    Log in
-                                </Button>
-                                Or <a href="/register">register now!</a>
+                                <div >
+                                    <Button style={{ width: "15rem" }} size='middle' type="primary" htmlType="submit" loading={loading}>
+                                        Log in
+                                    </Button>
+
+                                </div>
                             </Form.Item>
+                            <Divider style={{ fontWeight: "10px" }} />
+                            <div style={{ fontSize: "15px" }}>
+                                OR  <a href="/register">Register Now!</a>
+                            </div>
                         </Form>
                         {/* <Form
                                 name="basic"

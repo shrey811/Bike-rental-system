@@ -123,7 +123,7 @@ const MenuList = () => {
                 <Link to="/inventory"> < DashboardOutlined /> Inventory</Link>
               </Menu.Item>
               <Menu.Item key="Contact">
-                <Link to="/contact"> < DashboardOutlined /> Contact</Link>
+                <Link to="/contact-us"> < DashboardOutlined /> Contact</Link>
               </Menu.Item>
 
             </Menu>

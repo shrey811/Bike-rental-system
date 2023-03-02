@@ -56,7 +56,7 @@ const ContentLayout = ({
 
           <div className="body_part">{children}</div>
         </div>
-        <Footer style={{ padding: "5em", textAlign: 'center', marginTop: "1em", backgroundColor: "black", color: "white", gap: "10px" }}>
+        <Footer className="footer">
           <h3>Bikers Choice Since 2013 @ABC</h3>
 
           <br></br>
@@ -126,7 +126,8 @@ export const MakeBgyellow = ({ padding, children }: makeProps) => {
         borderRadius: "0.2rem",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        boxShadow: "rgb(0 0 0 / 20%) 0px 3px   10px"
       }}
     >
       {children}
@@ -149,7 +150,8 @@ export const MakeBgblue = ({ padding, children }: makeProps) => {
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
-        gap: "1rem"
+        gap: "1rem",
+        boxShadow: "rgb(0 0 0 / 20%) 0px 3px   10px",
       }}
     >
       {children}
@@ -163,9 +165,10 @@ interface LayoutProps {
   header: string;
   description: string;
   imageRight?: boolean;
+  children: ReactNode;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ imageUrl, header, description, imageRight = false }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, imageUrl, header, description, imageRight = false }) => {
   return (
     <div className="layout">
       <div className={`row ${imageRight ? 'reverse' : ''}`}>
@@ -175,8 +178,10 @@ export const Layout: React.FC<LayoutProps> = ({ imageUrl, header, description, i
         <div className="col">
           <h1>{header}</h1>
           <p>{description}</p>
+          <p style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "10px" }}>{children}</p>
         </div>
       </div>
+
     </div>
   );
 };

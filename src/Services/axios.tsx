@@ -12,24 +12,19 @@ interface UsersResponse {
   total: number;
 }
 
+export async function getCards(page: number, pageSize: number): Promise<inventory> {
+  const response = await axios.get(`${API_URL}/bike`);
+  const { data, headers } = response;
+  const total = Number(headers['x-total-count']);
+  return { data, total };
+}
+
 // export async function getCards(page: number, pageSize: number): Promise<inventory> {
 //   const response = await axios.get(`${API_URL}/bike`);
 //   const { data, headers } = response;
 //   const total = Number(headers['x-total-count']);
 //   return { data, total };
 // }
-
-export async function getCards(page: number, pageSize: number): Promise<inventory> {
-  const response = await axios.get(`${API_URL}/bike`, {
-    params: {
-      _page: page,
-      _limit: pageSize,
-    },
-  });
-  const { data, headers } = response;
-  const total = Number(headers['x-total-count']);
-  return { data, total };
-}
 
 
 export async function addBike(bike: Bike): Promise<Bike> {

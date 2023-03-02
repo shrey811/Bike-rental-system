@@ -158,7 +158,7 @@ export const CustomCard: React.FC<Bike> = ({ id, name, description, rating, kmRu
         <p style={{ marginBottom: "10px" }}>Km Run: {kmRun}</p>
         <p className="card-text">Milage: {milage} kmpl</p>
 
-        <Button style={{ marginLeft: "6rem" }} className='button1' type="primary" onClick={toggleDetails}>
+        <Button style={{ marginLeft: "6rem", marginTop: "20px" }} className='button1' type="primary" onClick={toggleDetails}>
           {showDetails ? 'Hide Details' : 'More Info'}
         </Button>
         {showDetails && (

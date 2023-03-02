@@ -1,20 +1,20 @@
 import { createBrowserHistory } from 'history';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Inventory from './pages/Login client/inventory';
-import Login from './pages/Login client/login';
-import Register from './pages/Login client/register';
-import PrivateRoute from './pages/Login client/Privateroute';
-import { AuthProvider } from './Services/Authprovider';
-import Dashboard from './pages/Login client/dashboard';
-import about from './pages/Login client/about';
-import Admin from './pages/Admin/login';
-import Rental from './pages/Login client/Rental';
-import Moreinfo from './pages/Login client/Moreinfo';
 import AddEntry from './pages/Admin/addentry';
 import InventoryAdmin from './pages/Admin/inentory';
+import Admin from './pages/Admin/login';
 import userList from './pages/Admin/userList';
-import Payment from './pages/Login client/Payment';
+import { About } from './pages/Login client/about';
+import Contact from './pages/Login client/Contact';
+import Dashboard from './pages/Login client/dashboard';
+import Inventory from './pages/Login client/inventory';
+import Login from './pages/Login client/login';
+import Moreinfo from './pages/Login client/Moreinfo';
+import PrivateRoute from './pages/Login client/Privateroute';
+import Register from './pages/Login client/register';
+import Rental from './pages/Login client/Rental';
+import { AuthProvider } from './Services/Authprovider';
 
 const history = createBrowserHistory();
 function App() {
@@ -40,12 +40,13 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <PrivateRoute path='/dashboard' component={Dashboard} />
-          <PrivateRoute path='/about' component={about} />
+          <PrivateRoute path='/about' component={About} />
           <PrivateRoute path='/inventory' component={Inventory} />
           <PrivateRoute path='/inventory-admin' component={InventoryAdmin} />
           <PrivateRoute path='/add-entry' component={AddEntry} />
           <PrivateRoute path='/user-list' component={userList} />
           <PrivateRoute path='/rent-now' component={Rental} />
+          <PrivateRoute path='/contact-us' component={Contact} />
           {/* <PrivateRoute path='/modal-page' component={Payment} /> */}
           <PrivateRoute path='/more-info/:id' component={Moreinfo} />
           <Route path='/register' component={Register} />

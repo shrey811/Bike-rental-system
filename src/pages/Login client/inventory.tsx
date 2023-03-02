@@ -171,7 +171,7 @@ const Inventory: React.FC = () => {
 
             </Menu.Item>
             <Menu.Item key="Contact">
-              <Link to="/contact">
+              <Link to="/contact-us">
                 {collapsed ? <DashboardOutlined style={{ fontSize: "19px" }} /> : null}
                 <span> <PhoneOutlined style={{ fontSize: "19px" }} /> Contact</span></Link>
             </Menu.Item>
@@ -255,7 +255,7 @@ const Inventory: React.FC = () => {
                 <CustomCard
                   id={card.id}
                   name={card.name}
-                  imageUrl={card.imageUrl}
+                  imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdl9B7wHgcVft1UT1Jzq9sCInlx-P00AyKww&usqp=CAU"
                   rating={card.rating}
                   kmRun={card.kmRun}
                   milage={card.milage}

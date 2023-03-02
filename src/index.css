@@ -267,4 +267,44 @@ h5{
 }
 
 
+.footer{
+  padding: 5em;
+  text-align:center;
+  margin-top: 1em;
+  /* background-color: rgb(228, 239, 240 ); */
+  background-image: linear-gradient(to right top, #e8e8e8, #e8e8eb, #e7e8ee, #e4e9f1, #e1eaf4, #e0ebf6, #dfecf7, #deedf9, #e0eefb, #e2effc, #e5effe, #e7f0ff);
+  /* background-image: linear-gradient(to right top, #91c6e4, #9acae8, #a3cfed, #acd3f1, #b5d8f5, #bedaf5, #c7dcf5, #cfdef5, #d7dff1, #dee0ed, #e2e3e9, #e5e5e5); */
+  box-shadow: rgb(0 0 0 / 100%) 0px 3px   10px;
+  gap: 10px 
+}
 
+.contact {
+  width: 50vw;
+  height: 50vh;
+  box-shadow: rgb(0 0 0 / 40%) 0px 3px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+  background: #ffffff;
+  
+}
+  .contactContainer {
+    /* width: 100vw;
+    height: 90vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 30px;
+    /* height: 90vh; */
+    margin-bottom: 30px;
+    
+}
+ /* .content{
+   margin-right: auto; 
+   max-width: 50%;
+  margin-left: 20px;
+  margin-bottom: 30px;
+
+}  */
