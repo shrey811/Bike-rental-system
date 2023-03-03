@@ -253,9 +253,10 @@ const Inventory: React.FC = () => {
             {cardData.map((card) => (
               <Col xs={24} md={12} lg={6} key={card.id}>
                 <CustomCard
+
                   id={card.id}
                   name={card.name}
-                  imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdl9B7wHgcVft1UT1Jzq9sCInlx-P00AyKww&usqp=CAU"
+                  imageUrl="https://www.pngarts.com/files/4/Motorcycle-Free-PNG-Image.png"
                   rating={card.rating}
                   kmRun={card.kmRun}
                   milage={card.milage}

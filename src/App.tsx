@@ -1,5 +1,5 @@
 import { createBrowserHistory } from 'history';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 
 import AddEntry from './pages/Admin/addentry';
 import InventoryAdmin from './pages/Admin/inentory';
@@ -37,6 +37,7 @@ function App() {
 
     // </Router>
     <BrowserRouter>
+
       <AuthProvider>
         <Switch>
           <Route exact path="/" component={Login} />
@@ -55,6 +56,7 @@ function App() {
           <PrivateRoute path='/admin' component={Admin} />
         </Switch>
       </AuthProvider>
+
     </BrowserRouter>
 
 

@@ -81,6 +81,7 @@
 
 // export default Moreinfo;
 
+import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Bike } from '../../models/Inventory';
@@ -147,7 +148,7 @@ const Moreinfo: React.FC = () => {
                 brandId={selectedCard.brandId}
                 description={selectedCard.description}
             />
-            <button onClick={handleBackClick}>Back</button>
+
         </div>
     );
 };

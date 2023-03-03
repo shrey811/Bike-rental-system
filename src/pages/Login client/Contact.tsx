@@ -1,12 +1,17 @@
 import { Button, Col, Form, Input, Row } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import ContentLayout, { Layout } from '../../Shared/ContentLayout'
 import MenuList from '../Components/menu'
 
 const Contact = () => {
 
     const [form] = Form.useForm();
+    const history = useHistory();
+    function handleNavigate() {
+        history.push('/inventory');
+    }
     return (
         <div style={{}}>
             <MenuList />
@@ -21,7 +26,7 @@ const Contact = () => {
 
                 >
 
-                    <Button style={{ boxShadow: "rgb(0 0 0 / 40%) 0px 3px 8px ", }} size="large" > GET STARTED NOW </Button>
+                    <Button onClick={handleNavigate} style={{ boxShadow: "rgb(0 0 0 / 40%) 0px 3px 8px ", }} size="large" > GET STARTED NOW </Button>
 
                 </Layout>
 

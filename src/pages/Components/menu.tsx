@@ -100,7 +100,7 @@ const MenuList = () => {
     }}>
       <Row  >
         <Col  >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "rgba(247, 245, 245)" }} >
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "white", boxShadow: "rgb(0 0 0 / 30%) 0px 3px 10px" }} >
             <Col span={1}></Col>
             <Col span={2}  >
 

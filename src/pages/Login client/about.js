@@ -4,10 +4,6 @@ import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import ContentLayout, { Layout } from '../../Shared/ContentLayout';
 import MenuList from '../Components/menu';
 
-
-
-
-
 export const About = () => {
 
   const position = [27.6915, 85.3420];
