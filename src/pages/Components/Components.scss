@@ -1,19 +1,18 @@
 .text {
   font-family: "Yanone Kaffeesatz", sans-serif;
 
-  font-size: 30px;
+  font-size: 35px;
   color: rgb(0, 0, 0);
   display: flex;
   position: absolute;
-  bottom: 5vh;
-  left: 500px;
+
   transform: translateX(-50%);
   user-select: none;
 
   .wrapper {
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 40px;
 
     .letter {
       transition: ease-out 1s;
@@ -44,15 +43,10 @@
 .filled_edit_button {
   padding: 0.3rem 0.4rem;
   height: 50px;
-  width: 250px;
-  background: rgb(0, 0, 0);
-  color: rgb(232, 223, 223);
+  width: 240px;
+
 }
 
-.filled_edit_button:hover {
-  color: rgb(7, 7, 7);
-  background-color: rgb(9, 9, 9);
-}
 
 .menu {
   width: 90vw;

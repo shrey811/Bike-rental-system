@@ -170,14 +170,17 @@ h4 {
 .carousel {
   position: relative;
   width: 40%;
-  border: 2px solid rgb(0, 0, 0);
+  
 }
 .click {
-  position: absolute;
+  display: flex;
+  position: relative;
+  justify-content: flex-end;
+  align-items: center;
   /* padding:20px; */
   border-radius: 16px;
   bottom: 5rem;
-  left: 100px;
+
 }
 
 .site-card-wrapper {
@@ -252,7 +255,7 @@ h4 {
   
 }
 .moreinfo {
-  width: 50vw;
+  width: 45vw;
   height: 50vh;
   font-size: 16px;
   box-shadow: rgb(0 0 0 / 40%) 0px 3px 8px;
@@ -308,3 +311,11 @@ h5{
   margin-bottom: 30px;
 
 }  */
+.dashbutton{
+  background-color: black;
+  color: white;
+   padding: 0.3rem 0.4rem;
+    margin-right: 20px;
+  height: 50px;
+  width: 250px;
+}

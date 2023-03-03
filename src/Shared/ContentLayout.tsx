@@ -159,6 +159,31 @@ export const MakeBgblue = ({ padding, children }: makeProps) => {
   );
 };
 
+interface makeProps {
+  children: ReactNode;
+  padding?: number | string;
+}
+export const MakeBggrey = ({ padding, children }: makeProps) => {
+  return (
+    <div
+      style={{
+        backgroundColor: "rgba(246, 246, 246 )",
+        padding: padding ? padding : "1rem",
+        margin: " 2rem",
+        borderRadius: "0.2rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        gap: "1rem",
+        boxShadow: "rgb(0 0 0 / 20%) 0px 3px   10px",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 
 interface LayoutProps {
   imageUrl: string;

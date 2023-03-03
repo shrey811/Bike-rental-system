@@ -127,51 +127,80 @@ const CustomCard: React.FC<Bike> = ({ id, name, imageUrl, rating, kmRun, milage,
                 >
                     <Row justify="center">
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                            <div style={{ marginLeft: '1rem' }}>
+                            <div style={{ marginLeft: '1rem', marginTop: "12rem" }}>
                                 {/* <img src={imageUrl} alt={name} style={{ width: '15rem' }} /> */}
-                                <img src="https://img.freepik.com/free-vector/custom-style-script-website-optimization-coding-software-development-female-programmer-cartoon-character-working-adding-javascript-css-code_335657-2370.jpg?w=2000"
-                                    width={"100%"} height={"97%"} />
+                                <img src="https://cdn.pixabay.com/photo/2016/04/07/06/53/bmw-1313343__340.jpg"
+                                    width={"97%"} height={"97%"} />
                             </div>
                         </Col>
                         <Col xs={24} sm={24} md={12} lg={12} xl={12} >
                             <h2 style={{ marginTop: "8rem" }}>{name}</h2>
-                            <div className="moreinfoContainer">
-
-                                <div className="moreinfo">
-
-                                    <p><h4> Rating:</h4> {rating}</p>
-
-                                    <Row gutter={16}>
-                                        <Col span={6}  >
-                                            <div ><p> <h4> KM Run:</h4>{kmRun}</p></div>
-                                        </Col>
-                                        <Col span={6} >
-                                            <div ><p><h4> Milage:</h4> {milage}</p></div>
-                                        </Col>
-                                        <Col  >
-                                            <div ><p><h4> NumberPlate:</h4>{numberPlate}</p></div>
-                                        </Col>
-                                        <Col  >
-                                            <div ><p><h4> Description:</h4> {description}</p></div>
-                                        </Col>
-                                    </Row>
 
 
+                            <div className="moreinfo">
+
+
+                                <Form
+                                    labelCol={{ span: 8 }}
+                                    wrapperCol={{ span: 16 }}
+                                >
+
+                                    <Form.Item>
+                                        <div style={{ textAlign: 'right', display: "flex" }}>
+                                            <h3> Rating:</h3>
+                                            <p> {rating}</p>
+                                        </div>
+                                    </Form.Item>
+
+                                    <Form.Item>
+                                        <div style={{ textAlign: 'right', display: "flex" }}>
+
+                                            <h3> KM Run:</h3>
+                                            <p>{kmRun}</p>
+                                        </div>
+                                    </Form.Item>
+
+
+                                    <Form.Item>
+                                        <div style={{ textAlign: 'right', display: "flex" }} >
+                                            <h3> Milage:</h3>
+                                            <p> {milage}</p>
+                                        </div>
+                                    </Form.Item>
+
+
+                                    <Form.Item>
+                                        <div style={{ textAlign: 'right', display: "flex" }} >
+                                            <h3> NumberPlate:</h3>
+                                            <p>  {numberPlate}</p>
+                                        </div>
+                                    </Form.Item>
+
+
+                                    <Form.Item>
+                                        <div style={{ textAlign: 'right', display: "flex" }}>
+                                            <h3> Description:</h3>
+                                            <p> {description}</p>
+                                        </div>
+                                    </Form.Item>
+
+                                </Form>
 
 
 
-                                    <Button size="large" type='primary' onClick={handleOpenModal}>Rent Now</Button>
 
 
-                                </div>
+                                {/* <Button size="large" type='primary' onClick={handleOpenModal}>Rent Now</Button> */}
+
+
+
 
                             </div>
                         </Col>
 
-                        {/* </div> */}
+
                     </Row >
-                    {/* 
-                    <Button onClick={() => setIsFirstModalOpen(true)}>Open Modal</Button> */}
+
 
 
                 </Content>

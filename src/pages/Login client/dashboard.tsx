@@ -9,11 +9,12 @@ import React, { useEffect, useState } from "react";
 import { CalendarOutlined, ContainerOutlined, DesktopOutlined, EditOutlined, EllipsisOutlined, EnvironmentOutlined, SettingOutlined } from "@ant-design/icons";
 import { Avatar, Button, Card, Carousel, Col, FloatButton, Pagination, PaginationProps, Row } from "antd";
 import Meta from "antd/es/card/Meta";
-import ContentLayout, { MakeBgblue, MakeBgWhite, MakeBgyellow } from "../../Shared/ContentLayout";
+import ContentLayout, { MakeBgblue, MakeBggrey, MakeBgWhite, MakeBgyellow } from "../../Shared/ContentLayout";
 import Textstyles from "../Components/textstyles";
 import { getCards } from "../../Services/axios";
 import { CustomCard } from "../Context /Card";
 import MenuList from "../Components/menu";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -22,11 +23,8 @@ const PAGE_SIZE = 10;
 
 export default function Dashboard() {
     const [collapsed, setCollapsed] = useState(false);
-    const [theme, setTheme] = useState('light');
-    // const [cardData, setCardData] = useState<any[]>([]);
-    // const [page, setPage] = useState<number>(1);
-    // const [pageSize, setPageSize] = useState<number>(3);
-    // const [total, setTotal] = useState<number>(0);
+
+
     const [cardData, setCardData] = useState<any[]>([]);
     const [total, setTotal] = useState(0);
     const [page, setPage] = useState(1);
@@ -73,66 +71,108 @@ export default function Dashboard() {
     };
 
 
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+    // const toggleTheme = () => {
+    //     setTheme(theme === 'light' ? 'dark' : 'light');
+    // };
     const contentStyle: React.CSSProperties = {
-        height: '93vh',
-        width: '100vw',
-        color: '#fff',
-        lineHeight: '160px',
+        height: '70vh',
+        width: '70vw',
+        color: 'white',
+        // lineHeight: '160px',
         textAlign: 'center',
-        background: '#364d79',
+        background: 'white',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: 'center',
+        marginLeft: "15rem"
 
     };
+
+    const history = useHistory();
+    function handleNavigate() {
+        history.push('/inventory');
+    }
+    function handleNavigation() {
+        history.push('/about');
+    }
     return (
 
         <>
             <MenuList />
             {/* <MenuList></MenuList> */}
-            <ContentLayout pageTitle="" returnNode={<FloatButton onClick={toggleTheme} icon={theme === 'light' ? <DesktopOutlined /> : <ContainerOutlined />} />}>
+            <ContentLayout pageTitle="" >
+                <Row style={{ gap: "5rem" }}>
+                    <Col xl={24} >
+                        <Textstyles></Textstyles>
+                    </Col>
+                    <Col xl={24} >
+                        <Carousel autoplay style={{ marginBottom: "2rem" }} >
+                            <div className="carousel">
 
-                <Carousel autoplay style={{ marginBottom: "2rem" }} >
-                    <div className="carousel">
+                                <img style={contentStyle} src="https://www.pngarts.com/files/4/Motorcycle-PNG-Transparent-Image.png" />
+                                <div className="click">
+                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
 
-                        <img style={contentStyle} src="https://images.unsplash.com/photo-1508357941501-0924cf312bbd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
+                                </div>
 
-                        <div className="click">
-                            <Textstyles />
+                            </div>
+                            <div className="carousel" >
+                                <img style={contentStyle} src="https://www.pngarts.com/files/4/Motorcycle-Free-PNG-Image.png" />
 
+                                <div className="click">
+
+                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
+                                </div>
+                            </div>
+                            <div className="carousel" >
+                                <img style={contentStyle} src="https://www.pngarts.com/files/1/Yamaha-Motorcycle-PNG-Photo.png" />
+
+
+                                <div className="click">
+
+                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
+                                </div>
+                            </div>
+                            <div className="carousel">
+                                <img style={contentStyle} src="https://www.pngarts.com/files/4/Motorcycle-PNG-Image-Background.png" />
+                                <div className="click">
+                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
+
+                                </div>
+                            </div>
+
+                        </Carousel>
+                    </Col>
+                </Row>
+
+                {/* <Row >
+
+
+                    <Col xl={16} >
+
+                        <img src="https://www.pngitem.com/pimgs/m/23-230912_motorcycle-transparent-background-bikes-png-for-picsart-png.png" style={{ width: "68vw", height: "83vh", display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }} />
+                    </Col>
+
+                    <Col xl={8} style={{ backgroundColor: "rgba(246, 246, 246 )" }}>
+
+                        <div style={{ marginTop: "20rem", display: "flex", alignItems: "center", justifyContent: "center" }} >
+                            <Row style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "30px" }}>
+                                <Col xl={24}>
+                                    <h4>FIND A HIGH QUALITY BIKE AND RENT NOW</h4>
+                                </Col>
+                                <Col span={6} xl={24}>
+                                    <p>Biker Choice offers repair and maintenance services to keep your motorcycle running smoothly. Their full-service garage has experienced mechanics, state-of-the-art equipment, and high-quality parts. They also rent motorcycles and offer a range of accessories and upgrades. Renters can trust that bikes are well-maintained and ready to ride. With Biker Choice, you get rental bikes and garage services in one place.</p>
+                                </Col>
+
+                                <Button className="filled_edit_button" onClick={handleNavigate}> RENT NOW </Button>
+                                <Button className="filled_edit_button" onClick={handleNavigation}> ABOUT US </Button>
+                            </Row>
                         </div>
-                    </div>
-                    <div className="carousel" >
-                        <img style={contentStyle} src="https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bW90b3JiaWtlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60" />
-                        <div className="click">
-                            <Textstyles></Textstyles>
+                    </Col >
 
-
-
-
-                        </div>
-                    </div>
-                    <div className="carousel" >
-                        <img style={contentStyle} src="https://images.unsplash.com/photo-1619771914272-e3c1ba17ba4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjR8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" />
-
-                        <div className="click">
-                            <Textstyles></Textstyles>
-
-
-                        </div>
-                    </div>
-                    <div className="carousel">
-                        <img style={contentStyle} src="https://images.unsplash.com/photo-1547549082-6bc09f2049ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Njl8fG1vdG9yYmlrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" />
-                        <div className="click">
-                            <Textstyles></Textstyles>
-
-
-                        </div>
-                    </div>
-
-                </Carousel>
-
-
+                    {/* <img src='https://img.freepik.com/free-vector/skeleton-rigind-motorbike_1415-115.jpg?w=826&t=st=1672655650~exp=1672656250~hmac=82ad28b19fffc37fd8c1341aaafa1a43618cbb1b162ca66686e010a1b36a1b66'
+                            width={"100%"} height={"100%"} /> */}
+                {/* </Row> */}
 
                 <MakeBgblue>
 
@@ -150,7 +190,7 @@ export default function Dashboard() {
                                     <CustomCard
                                         id={card.id}
                                         name={card.name}
-                                        imageUrl={card.imageUrl}
+                                        imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdl9B7wHgcVft1UT1Jzq9sCInlx-P00AyKww&usqp=CAU"
                                         rating={card.rating}
                                         kmRun={card.kmRun}
                                         milage={card.milage}
@@ -177,7 +217,36 @@ export default function Dashboard() {
                     />
 
                 </MakeBgblue>
+                <MakeBggrey >
+                    <Row >
 
+
+                        <Col xl={16} >
+
+                            <img src="https://www.pngitem.com/pimgs/m/23-230912_motorcycle-transparent-background-bikes-png-for-picsart-png.png" style={{ width: "64vw", height: "83vh", display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }} />
+                        </Col>
+
+                        <Col xl={8} style={{ backgroundColor: "rgba(246, 246, 246 )" }}>
+
+                            <div style={{ marginTop: "15rem", display: "flex", alignItems: "center", justifyContent: "center" }} >
+                                <Row style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "30px" }}>
+                                    <Col xl={24}>
+                                        <h4>FIND A HIGH QUALITY BIKE AND RENT NOW</h4>
+                                    </Col>
+                                    <Col span={6} xl={24}>
+                                        <p>Biker Choice offers repair and maintenance services to keep your motorcycle running smoothly. Their full-service garage has experienced mechanics, state-of-the-art equipment, and high-quality parts. They also rent motorcycles and offer a range of accessories and upgrades. Renters can trust that bikes are well-maintained and ready to ride. With Biker Choice, you get rental bikes and garage services in one place.</p>
+                                    </Col>
+
+                                    <Button className="filled_edit_button" onClick={handleNavigate}> RENT NOW </Button>
+                                    <Button className="filled_edit_button" onClick={handleNavigation}> ABOUT US </Button>
+                                </Row>
+                            </div>
+                        </Col >
+
+                        {/* <img src='https://img.freepik.com/free-vector/skeleton-rigind-motorbike_1415-115.jpg?w=826&t=st=1672655650~exp=1672656250~hmac=82ad28b19fffc37fd8c1341aaafa1a43618cbb1b162ca66686e010a1b36a1b66'
+        width={"100%"} height={"100%"} /> */}
+                    </Row>
+                </MakeBggrey>
                 <MakeBgyellow>
                     <Row gutter={16}>
                         <h1>20+ BIKE TYPE & BRANDS </h1>
@@ -257,9 +326,8 @@ export default function Dashboard() {
 
 
 
-                <div className={`theme-${theme}`}>
-                    <FloatButton onClick={toggleTheme} />
-                </div>
+
+
 
             </ContentLayout>
         </>

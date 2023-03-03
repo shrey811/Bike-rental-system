@@ -10,9 +10,9 @@ const Textstyles = () => {
     }
     return (
         <>
-            <div className="overlay" >
-                <Col style={{ fontSize: "25px" }}>
-                    <div className="text">
+            <div className="overlay" style={{ display: "flex", marginLeft: "42rem", marginBottom: "4rem" }} >
+                <Col style={{ fontSize: "30px" }}>
+                    <div className="text" style={{ display: "flex", justifyContent: "center", alignItems: "center", marginBottom: "2rem" }}>
                         <div className="wrapper">
                             <div id="W" >W</div>
                             <div className="shadow">W</div>
@@ -98,9 +98,10 @@ const Textstyles = () => {
 
                     </div>
                 </Col>
-                <Col>
-                    <Button className="filled_edit_button" onClick={handleNavigate}> RENT NOW </Button>
-                </Col>
+
+                {/* <Button className="filled_edit_button" onClick={handleNavigate}> RENT NOW </Button> */}
+
+
             </div>
 
 

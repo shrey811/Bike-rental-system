@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AddEntry from './pages/Admin/addentry';
 import InventoryAdmin from './pages/Admin/inentory';
 import Admin from './pages/Admin/login';
+import Rent from './pages/Admin/rent';
 import userList from './pages/Admin/userList';
 import { About } from './pages/Login client/about';
 import Contact from './pages/Login client/Contact';
@@ -45,6 +46,7 @@ function App() {
           <PrivateRoute path='/inventory-admin' component={InventoryAdmin} />
           <PrivateRoute path='/add-entry' component={AddEntry} />
           <PrivateRoute path='/user-list' component={userList} />
+          <PrivateRoute path='/rent-list' component={Rent} />
           <PrivateRoute path='/rent-now' component={Rental} />
           <PrivateRoute path='/contact-us' component={Contact} />
           {/* <PrivateRoute path='/modal-page' component={Payment} /> */}

@@ -9,6 +9,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import AddEntry from './addentry';
 import InventoryAdmin from './inentory';
+import Rent from './rent';
 import UserList from './userList';
 
 
@@ -20,21 +21,32 @@ const Admin: React.FC = () => {
     const [showAddEntry, setShowAddEntry] = useState(true);
     const [showInventory, setShowInventory] = useState(false);
     const [showUserList, setShowUserList] = useState(false);
+    const [showRentList, setShowrentList] = useState(false);
 
     const handleMenuItemClick = (menu: string) => {
         if (menu === "addEntry") {
             setShowAddEntry(true);
             setShowInventory(false);
             setShowUserList(false);
+            setShowrentList(false)
         } else if (menu === "inventory") {
             setShowAddEntry(false);
             setShowInventory(true);
             setShowUserList(false);
+            setShowrentList(false)
 
         } else if (menu === "userlist") {
             setShowAddEntry(false);
             setShowInventory(false);
             setShowUserList(true);
+            setShowrentList(false)
+        }
+
+        else if (menu === "rentList") {
+            setShowAddEntry(false);
+            setShowInventory(false);
+            setShowUserList(false);
+            setShowrentList(true);
         }
     };
 
@@ -86,7 +98,11 @@ const Admin: React.FC = () => {
                         </Menu.Item>
                         <Menu.Item key="userlist" onClick={() => handleMenuItemClick("userlist")}>
                             {collapsed ? <UserOutlined style={{ fontSize: "19px" }} /> : null}
-                            <span> <UserOutlined style={{ fontSize: "19px" }} /> userlist</span>
+                            <span> <UserOutlined style={{ fontSize: "19px" }} /> Userlist</span>
+                        </Menu.Item>
+                        <Menu.Item key="rentList" onClick={() => handleMenuItemClick("rentList")}>
+                            {collapsed ? <UserOutlined style={{ fontSize: "19px" }} /> : null}
+                            <span> <UserOutlined style={{ fontSize: "19px" }} /> Rent List</span>
                         </Menu.Item>
                         <Divider style={{ backgroundColor: "black", marginTop: "25rem" }} />
                         <Menu.Item key="logout" >
@@ -118,6 +134,7 @@ const Admin: React.FC = () => {
                     {showAddEntry && <AddEntry />}
                     {showInventory && <InventoryAdmin />}
                     {showUserList && <UserList />}
+                    {showRentList && <Rent />}
                 </Content>
 
                 <Footer style={{ textAlign: 'center' }}>Bikers Choice Since 2013 @ABC ABC</Footer>

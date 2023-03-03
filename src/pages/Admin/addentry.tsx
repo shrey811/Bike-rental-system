@@ -1,5 +1,5 @@
 import { UploadOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Upload } from 'antd';
+import { Button, Col, Divider, Form, Input, Row, Upload } from 'antd';
 import { Bike } from '../../models/Inventory';
 import { addBike } from '../../Services/axios';
 
@@ -71,48 +71,73 @@ const AddEntry = () => {
     //     return true;
     // };
     return (
-        <Form
-            {...layout}
-            name="nest-messages"
-            onFinish={onFinish}
-            style={{ maxWidth: 600 }}
+        <Row>
+            <Col xl={12}>
+                <h4 style={{ display: "flex", alignItems: "center ", justifyContent: "center", marginBottom: "20px" }}> ADD Bikes </h4>
+                <Form
+                    {...layout}
+                    name="nest-messages"
+                    onFinish={onFinish}
+                    style={{ maxWidth: 600 }}
 
-        >
-            <Form.Item label="Name" name="name" rules={[{ required: true }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="NumberPlate" name="numberPlate" rules={[{ required: true }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="rating" name="rating" rules={[{ min: 0, max: 5 }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="kmRun" name="kmRun" rules={[{ min: 1 }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item label="milage" name="milage" rules={[{ min: 1 }]} >
-                <Input />
-            </Form.Item>
-            <Form.Item label="imageUrl" name="imageUrl" >
-
-                <Upload
-                // beforeUpload={handleBeforeUpload}
-                // showUploadList={false}
                 >
-                    <Button icon={<UploadOutlined />} > Upload</Button>
-                </Upload>
-            </Form.Item>
-            <Form.Item name="description" label="Description" rules={[{ required: true }]}>
-                <Input.TextArea />
-            </Form.Item>
-            <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
-            </Form.Item>
+                    <Form.Item label="Name" name="name" rules={[{ required: true }]}>
+                        <Input />
+                    </Form.Item>
+                    <Form.Item label="NumberPlate" name="numberPlate" rules={[{ required: true }]}>
+                        <Input />
+                    </Form.Item>
+                    <Form.Item label="rating" name="rating" rules={[{ min: 0, max: 5 }]}>
+                        <Input />
+                    </Form.Item>
+                    <Form.Item label="kmRun" name="kmRun" rules={[{ min: 1 }]}>
+                        <Input />
+                    </Form.Item>
+                    <Form.Item label="milage" name="milage" rules={[{ min: 1 }]} >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item label="imageUrl" name="imageUrl" >
+
+                        <Upload
+                        // beforeUpload={handleBeforeUpload}
+                        // showUploadList={false}
+                        >
+                            <Button icon={<UploadOutlined />} > Upload</Button>
+                        </Upload>
+                    </Form.Item>
+                    <Form.Item name="description" label="Description" rules={[{ required: true }]}>
+                        <Input.TextArea />
+                    </Form.Item>
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                        <Button type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                    </Form.Item>
 
 
-        </Form>
+
+
+                </Form>
+            </Col>
+            {/* <Divider type="horizontal" style={{ marginTop: "0.5rem" }} /> */}
+            <Col xl={12}>
+                <h4 style={{ display: "flex", alignItems: "center ", justifyContent: "center", marginBottom: "20px" }}> ADD Brand</h4>
+                <Form
+                    {...layout}
+                    name="nest-messages"
+                    onFinish={onFinish}
+                    style={{ maxWidth: 600 }}
+
+                >
+                    <Form.Item label="Brand" name="brand" rules={[{ required: true }]}>
+                        <Input />
+                    </Form.Item>
+                    <Form.Item label="Manufacturer" name="manufacturer" rules={[{ required: true }]}>
+                        <Input />
+                    </Form.Item>
+                </Form>
+            </Col>
+        </Row>
     )
 }
 

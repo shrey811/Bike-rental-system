@@ -132,6 +132,7 @@ export const CustomCard: React.FC<Bike> = ({ id, name, description, rating, kmRu
   return (
     <>
       <Card
+        style={{ margin: "10px" }}
         hoverable
         title={name}
         cover={
@@ -169,12 +170,7 @@ export const CustomCard: React.FC<Bike> = ({ id, name, description, rating, kmRu
           </div>
         )}
 
-        {/* <Button style={{ marginLeft: "6rem" }} className='button1' type="primary" onClick={handleClick}>
-          More Info
-        </Button>
-        <Button className='button1' type="primary" onClick={showModal}>
-          Rent Now
-        </Button> */}
+
       </Card>
 
 
