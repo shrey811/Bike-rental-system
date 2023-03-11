@@ -1,5 +1,6 @@
 
 import { Button, Col, Form, Input, InputNumber, message, Row } from 'antd';
+import { useHistory } from 'react-router-dom';
 import { registration } from '../../models/registration';
 import { postData } from '../../Services/ajaxservice';
 import { FORMROWGUTTER } from '../../Shared/constants';
@@ -7,6 +8,7 @@ import { FORMROWGUTTER } from '../../Shared/constants';
 
 const Register = () => {
     const [form] = Form.useForm();
+    const history = useHistory();
 
     const validateConfirmPassword = async (_: any, value: string) => {
         const { password } = form.getFieldsValue();
@@ -20,6 +22,7 @@ const Register = () => {
             await postData('user/register', values);
             message.success('Registration successful!');
             form.resetFields();
+            history.push('/');
         } catch (error) {
             message.error('Registration failed');
         }

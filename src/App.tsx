@@ -23,19 +23,7 @@ function App() {
 
   return (
 
-    // <Router history={history}>
-    //     <AuthProvider >
-    //      <Switch>
-    //     <Route exact path="/" component={Login} />
-    //     <Route path='/admin' component={AdminLogin}/>
-    //     <Route path='/about' component={About}/>
-    //     <Route path='/inventory' component={Inventory} />
-    //     <Route exact path='/dashboard' component={Dashboard} />
-    //     <Route path='/register' component={Register} />
-    //     </Switch>
-    //   </AuthProvider>
 
-    // </Router>
     <BrowserRouter>
 
       <AuthProvider>
