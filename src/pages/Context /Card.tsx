@@ -102,7 +102,7 @@ import { Card, Button, Rate, Modal, QRCode, Radio, Col, Row } from 'antd';
 import { useHistory } from 'react-router-dom';
 
 import { Bike } from '../../models/Inventory';
-
+//check
 
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
