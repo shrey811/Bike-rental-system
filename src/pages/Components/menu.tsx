@@ -105,8 +105,8 @@ const MenuList = () => {
             <Col span={2}  >
 
 
-              <img src={Logo}
-                width={"120rem"} height={"77rem"} />
+              {/* <img src={Logo}
+                width={"120rem"} height={"77rem"} /> */}
 
 
             </Col>

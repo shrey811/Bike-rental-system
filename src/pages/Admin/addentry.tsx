@@ -16,13 +16,13 @@ const AddEntry = () => {
     };
 
     const onFinish = async (values: any) => {
-//         const cloudinary = new Cloudinary({
-//             cloud: {
-//                 cloudName: 'your_cloud_name',
-//                 apiKey: 'your_api_key',
-//                 apiSecret: 'your_api_secret',
-//             },
-//         });
+        //         const cloudinary = new Cloudinary({
+        //             cloud: {
+        //                 cloudName: 'your_cloud_name',
+        //                 apiKey: 'your_api_key',
+        //                 apiSecret: 'your_api_secret',
+        //             },
+        //         });
         const bike: Bike = {
             id: 0,
             name: values.name,
@@ -86,11 +86,11 @@ const AddEntry = () => {
                     <Form.Item label="milage" name="milage" rules={[{ min: 1 }]} >
                         <Input />
                     </Form.Item>
-<!--                     <Form.Item label="imageUrl" name="imageUrl" valuePropName="file" getValueFromEvent={(e: any) => e.file} rules={[{ required: true }]}>
+                    {/* <!--                     <Form.Item label="imageUrl" name="imageUrl" valuePropName="file" getValueFromEvent={(e: any) => e.file} rules={[{ required: true }]}>
 <!--                         <Upload accept=".jpg,.jpeg,.png,.gif" showUploadList={false}>
                             <Button icon={<UploadOutlined />}>Upload Image</Button>
                         </Upload> -->
-                    </Form.Item> -->
+                    </Form.Item> --> */}
                     <Form.Item name="description" label="Description" rules={[{ required: true }]}>
                         <Input.TextArea />
                     </Form.Item>
