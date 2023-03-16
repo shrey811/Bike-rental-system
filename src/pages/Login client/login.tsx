@@ -1,5 +1,5 @@
 import { UserOutlined } from '@ant-design/icons'
-import { Divider, Form } from 'antd'
+import { Divider, Form, message } from 'antd'
 import Button from 'antd/es/button'
 import Checkbox from 'antd/es/checkbox'
 import Input from 'antd/es/input'
@@ -26,7 +26,7 @@ const Login = () => {
             if (isLoggedIn) {
                 history.push('/dashboard');
             } else {
-                console.error('Invalid login credentials');
+                message.success('Login unsucessfull')
             }
         } catch (error) {
             console.error(error);
