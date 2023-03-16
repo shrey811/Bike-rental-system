@@ -12,7 +12,7 @@ import Meta from "antd/es/card/Meta";
 import ContentLayout, { MakeBgblue, MakeBggrey, MakeBgWhite, MakeBgyellow } from "../../Shared/ContentLayout";
 import Textstyles from "../Components/textstyles";
 import { getCards } from "../../Services/axios";
-import { CustomCard } from "../Context /Card";
+// import { CustomCard } from "../Context /Card";
 import MenuList from "../Components/menu";
 import { useHistory } from "react-router-dom";
 
@@ -184,7 +184,7 @@ export default function Dashboard() {
                         justifyContent: "center"
                     }}>
 
-                        {
+                        {/* {
                             cardData.map((card) => (
                                 <Col xs={24} md={12} lg={12} key={card.id}>
                                     <CustomCard
@@ -201,7 +201,7 @@ export default function Dashboard() {
                                     />
                                 </Col>
                             ))
-                        }
+                        } */}
 
                     </div>
                     <Pagination
