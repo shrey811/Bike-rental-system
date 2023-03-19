@@ -8,6 +8,9 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import AddEntry from './addentry';
+import { DemoLine } from './dashboard';
+
+
 import InventoryAdmin from './inentory';
 import Rent from './rent';
 import UserList from './userList';
@@ -22,24 +25,28 @@ const Admin: React.FC = () => {
     const [showInventory, setShowInventory] = useState(false);
     const [showUserList, setShowUserList] = useState(false);
     const [showRentList, setShowrentList] = useState(false);
+    const [dashboard, setDashboard] = useState(false);
 
     const handleMenuItemClick = (menu: string) => {
         if (menu === "addEntry") {
             setShowAddEntry(true);
             setShowInventory(false);
             setShowUserList(false);
-            setShowrentList(false)
+            setShowrentList(false);
+             setDashboard(false);
         } else if (menu === "inventory") {
             setShowAddEntry(false);
             setShowInventory(true);
             setShowUserList(false);
-            setShowrentList(false)
+            setShowrentList(false);
+            setDashboard(false);
 
         } else if (menu === "userlist") {
             setShowAddEntry(false);
             setShowInventory(false);
             setShowUserList(true);
-            setShowrentList(false)
+            setShowrentList(false);
+            setDashboard(false);
         }
 
         else if (menu === "rentList") {
@@ -47,6 +54,14 @@ const Admin: React.FC = () => {
             setShowInventory(false);
             setShowUserList(false);
             setShowrentList(true);
+            setDashboard(false);
+        }
+        else if (menu === "dashboard") {
+            setShowAddEntry(false);
+            setShowInventory(false);
+            setShowUserList(false);
+            setShowrentList(false);
+            setDashboard(true);
         }
     };
 
@@ -100,6 +115,10 @@ const Admin: React.FC = () => {
                             {collapsed ? <UserOutlined style={{ fontSize: "19px" }} /> : null}
                             <span> <UserOutlined style={{ fontSize: "19px" }} /> Userlist</span>
                         </Menu.Item>
+                        <Menu.Item key="dashboard" onClick={() => handleMenuItemClick("dashboard")}>
+                            {collapsed ? <UserOutlined style={{ fontSize: "19px" }} /> : null}
+                            <span> <UserOutlined style={{ fontSize: "19px" }} />Dashboard</span>
+                        </Menu.Item>
                         <Menu.Item key="rentList" onClick={() => handleMenuItemClick("rentList")}>
                             {collapsed ? <UserOutlined style={{ fontSize: "19px" }} /> : null}
                             <span> <UserOutlined style={{ fontSize: "19px" }} /> Rent List</span>
@@ -135,6 +154,7 @@ const Admin: React.FC = () => {
                     {showInventory && <InventoryAdmin />}
                     {showUserList && <UserList />}
                     {showRentList && <Rent />}
+                    {dashboard && <DemoLine />}
                 </Content>
 
                 <Footer style={{ textAlign: 'center' }}>Bikers Choice Since 2013 @ABC ABC</Footer>

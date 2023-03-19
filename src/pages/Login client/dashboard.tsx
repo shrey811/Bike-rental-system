@@ -15,6 +15,7 @@ import { getCards } from "../../Services/axios";
 // import { CustomCard } from "../Context /Card";
 import MenuList from "../Components/menu";
 import { useHistory } from "react-router-dom";
+import { CustomCard } from "../Context/Card";
 
 
 
@@ -184,7 +185,7 @@ export default function Dashboard() {
                         justifyContent: "center"
                     }}>
 
-                        {/* {
+                        {
                             cardData.map((card) => (
                                 <Col xs={24} md={12} lg={12} key={card.id}>
                                     <CustomCard
@@ -198,10 +199,11 @@ export default function Dashboard() {
                                         brandId={0}
                                         // brandName={card.brandName}
                                         description={card.description}
+                                        rentalStatus={card.rentalStatus}
                                     />
                                 </Col>
                             ))
-                        } */}
+                        }
 
                     </div>
                     <Pagination

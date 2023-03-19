@@ -33,6 +33,7 @@ const AddEntry = () => {
             description: values.description,
             milage: values.milage,
             imageUrl: '',
+            rentalStatus: values.rentalStatus,
         };
 
         // try {

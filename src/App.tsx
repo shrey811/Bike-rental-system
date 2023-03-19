@@ -9,6 +9,7 @@ import userList from './pages/Admin/userList';
 import { About } from './pages/Login client/about';
 import Contact from './pages/Login client/Contact';
 import Dashboard from './pages/Login client/dashboard';
+import Forgetpassword from './pages/Login client/Forgetpassword';
 import Inventory from './pages/Login client/inventory';
 import Login from './pages/Login client/login';
 import Moreinfo from './pages/Login client/Moreinfo';
@@ -40,6 +41,7 @@ function App() {
           <PrivateRoute path='/contact-us' component={Contact} />
           {/* <PrivateRoute path='/modal-page' component={Payment} /> */}
           <PrivateRoute path='/more-info/:id' component={Moreinfo} />
+          <PrivateRoute path='/forget-password' component={Forgetpassword} />
           <Route path='/register' component={Register} />
           <PrivateRoute path='/admin' component={Admin} />
         </Switch>

@@ -185,8 +185,8 @@ const columns = [
     },
     {
         title: 'Rental Status',
-        dataIndex: '',
-        key: '',
+        dataIndex: 'rentalStatus',
+        key: 'rentalStatus',
     },
 ];
 

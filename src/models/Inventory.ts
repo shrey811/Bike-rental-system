@@ -8,5 +8,6 @@ export interface Bike {
   kmRun: number,
   description: string,
   milage: number,
-  imageUrl: string
+  imageUrl: string,
+  rentalStatus:string
 }

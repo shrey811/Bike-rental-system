@@ -1,56 +1,57 @@
 
 
-import React, { useEffect, useState } from 'react';
 import { Table } from 'antd';
-import { Bike } from '../../models/Inventory';
-import { getCards } from '../../Services/axios';
+import { useEffect, useState } from 'react';
+import {  Rental } from '../../models/Rent';
+
+import { getCards, getRent } from '../../Services/axios';
 
 
 const columns = [
     {
         title: 'Bikename',
-        dataIndex: 'Bikename',
-        key: 'Bikename',
+        dataIndex: 'bikeName',
+        key: 'bikeName',
     },
     {
         title: 'Username',
-        dataIndex: 'Username',
-        key: 'username',
+        dataIndex: 'user',
+        key: 'user',
     },
     {
         title: 'RentedOn',
-        dataIndex: 'rating',
-        key: 'rating',
+        dataIndex: 'rentedOn',
+        key: 'rentedOn',
     },
     {
         title: 'RentedUntil',
-        dataIndex: 'kmRun',
-        key: 'kmRun',
+        dataIndex: 'rentedUntil',
+        key: 'rentedUntil',
     },
     {
         title: 'Rental status',
-        dataIndex: 'description',
-        key: 'description',
+        dataIndex: 'rentalstatus',
+        key: 'rentalstatus',
     },
 
     {
-        title: 'Remarks',
-        dataIndex: 'imageUrl',
-        key: 'imageUrl',
+        title: 'Price',
+        dataIndex: 'price',
+        key: 'price',
     },
 
 ];
 
 const Rent = () => {
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState<[]>([]);
+    const [data, setData] = useState<Rental[]>([]);
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
         setLoading(true);
-        getCards(1, 10).then((inventory) => {
-            // setData(inventory.data);
-            setTotal(inventory.total);
+        getRent(1, 10).then((RentResponse) => {
+            setData(RentResponse.data);
+            setTotal(RentResponse.total);
             setLoading(false);
         });
     }, []);
@@ -65,11 +66,12 @@ const Rent = () => {
                 pageSize: 10,
                 onChange: (page) => {
                     setLoading(true);
-                    // getCards(page, 10).then((inventory) => {
-                    //     setData(inventory.data);
-                    //     setTotal(inventory.total);
-                    //     setLoading(false);
-
+                    getRent(page, 10).then((RentResponse) => {
+                        setData(RentResponse.data);
+                        setTotal(RentResponse.total);
+                        setLoading(false);
+                    });
+                 
                 },
             }}
         />

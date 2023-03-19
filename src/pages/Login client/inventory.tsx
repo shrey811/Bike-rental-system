@@ -15,6 +15,7 @@ import { Input } from 'antd';
 // import { CustomCard } from '../Context /Card';
 import axios from 'axios';
 import { API_URL } from '../../Services/ajaxservice';
+import { CustomCard } from '../Context/Card';
 
 const Inventory: React.FC = () => {
 
@@ -250,7 +251,7 @@ const Inventory: React.FC = () => {
               ></Search>
             </Col>
 
-            {/* {cardData.map((card) => (
+            {cardData.map((card) => (
               <Col xs={24} md={12} lg={6} key={card.id}>
                 <CustomCard
 
@@ -263,9 +264,10 @@ const Inventory: React.FC = () => {
                   numberPlate={card.numberPlate}
                   brandId={0}
                   // brandName={card.brandName}
-                  description={card.description} />
+                  description={card.description}
+                  rentalStatus={card.rentalStatus}/>
               </Col>
-            ))} */}
+            ))}
           </Row>
 
 

@@ -18,7 +18,7 @@ const Login = () => {
         try {
 
             // check if the email and password are "admin" and "admin"
-            if (values.email === "admin" && values.password === "admin") {
+            if ( values.email === "admin" && values.password === "admin") {
                 history.push('/admin');
                 return;
             }
@@ -102,7 +102,7 @@ const Login = () => {
                                     <Checkbox>Remember me</Checkbox>
                                 </Form.Item>
 
-                                <a className="login-form-forgot" href="">
+                                <a className="login-form-forgot" href="/forget-password">
                                     Forgot password
                                 </a>
                             </Form.Item>

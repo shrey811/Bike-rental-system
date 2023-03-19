@@ -147,6 +147,7 @@ const Moreinfo: React.FC = () => {
                 numberPlate={selectedCard.numberPlate}
                 brandId={selectedCard.brandId}
                 description={selectedCard.description}
+                rentalStatus={selectedCard.rentalStatus}
             />
 
         </div>
