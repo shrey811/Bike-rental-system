@@ -147,9 +147,7 @@ const CustomCard: React.FC<Bike> = ({ id, name, imageUrl, rating, kmRun, milage,
                                 <img src="https://www.pngarts.com/files/4/Motorcycle-Free-PNG-Image.png"
                                     width={"97%"} height={"97%"} />
                             </div>
-                            <div style={{ textAlign: 'center', display: "flex", alignItems: "center", justifyContent: "center", gap: "30px" }}>
-                                <Button className="filled_edit_button" onClick={handleOpenModal}>Rent Now</Button>
-                            </div>
+                           
                         </Col>
                         <Col xs={24} sm={24} md={12} lg={12} xl={12} >
 
