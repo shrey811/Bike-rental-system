@@ -141,6 +141,7 @@ import { Table } from 'antd';
 
 import { getCards, getUsers } from '../../Services/axios';
 import { registration } from '../../models/registration';
+import { user } from '../../models/user';
 
 
 const columns = [
@@ -174,14 +175,14 @@ const columns = [
 
 const UserList = () => {
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState<registration[]>([]);
+    const [data, setData] = useState<user[]>([]);
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
         setLoading(true);
-        getUsers(1, 10).then((UsersResponse) => {
-            setData(UsersResponse.data);
-            setTotal(UsersResponse.total);
+        getUsers(1, 10).then((user) => {
+            setData(user.data);
+            setTotal(user.total);
             setLoading(false);
         });
     }, []);
@@ -196,9 +197,9 @@ const UserList = () => {
                 pageSize: 10,
                 onChange: (page) => {
                     setLoading(true);
-                    getUsers(page, 10).then((UsersResponse) => {
-                        setData(UsersResponse.data);
-                        setTotal(UsersResponse.total);
+                    getUsers(page, 10).then((user) => {
+                        setData(user.data);
+                        setTotal(user.total);
                         setLoading(false);
                     });
                 },

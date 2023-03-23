@@ -187,11 +187,11 @@ export default function Dashboard() {
 
                         {
                             cardData.map((card) => (
-                                <Col xs={24} md={12} lg={12} key={card.id}>
+                                <Col  key={card.id}>
                                     <CustomCard
                                         id={card.id}
                                         name={card.name}
-                                        imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdl9B7wHgcVft1UT1Jzq9sCInlx-P00AyKww&usqp=CAU"
+                                        imageUrl={card.imageUrl}
                                         rating={card.rating}
                                         kmRun={card.kmRun}
                                         milage={card.milage}
@@ -200,7 +200,7 @@ export default function Dashboard() {
                                         // brandName={card.brandName}
                                         description={card.description}
                                         rentalStatus={card.rentalStatus}
-                                    />
+                                        price={card.price} />
                                 </Col>
                             ))
                         }
