@@ -16,91 +16,45 @@ import { Input } from 'antd';
 import axios from 'axios';
 import { API_URL } from '../../Services/ajaxservice';
 import { CustomCard } from '../Context/Card';
+import { Bike } from '../../models/Inventory';
 
 const Inventory: React.FC = () => {
 
-  const [cardData, setCardData] = useState<any[]>([]);
+  
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(4);
   const [total, setTotal] = useState<number>(0);
   const { Search } = Input;
 
-  async function fetchCards(searchTerm?: string, sortOrder?: string) {
-    const response = await axios.get(`${API_URL}/bike`, {
-      params: {
-        q: searchTerm,
-        _sort: sortOrder,
-        _page: page,
-        _limit: pageSize,
-      },
-    });
-    const { data, headers } = response;
-    const total = Number(headers['x-total-count']);
-    setCardData(data);
-    setTotal(total);
-  };
 
-  // async function fetchCards(searchTerm?: string, sortOrder?: string) {
-  //   let sortField;
-  //   switch (sortOrder) {
-  //     case 'rating':
-  //       sortField = 'rating';
-  //       break;
-  //     case 'kmRun':
-  //       sortField = 'kmRun';
-  //       break;
-  //     case 'milage':
-  //       sortField = 'milage';
-  //       break;
-  //     default:
-  //       sortField = 'price';
-  //       break;
-  // }
-  //   const response = await axios.get(`${API_URL}/bike`, {
-  //     params: {
-  //       q: searchTerm,
-  //       _sort: sortField, // set the sort field based on the selected option
-  //       _order: sortOrder === 'price' ? 'asc' : 'desc', // set the sort order based on the selected option
-  //       _page: page,
-  //       _limit: pageSize,
-  //     },
-  //   });
-  //   const { data, headers } = response;
-  //   const total = Number(headers['x-total-count']);
-  //   setCardData(data);
-  //   setTotal(total);
-  // };
-
-
-  // const handleSearch = async (value: string) => {
-  //   await fetchCards(value);
-  //   setPage(1);
-  // };
-
-  // const handleSort = async (value: string) => {
-  //   await fetchCards(undefined, value);
-  //   setPage(1);
-  // };
-
-
-  const handleRentClick = () => {
-    // logic for opening rental page goes here
-    console.log("Opening rental page...");
-  };
 
   const [collapsed, setCollapsed] = useState(false);
+
+  const [cardData, setCardData] = useState<Bike[]>([]);
+
+  const handleSearch = async (value: string) => {
+    const { data } = await getCards(1, 10, value);
+    setCardData(data);
+  };
+
   useEffect(() => {
-    async function fetchCards() {
-      const { data, total } = await getCards(page, pageSize);
-      setCardData(data);
-      setTotal(total);
-    };
-    fetchCards();
-  }, [page, pageSize]);
-  function handlePageChange(page: number, pageSize?: number) {
-    setPage(page);
-    // default to 10 if pageSize is not specified
-  }
+    getCards(1, 10).then((response) => {
+       setCardData(response.data);
+    });
+  }, []);
+
+  // useEffect(() => {
+  //    async function fetchCards(searchText?: string) {
+  //     const { data, total } = await getCards(page, pageSize);
+  //     setCardData(data);
+  //     setTotal(total);
+  //   };
+  //   fetchCards();
+  // }, [page, pageSize]);
+  // function handlePageChange(page: number, pageSize?: number) {
+  //   setPage(page);
+  //   // default to 10 if pageSize is not specified
+  // }
 
   const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
     if (type === 'prev') {
@@ -113,9 +67,7 @@ const Inventory: React.FC = () => {
   };
 
 
-  const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
+
   return (
     <Layout>
 
@@ -235,20 +187,32 @@ const Inventory: React.FC = () => {
 
                 ]}
               />
-              {/* <Select defaultValue="sort" onChange={handleSort} style={{ width: 120 }}>
-       <Option value="title">Title</Option>
-  <Option value="rating">Rating</Option>
-  <Option value="kmRun">Kilometers</Option>
-  <Option value="milage">Mileage</Option> */}
-              {/* </Select> */}
+          
             </Col>
             <Col xs={24} sm={26} md={24} lg={24} xl={12} style={{ display: "flex", justifyContent: "flex-end" }}>
-              <Search
+              {/* <Search
                 placeholder="Search bikes"
                 allowClear
                 // onSearch={handleSearch}
                 style={{ width: 200, margin: '0 20px' }}
-              ></Search>
+              ></Search> */}
+
+{/* 
+    <Search
+  placeholder="Search inventory"
+  onSearch={(value: any ) => {
+    getCards(value);
+    // setPage(1);
+  }}
+  enterButton
+  allowClear
+/> */}
+ <Search
+           placeholder="Search inventory"
+           onSearch={handleSearch}
+           enterButton
+           allowClear
+      />
             </Col>
 
             {cardData.map((card) => (
@@ -257,7 +221,7 @@ const Inventory: React.FC = () => {
 
                   id={card.id}
                   name={card.name}
-                  imageUrl="https://www.pngarts.com/files/4/Motorcycle-Free-PNG-Image.png"
+                  imageUrl={card.imageUrl}
                   rating={card.rating}
                   kmRun={card.kmRun}
                   milage={card.milage}
@@ -265,7 +229,8 @@ const Inventory: React.FC = () => {
                   brandId={0}
                   // brandName={card.brandName}
                   description={card.description}
-                  rentalStatus={card.rentalStatus}/>
+                  rentalStatus={card.rentalStatus}
+                  price={card.price} />
               </Col>
             ))}
           </Row>
@@ -276,7 +241,7 @@ const Inventory: React.FC = () => {
             current={page}
             pageSize={pageSize}
             total={total}
-            onChange={handlePageChange}
+            // onChange={handlePageChange} onChange={handlePageChange}
             showSizeChanger
             pageSizeOptions={['10', '20', '50']}
             itemRender={itemRender}
