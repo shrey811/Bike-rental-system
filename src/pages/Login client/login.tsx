@@ -26,7 +26,7 @@ const Login = () => {
             if (isLoggedIn) {
                 history.push('/dashboard');
             } else {
-                message.success('Login unsucessfull')
+                message.error('Login unsucessfull')
             }
         } catch (error) {
             console.error(error);
