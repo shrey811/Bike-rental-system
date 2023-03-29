@@ -56,8 +56,8 @@ const ContentLayout = ({
 
           <div className="body_part">{children}</div>
         </div>
-        <Footer className="footer">
-          <h3>Bikers Choice Since 2013 @ABC</h3>
+        <Footer className="footer" style={{ backgroundColor:"black",color:"white"}}>
+          <h3 style={{ backgroundColor:"darkslategray",color:"white"}}>Bikers Choice Since 2013 @ABC</h3>
 
           <br></br>
           <br></br>
@@ -101,7 +101,8 @@ export const MakeBgWhite = ({ padding, children }: makeProps) => {
 
     <div
       style={{
-        background: "white",
+        background: "black",
+        color: "white",
         padding: padding ? padding : "1rem",
         margin: "2rem",
         borderRadius: "0.2rem",
@@ -119,7 +120,8 @@ export const MakeBgyellow = ({ padding, children }: makeProps) => {
   return (
     <div
       style={{
-        background: "#FCF6F5FF",
+        background: "black",
+        color: "white",
 
         padding: padding ? padding : "1rem",
         margin: " 2rem",
@@ -142,7 +144,8 @@ export const MakeBgblue = ({ padding, children }: makeProps) => {
   return (
     <div
       style={{
-        background: "#FCF6F5FF",
+        background: "black",
+        color: "white",
         padding: padding ? padding : "1rem",
         margin: " 2rem",
         borderRadius: "0.2rem",
@@ -167,7 +170,8 @@ export const MakeBggrey = ({ padding, children }: makeProps) => {
   return (
     <div
       style={{
-        backgroundColor: "rgba(246, 246, 246 )",
+        background: "black",
+        color: "white",
         padding: padding ? padding : "1rem",
         margin: " 2rem",
         borderRadius: "0.2rem",

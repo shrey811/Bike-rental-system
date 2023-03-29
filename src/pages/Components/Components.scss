@@ -2,7 +2,7 @@
   font-family: "Yanone Kaffeesatz", sans-serif;
 
   font-size: 35px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   display: flex;
   position: absolute;
 
@@ -23,7 +23,7 @@
 
     .shadow {
       transform: scale(1, -1);
-      color: rgb(188, 188, 188);
+      color: rgb(105, 105, 105);
       transition: ease-in 5s, ease-out 5s;
     }
 
@@ -54,9 +54,9 @@
   display: flex;
   font-size: 19px;
   align-items: center;
-  background-color: rgb(255, 255, 255);
-  // background-image: linear-gradient(to right top, #e8e8e8, #e8e8ec, #e7e9f1, #e5eaf6, #e1ebfa, #e0ebfa, #e0ecfb, #dfecfb, #e2ebf8, #e4ebf4, #e6eaf1, #e8eaed);
-  color: black;
+  background-color: black;
+    // // background-image: linear-gradient(to right top, #e8e8e8, #e8e8ec, #e7e9f1, #e5eaf6, #e1ebfa, #e0ebfa, #e0ecfb, #dfecfb, #e2ebf8, #e4ebf4, #e6eaf1, #e8eaed);
+    color: white;
 
 }
 

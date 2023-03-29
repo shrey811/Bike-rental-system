@@ -1,24 +1,104 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Row, Col, Card } from 'antd';
+import { Form, Input, Button, Row, Col, Card, message } from 'antd';
+import { API_URL } from '../../Services/ajaxservice';
+import axios from 'axios';
 
+
+interface updatebike{
+  id: number,
+  firstName: string,
+  lastName: string,
+  password: string,
+  email: string,
+  phone: string
+}
 const EmailVerification = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
+  const [email, setEmail] = useState('');
 
-  const handleNextClick = () => {
-    if (!showOTP) {
-      setShowOTP(true);
-    } else if (!showNewPassword) {
-      setShowNewPassword(true);
-    }
-  };
+  const handleNextClick = (values: { email: any; otp: number; newPassword: string }) => {
+
+    
+if (!showOTP) {
+  // call the OTP API endpoint
+  axios.post(`${API_URL}/otp`, { email: values.email })
+    .then(response => {
+      if (response) {
+        setShowOTP(true);
+        setEmail(values.email);
+      } else {
+        // show error message
+      }
+    })
+    .catch(error => {
+      // handle error
+    });
+} else if (!showNewPassword) {
+  // call the OTP verification API endpoint
+  axios.get(`${API_URL}/otp/${values.otp}`)
+    .then(response => {
+      if (response.data === true) {
+        setShowNewPassword(true);
+      } else {
+        message.error('Invalid OTP! Please try again.');
+      }
+    })
+    .catch(error => {
+      console.log(error.message);
+      // handle error
+    });
+} else {
+  // find user with provided email and update password
+  axios.get(`${API_URL}/user/users`)
+    .then(response => {
+      const users = response.data;
+      const filteredUser = users.filter((user: { email: any; }) => user.email === email)[0];
+      if (filteredUser) {
+        // Found the user with the provided email, now update the password
+        filteredUser.password = values.newPassword;
+        const updatedUser: updatebike = {
+          id: filteredUser.id,
+          firstName: filteredUser.firstName,
+          lastName: filteredUser.lastName,
+          password: filteredUser.password,
+          email: filteredUser.email,
+          phone: filteredUser.phoneNumber,
+        };
+        // Make a post request to update the user with new details
+   
+        axios.put(`${API_URL}/user/update`, updatedUser)
+          .then(response => {
+            if (response) {
+              message.success('Password updated successfully.');
+            } else {
+              message.error('Password was not updated.');
+            }
+          })
+          .catch(error => {
+            console.log(error.message);
+            // handle error
+          });
+      } else {
+        // show error message that user not found with provided email
+      }
+    })
+    .catch(error => {
+      console.log(error.message);
+      // handle error
+    });
+}
+};
 
   return (
     <Row justify="center" align="middle" style={{ minHeight: '100vh' }}>
       <Col span={8}>
         <Card>
           <h2>Email Verification</h2>
-          <Form onFinish={handleNextClick}>
+          <Form
+            onFinish={handleNextClick}
+            
+          >
             {!showOTP && (
               <Form.Item name="email" label="Email" rules={[{ required: true, type: 'email' }]}>
                 <Input />
@@ -50,20 +130,20 @@ const EmailVerification = () => {
                     }),
                   ]}
                 >
-                  <Input.Password />
-                </Form.Item>
-              </>
-            )}
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                {showNewPassword ? 'Save' : 'Next'}
-              </Button>
-            </Form.Item>
-          </Form>
-        </Card>
-      </Col>
-    </Row>
-  );
-};
-
-export default EmailVerification;
+ 
+                   <Input.Password />
+                 </Form.Item>
+               </>
+             )}
+             <Form.Item>
+               <Button type="primary" htmlType='submit' >
+                 {showNewPassword ? 'Save' : 'Next'}
+               </Button>
+             </Form.Item>
+           </Form>
+         </Card>
+       </Col>
+     </Row>
+);
+ };
+ export default EmailVerification;

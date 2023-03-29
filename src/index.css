@@ -339,3 +339,7 @@ font-size: 20px;
   width: 200px;
   font-size: 15px;
 }
+.badge-rented .ant-badge-status-text,
+.badge-available .ant-badge-status-text {
+  color: white;
+}

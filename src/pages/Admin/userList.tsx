@@ -147,8 +147,8 @@ import { user } from '../../models/user';
 const columns = [
     {
         title: 'firstname',
-        dataIndex: 'firstname',
-        key: 'firstname',
+        dataIndex: 'firstName',
+        key: 'firstName',
     },
     {
         title: 'lastName',
@@ -167,8 +167,8 @@ const columns = [
     },
     {
         title: 'phone',
-        dataIndex: 'phone',
-        key: 'phone',
+        dataIndex: 'phoneNumber',
+        key: 'phoneNumber',
     },
 
 ];

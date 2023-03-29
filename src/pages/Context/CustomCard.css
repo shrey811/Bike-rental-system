@@ -1,0 +1,58 @@
+.custom-card {
+    width: 320px;
+    height: 450px;
+    background-color: rgba(0.0, 0.0, 0.0, 1.0);
+    color: white;
+    border: white 1px solid;
+}
+
+.card-image-container {
+    height: 200px;
+    overflow: hidden;
+    border: white 1px solid;
+}
+
+.card-image {
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 20px;
+    margin: 0;
+}
+
+.card-status {
+    text-align: right;
+}
+
+.card-text {
+    margin: 0;
+}
+
+.badge-rented .ant-badge-status-text,
+.badge-available .ant-badge-status-text {
+    color: white;
+}
+
+.card-text-bold {
+    font-weight: bold;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-ok-button {
+    margin-right: 8px;
+}
+
+.modal-cancel-button {
+    margin-right: 8px;
+}

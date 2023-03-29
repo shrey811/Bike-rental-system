@@ -1,4 +1,4 @@
-import { Button, DatePicker, Form, Input, Modal } from 'antd';
+import { Button, Col, DatePicker, Form, Input, Modal, Row } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -9,19 +9,24 @@ import { API_URL } from '../../Services/ajaxservice';
 import { getCards, getUser } from '../../Services/axios';
 import { CustomCard } from '../../Shared/Moreinfolayout';
 
+
+import RentModal from '../Context/Khalti.payment';
+
 interface CardParams {
     id: string;
 }
 
 const Moreinfo: React.FC = () => {
+
     const [selectedCard, setSelectedCard] = useState<Bike | null>(null);
     const [inventory, setInventory] = useState<Bike[]>([]);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [form] = Form.useForm();
+    const [visible, setVisible] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const { id } = useParams<CardParams>();
     const history = useHistory();
-
+    const [secondModalVisible, setSecondModalVisible] = useState(false);
     const [rentalPeriod, setRentalPeriod] = useState(selectedCard?.price);
     const [userId, setUserId] = useState<number>();
 
@@ -32,6 +37,8 @@ const Moreinfo: React.FC = () => {
       }
       fetchUser();
     }, []);
+  
+ 
 
 const handleRentalDatesChange = (dates: any) => {
   if (dates && dates.length === 2) {
@@ -79,21 +86,28 @@ const handleRentalDatesChange = (dates: any) => {
     }
 
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-
-  const handleOK = () => {
-      setIsModalOpen(false);
-    
-        
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
+    const showModal = () => {
+      setVisible(true);
     };
-    
+  
+    const handleOk = () => {
+      setVisible(false);
+      setSecondModalVisible(true);
+    };
+  
+    const handleCancel = () => {
+      setVisible(false);
+    };
+  
+
+  
+    const handleSecondModalOk = () => {
+      setSecondModalVisible(false);
+    };
+  
+    const handleSecondModalCancel = () => {
+      setSecondModalVisible(false);
+    };
     const handleSubmit = async (value: any)  => {
     const formData = await form.validateFields();
         const rental:rentModel = {
@@ -112,11 +126,24 @@ const handleRentalDatesChange = (dates: any) => {
           } catch (error) {
             console.error(error);
             // show error message
-          }
+      }
+       history.push('/inventory');
+      // Show success message
+      Modal.success({
+        content: 'Thanks for renting!',
+      });
+      localStorage.setItem('hasRentOrder', 'true');
+      console.groupCollapsed('My Logs');
+      console.log(localStorage.getItem('hasRentOrder'));
+      console.groupEnd();
+ 
      };
 
     return (
-        <div>
+      <div>
+      <Row>
+          <Col xl={24}>
+         
             <CustomCard
                 id={selectedCard.id}
                 name={selectedCard.name}
@@ -132,13 +159,20 @@ const handleRentalDatesChange = (dates: any) => {
             
             />
             
-
-                
+          </Col>
+          <Col xl={12 }></Col>
+            <Col>
           
-            <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
-            <Modal title="Please Fill The Following Information" open={isModalOpen}  onOk={handleOK} onCancel={handleCancel}>
+            <Button type="primary" onClick={showModal} >
+      Rent now
+          </Button>
+        </Col>
+        </Row>
+        <Modal title="Please Fill The Following Information"
+       
+        visible={visible}
+        onOk={handleOk}
+        onCancel={handleCancel}>
                 <Form form={form}
                 >
       <Form.Item label="Rental date" name={"rentedOn"}>
@@ -161,11 +195,17 @@ const handleRentalDatesChange = (dates: any) => {
         </Form.Item> */}
  
           </Form>
-          <Button type="primary"  onClick={handleSubmit}>
+          {/* <Button type="primary"  onClick={handleSubmit}>
             Submit
-          </Button>
-      </Modal>
-        </div>
+          </Button> */}
+        </Modal>
+        <RentModal
+        visible={secondModalVisible}
+        onOk={handleSubmit}
+        onCancel={handleSecondModalCancel}
+      />
+      </div>
+     
     );
 };
 

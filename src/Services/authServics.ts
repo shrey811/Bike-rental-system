@@ -10,7 +10,7 @@ interface LoginPayload {
 }
 
 export class AuthService {
-  private readonly API_URL: string = 'https://localhost:7111/api';
+  private readonly API_URL: string = 'http://localhost:5279/api';
   private readonly LOCAL_STORAGE_KEY: string = 'auth_token';
 
   async login(payload: LoginPayload): Promise<boolean> {

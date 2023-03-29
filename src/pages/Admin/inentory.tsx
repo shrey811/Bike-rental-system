@@ -142,64 +142,68 @@ import { Bike } from '../../models/Inventory';
 import { getCards } from '../../Services/axios';
 
 
-const columns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: 'Number Plate',
-        dataIndex: 'numberPlate',
-        key: 'numberPlate',
-    },
-    // {
-    //     title: 'Brand ID',
-    //     dataIndex: 'brandId',
-    //     key: 'brandId',
-    // },
-    {
-        title: 'Rating',
-        dataIndex: 'rating',
-        key: 'rating',
-    },
-    {
-        title: 'KM Run',
-        dataIndex: 'kmRun',
-        key: 'kmRun',
-    },
-    {
-        title: 'Description',
-        dataIndex: 'description',
-        key: 'description',
-    },
-    {
-        title: 'Mileage',
-        dataIndex: 'milage',
-        key: 'milage',
-    },
-    {
-        title: 'Image URL',
-        dataIndex: 'imageUrl',
-        key: 'imageUrl',
-    },
-    {
-        title: 'Rental Status',
-        dataIndex: 'rentalStatus',
-        key: 'rentalStatus',
-    },
-];
+
 
 const InventoryAdmin = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState<Bike[]>([]);
     const [total, setTotal] = useState(0);
 
+
+    const columns = [
+        {
+            title: 'Name',
+            dataIndex: 'name',
+            key: 'name',
+        },
+        {
+            title: 'Number Plate',
+            dataIndex: 'numberPlate',
+            key: 'numberPlate',
+        },
+        // {
+        //     title: 'Brand ID',
+        //     dataIndex: 'brandId',
+        //     key: 'brandId',
+        // },
+        {
+            title: 'Rating',
+            dataIndex: 'rating',
+            key: 'rating',
+        },
+        {
+            title: 'KM Run',
+            dataIndex: 'kmRun',
+            key: 'kmRun',
+        },
+        {
+            title: 'Description',
+            dataIndex: 'description',
+            key: 'description',
+        },
+        {
+            title: 'Mileage',
+            dataIndex: 'milage',
+            key: 'milage',
+        },
+        {
+            title: 'Image URL',
+            dataIndex: 'imageUrl',
+            key: 'imageUrl',
+            render: (url: string) => <img src={url} alt="Bike" width={100} />,
+        },
+        {
+            title: 'Rental Status',
+            dataIndex: 'rentalStatus',
+            key: 'rentalStatus',
+            render: (status: { value: any; }) => status.value,
+        },
+    ];
     useEffect(() => {
         setLoading(true);
-        getCards(1, 10).then((inventory) => {
-            setData(inventory.data);
-            setTotal(inventory.total);
+        getCards(1, 10).then((Bike) => {
+            setData(Bike.data);
+            setTotal(Bike.total);
             setLoading(false);
         });
     }, []);
@@ -214,9 +218,9 @@ const InventoryAdmin = () => {
                 pageSize: 10,
                 onChange: (page) => {
                     setLoading(true);
-                    getCards(page, 10).then((inventory) => {
-                        setData(inventory.data);
-                        setTotal(inventory.total);
+                    getCards(page, 10).then((Bike) => {
+                        setData(Bike.data);
+                        setTotal(Bike.total);
                         setLoading(false);
                     });
                 },

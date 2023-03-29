@@ -16,6 +16,7 @@ import { getCards } from "../../Services/axios";
 import MenuList from "../Components/menu";
 import { useHistory } from "react-router-dom";
 import { CustomCard } from "../Context/Card";
+import Popup from "./Popup";
 
 
 
@@ -98,7 +99,8 @@ export default function Dashboard() {
     }
     return (
 
-        <>
+        <div style={{background: "black",
+        color: "white",}}>
             <MenuList />
             {/* <MenuList></MenuList> */}
             <ContentLayout pageTitle="" >
@@ -110,7 +112,7 @@ export default function Dashboard() {
                         <Carousel autoplay style={{ marginBottom: "2rem" }} >
                             <div className="carousel">
 
-                                <img style={contentStyle} src="https://www.pngarts.com/files/4/Motorcycle-PNG-Transparent-Image.png" />
+                                <img style={contentStyle} src="https://image.similarpng.com/very-thumbnail/2020/09/Hand-drawn-motorcycle-poster-on-transparent-background-PNG.png" />
                                 <div className="click">
                                     <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
 
@@ -251,7 +253,7 @@ export default function Dashboard() {
                 </MakeBggrey>
                 <MakeBgyellow>
                     <Row gutter={16}>
-                        <h1>20+ BIKE TYPE & BRANDS </h1>
+                        <h1 style={{color:"white"}}>20+ BIKE TYPE & BRANDS </h1>
                         <Col xs={12} md={12} lg={6} xl={6}>
                             <Card hoverable style={{ width: 300, height: "250px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                                 <CalendarOutlined style={{ display: "flex", justifyContent: "center", alignItems: "center" }} />
@@ -324,7 +326,9 @@ export default function Dashboard() {
 
                         </Col>
                     </Row>
+
                 </MakeBgWhite>
+                <Popup/>
 
 
 
@@ -332,6 +336,6 @@ export default function Dashboard() {
 
 
             </ContentLayout>
-        </>
+        </div>
     );
 }

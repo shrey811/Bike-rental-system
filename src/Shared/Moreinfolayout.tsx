@@ -144,7 +144,7 @@ const CustomCard: React.FC<Bike> = ({ id, name, imageUrl, rating, kmRun, milage,
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                             <div style={{ marginLeft: '1rem', marginTop: "12rem" }}>
                                 {/* <img src={imageUrl} alt={name} style={{ width: '15rem' }} /> */}
-                                <img src="https://www.pngarts.com/files/4/Motorcycle-Free-PNG-Image.png"
+                                <img src={imageUrl}
                                     width={"97%"} height={"97%"} />
                             </div>
                            
@@ -229,7 +229,7 @@ const CustomCard: React.FC<Bike> = ({ id, name, imageUrl, rating, kmRun, milage,
 
 
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Bikers Choice Since 2013 @ABC ABC</Footer>
+               
             </Layout >
         </Layout >
     );

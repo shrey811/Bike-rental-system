@@ -1,6 +1,6 @@
 
 
-export const API_URL = 'https://localhost:7111/api';
+export const API_URL = 'http://localhost:5279/api';
 
 export async function postData(url: string, data: any) {
   const response = await fetch(`${API_URL}/${url}`, {

@@ -28,11 +28,7 @@ const columns = [
         dataIndex: 'rentedUntil',
         key: 'rentedUntil',
     },
-    {
-        title: 'Rental status',
-        dataIndex: 'rentalstatus',
-        key: 'rentalstatus',
-    },
+
 
     {
         title: 'Price',

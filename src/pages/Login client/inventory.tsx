@@ -9,7 +9,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { getCards } from '../../Services/axios';
 import MenuList from '../Components/menu';
-
+import Logo from "./Logo.png";
 
 import { Input } from 'antd';
 // import { CustomCard } from '../Context /Card';
@@ -31,17 +31,28 @@ const Inventory: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
 
   const [cardData, setCardData] = useState<Bike[]>([]);
-
+ 
   const handleSearch = async (value: string) => {
     const { data } = await getCards(1, 10, value);
+    setCardData(data);
+  };
+
+  const handleSort = async (value: string) => {
+    const { data } = await getCards(1, 10, undefined, value);
     setCardData(data);
   };
 
   useEffect(() => {
     getCards(1, 10).then((response) => {
        setCardData(response.data);
-    });
+    }); 
   }, []);
+
+  // useEffect(() => {
+  //   axios.get(`${API_URL}/bike`).then((response) => {
+  //     setData(response.data);
+  //   });
+  // }, []);
 
   // useEffect(() => {
   //    async function fetchCards(searchText?: string) {
@@ -55,6 +66,18 @@ const Inventory: React.FC = () => {
   //   setPage(page);
   //   // default to 10 if pageSize is not specified
   // }
+
+  // const handleSort = (field) => {
+  //   const sortedData = [...data].sort((a, b) => {
+  //     if (sortOrder === "asc") {
+  //       return a[field] - b[field];
+  //     } else {
+  //       return b[field] - a[field];
+  //     }
+  //   });
+  //   setData(sortedData);
+  //   setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+  // };
 
   const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
     if (type === 'prev') {
@@ -73,8 +96,8 @@ const Inventory: React.FC = () => {
 
       <Layout hasSider >
         <Sider breakpoint="sm"
-          collapsible
-          collapsed={collapsed}
+          //  collapsible
+          // collapsed={collapsed}
           collapsedWidth="0"
           onCollapse={(collapsed: boolean) => setCollapsed(collapsed)}
           // trigger={null}
@@ -83,9 +106,10 @@ const Inventory: React.FC = () => {
           }}
 
           style={{
-            backgroundColor: "white",
+            backgroundColor: "black",
+            color:'white',
             height: '100vh',
-            width: '100vh',
+            width:"200rem",
             position: 'fixed',
             left: 0,
             top: 0,
@@ -93,17 +117,17 @@ const Inventory: React.FC = () => {
 
           }}
         >
-          <div className="logo" >
+          <div  >
             <Row>
-              <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU'
-                width={"150rem"} height={"60rem"} style={{ marginLeft: "20px" }} />
+            <img src={Logo}
+                                width={"170rem"} height={"85rem"} />
 
-              <h3 style={{ marginLeft: "30px" }}>  BIKERS CHOICE</h3>
+              {/* <h3 style={{backgroundColor: "black", color: "white", marginLeft: "30px" }}>  BIKERS CHOICE</h3> */}
             </Row>
           </div>
 
 
-          <Menu mode="inline" style={{ marginTop: "10rem", backgroundColor: "white", color: "black", fontSize: "19px" }}>
+          <Menu mode="inline" style={{ marginTop: "10rem", backgroundColor: "black", color: "white", fontSize: "20px",marginLeft:"25px" }}>
             <Menu.Item key="home">
               <Link to="/dashboard">
                 {collapsed ? <PieChartOutlined style={{ fontSize: "19px" }} /> : null}
@@ -142,13 +166,14 @@ const Inventory: React.FC = () => {
       <Layout style={{
         marginLeft: collapsed ? 90 : 200,
         transition: 'margin 0.2s',
+        backgroundColor: "	rgba(0.0, 0.0, 0.0, 1.0)",
       }}  >
 
-        <Header style={{ padding: 0, background: "rgb(230, 227, 227)", display: "flex", alignItems: "center", justifyContent: "START" }}>
+        {/* <Header style={{ padding: 0, background: "rgb(230, 227, 227)", display: "flex", alignItems: "center", justifyContent: "START" }}>
 
           <h2> INVENTORY </h2>
 
-        </Header>
+        </Header> */}
 
 
         <Content
@@ -156,9 +181,12 @@ const Inventory: React.FC = () => {
             // margin: collapsed ? '24px 16px' : '24px calc(15% + 10px)',
             padding: 24,
             minHeight: 280,
-            background: ' rgb(255, 255, 255)',
+            background: ' black',
+            color: 'white',
             transition: 'margin 0.2s',
             maxWidth: collapsed ? '90vw' : '100vw',
+            backgroundColor: "	rgba(0.0, 0.0, 0.0, 1.0)",
+           
           }}
         >
 
@@ -166,28 +194,26 @@ const Inventory: React.FC = () => {
 
           <Row gutter={[16, 16]} style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }} >
             <Col xs={24} sm={26} md={24} lg={24} xl={12} style={{ display: "flex", justifyContent: "flex-start" }}>
-              <Select
-                dropdownMatchSelectWidth
-                defaultValue="Price"
-                style={{ width: "20rem" }}
-                // onChange={handleSort}
-                options={[
-                  {
-                    value: 'rating',
-                    label: 'rating',
-                  },
-                  {
-                    value: 'kmRun',
-                    label: 'kmRun',
-                  },
-                  {
-                    value: 'milage',
-                    label: 'milage',
-                  },
-
-                ]}
-              />
-          
+            <Select
+      dropdownMatchSelectWidth
+      defaultValue="Price"
+      style={{ width: "20rem" }}
+      onChange={handleSort}
+      options={[
+        {
+          value: 'rating',
+          label: 'Rating',
+        },
+        {
+          value: 'milage',
+          label: 'Milage',
+        },
+        {
+          value: 'price',
+          label: 'Price',
+        },
+      ]}
+    />
             </Col>
             <Col xs={24} sm={26} md={24} lg={24} xl={12} style={{ display: "flex", justifyContent: "flex-end" }}>
               {/* <Search
@@ -207,11 +233,12 @@ const Inventory: React.FC = () => {
   enterButton
   allowClear
 /> */}
- <Search
+         <Search
            placeholder="Search inventory"
            onSearch={handleSearch}
            enterButton
-           allowClear
+                allowClear
+                style={{ width: 200, margin: '0 20px',backgroundColor:"black",color:"white" }}
       />
             </Col>
 
@@ -226,7 +253,7 @@ const Inventory: React.FC = () => {
                   kmRun={card.kmRun}
                   milage={card.milage}
                   numberPlate={card.numberPlate}
-                  brandId={0}
+                  brandId={card.brandId}
                   // brandName={card.brandName}
                   description={card.description}
                   rentalStatus={card.rentalStatus}
@@ -248,7 +275,7 @@ const Inventory: React.FC = () => {
 
           />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Bikers Choice Since 2013 @ABC ABC</Footer>
+      
 
       </Layout>
 

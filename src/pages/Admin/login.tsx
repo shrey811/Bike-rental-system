@@ -8,11 +8,13 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import AddEntry from './addentry';
-import { DemoLine } from './dashboard';
+import DemoLine from './dashboard';
+
 
 
 import InventoryAdmin from './inentory';
 import Rent from './rent';
+import ReviewTable from './review';
 import UserList from './userList';
 
 
@@ -21,25 +23,28 @@ import UserList from './userList';
 const Admin: React.FC = () => {
 
     const [collapsed, setCollapsed] = useState(false);
-    const [showAddEntry, setShowAddEntry] = useState(true);
+    const [showAddEntry, setShowAddEntry] = useState(false);
     const [showInventory, setShowInventory] = useState(false);
     const [showUserList, setShowUserList] = useState(false);
     const [showRentList, setShowrentList] = useState(false);
-    const [dashboard, setDashboard] = useState(false);
-
+    const [dashboard, setDashboard] = useState(true);
+    const [showReview, setShowReview] = useState(false);
     const handleMenuItemClick = (menu: string) => {
-        if (menu === "addEntry") {
-            setShowAddEntry(true);
+        if (menu === "dashboard") {
+            setShowAddEntry(false);
             setShowInventory(false);
             setShowUserList(false);
             setShowrentList(false);
-             setDashboard(false);
+            setDashboard(true);
+            setShowReview(false);
+            
         } else if (menu === "inventory") {
             setShowAddEntry(false);
             setShowInventory(true);
             setShowUserList(false);
             setShowrentList(false);
             setDashboard(false);
+            setShowReview(false);
 
         } else if (menu === "userlist") {
             setShowAddEntry(false);
@@ -47,6 +52,7 @@ const Admin: React.FC = () => {
             setShowUserList(true);
             setShowrentList(false);
             setDashboard(false);
+            setShowReview(false);
         }
 
         else if (menu === "rentList") {
@@ -55,13 +61,25 @@ const Admin: React.FC = () => {
             setShowUserList(false);
             setShowrentList(true);
             setDashboard(false);
+            setShowReview(false);
         }
-        else if (menu === "dashboard") {
+        else if 
+        (menu === "addEntry") {
+            setShowAddEntry(true);
+            setShowInventory(false);
+            setShowUserList(false);
+            setShowrentList(false);
+            setDashboard(false);
+            setShowReview(false);
+        }
+        else if 
+        (menu === "showReview") {
             setShowAddEntry(false);
             setShowInventory(false);
             setShowUserList(false);
             setShowrentList(false);
-            setDashboard(true);
+            setDashboard(false);
+            setShowReview(true);
         }
     };
 
@@ -123,6 +141,10 @@ const Admin: React.FC = () => {
                             {collapsed ? <UserOutlined style={{ fontSize: "19px" }} /> : null}
                             <span> <UserOutlined style={{ fontSize: "19px" }} /> Rent List</span>
                         </Menu.Item>
+                        <Menu.Item key="showReview" onClick={() => handleMenuItemClick("showReview")}>
+                            {collapsed ? <UserOutlined style={{ fontSize: "19px" }} /> : null}
+                            <span> <UserOutlined style={{ fontSize: "19px" }} />Review</span>
+                        </Menu.Item>
                         <Divider style={{ backgroundColor: "black", marginTop: "25rem" }} />
                         <Menu.Item key="logout" >
                             <Link to="/">
@@ -155,9 +177,9 @@ const Admin: React.FC = () => {
                     {showUserList && <UserList />}
                     {showRentList && <Rent />}
                     {dashboard && <DemoLine />}
+                    {showReview &&  <ReviewTable/>}
                 </Content>
 
-                <Footer style={{ textAlign: 'center' }}>Bikers Choice Since 2013 @ABC ABC</Footer>
 
             </Layout>
         </>

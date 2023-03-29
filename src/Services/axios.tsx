@@ -26,20 +26,79 @@ interface RentResponse {
 //   return { data, total };
 // }
 
-export async function getCards(page?: number, pageSize?: number, searchText?: string): Promise<inventory> {
-  const response = await axios.get(`${API_URL}/bike`);
-  const { data, headers } = response;
-  const total = Number(headers['x-total-count']);
+// export async function getCards(page?: number, pageSize?: number, searchText?: string): Promise<inventory> {
+//   const response = await axios.get(`${API_URL}/bike`);
+//   const { data, headers } = response;
+//   const total = Number(headers['x-total-count']);
   
+//   if (searchText) {
+//     const filteredData = data.filter((card: { name: string; }) =>
+//       card.name.toLowerCase().includes(searchText.toLowerCase())
+//     );
+//     return { data: filteredData, total };
+//   }
+  
+//   return { data, total };
+// }
+
+// export async function getCards(page?: number, pageSize?: number, searchText?: string, sort?: string): Promise<inventory> {
+//   let url = `${API_URL}/bike`;
+
+
+
+//   const response = await axios.get(url);
+//   const { data, headers } = response;
+
+//   const total = Number(headers['x-total-count']);
+  
+  
+//   if (searchText) {
+//     const filteredData = data.filter((card: { name: string; }) =>
+//       card.name.toLowerCase().includes(searchText.toLowerCase())
+//     );
+//     return { data: filteredData, total };
+//   }
+  
+//   return { data, total };
+
+  
+// }
+
+export async function getCards(
+  page?: number,
+  pageSize?: number,
+  searchText?: string,
+  sort?: string
+): Promise<inventory> {
+  let url = `${API_URL}/bike`;
+
+  const response = await axios.get(url);
+  const { data, headers } = response;
+
+  // Filter data based on search text
+  let filteredData = data;
   if (searchText) {
-    const filteredData = data.filter((card: { name: string; }) =>
+    filteredData = data.filter((card: { name: string }) =>
       card.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    return { data: filteredData, total };
   }
-  
-  return { data, total };
+
+  // Sort data based on sort parameter
+  if (sort === 'rating') {
+    filteredData.sort((a: Bike, b: Bike) => b.rating - a.rating);
+  } else if (sort === 'kmRun') {
+    filteredData.sort((a: Bike, b: Bike) => a.kmRun - b.kmRun);
+  } else if (sort === 'milage') {
+    filteredData.sort((a: Bike, b: Bike) => b.milage - a.milage);
+  }
+
+  const total = Number(headers['x-total-count']);
+  return { data: filteredData, total };
 }
+
+
+
+
 
 // export async function getCards(page: number, pageSize: number): Promise<inventory> {
 //   const response = await axios.get(`${API_URL}/bike`);

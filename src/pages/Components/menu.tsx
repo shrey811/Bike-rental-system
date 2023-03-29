@@ -1,9 +1,12 @@
 import { DashboardOutlined, InfoCircleOutlined, LoginOutlined, LogoutOutlined, PieChartOutlined, UserOutlined } from '@ant-design/icons';
+import { background } from '@cloudinary/base/qualifiers/focusOn';
 import { Col, Input, Menu, MenuProps, Row } from 'antd';
 
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { Bike } from '../../models/Inventory';
 import { useAuth } from '../../Services/Authprovider';
+import { getCards } from '../../Services/axios';
 
 import Logo from "./Logo.png";
 
@@ -73,34 +76,22 @@ function getItem(
 
 
 const MenuList = () => {
-  const [current, setCurrent] = useState('home');
 
   const { isAuthenticated } = useAuth();
-  const { Search } = Input;
-  // const history = useHistory();
-
-  // function handleMenuClick(router) {
-  //     history.push(router);
-
-
-
-
-
-  // const onClick: MenuProps['onClick'] = (e) => {
-  //     // console.log('click ', e);
-  //     setCurrent(e.key);
-  //     navigate('/login')
 
 
   return (
     <div style={{
       position: "sticky",
       top: 0,
-      zIndex: 1
+      zIndex: 1,
+      backgroundColor:"black",
+     
+      color: "white",
     }}>
       <Row  >
         <Col  >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "white", boxShadow: "rgb(0 0 0 / 30%) 0px 3px 10px" }} >
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "black",color:"white", boxShadow: "rgb(0 0 0 / 30%) 0px 3px 10px" }} >
             <Col span={1}></Col>
             <Col span={2}  >
 
@@ -129,7 +120,7 @@ const MenuList = () => {
             </Menu>
 
             <Col >
-              <Search style={{ width: "20rem", marginLeft: "15em" }} ></Search>
+       
             </Col>
             <Menu className='menu'>
               {isAuthenticated ? (

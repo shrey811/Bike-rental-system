@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Router, Switch } from 'react-router-dom';
 import AddEntry from './pages/Admin/addentry';
 import InventoryAdmin from './pages/Admin/inentory';
 import Admin from './pages/Admin/login';
+
+
 import Rent from './pages/Admin/rent';
 import userList from './pages/Admin/userList';
 import { About } from './pages/Login client/about';
@@ -52,7 +54,6 @@ function App() {
       </AuthProvider>
 
     </BrowserRouter>
-
 
   )
 
