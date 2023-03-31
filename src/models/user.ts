@@ -10,5 +10,5 @@ export interface user {
   lastName: string,
   phoneNumber: number,
   email: string,
- 
+
 }

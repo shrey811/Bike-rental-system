@@ -16,6 +16,9 @@ const Register = () => {
             throw new Error('Passwords do not match');
         }
     };
+    const handlenavigate = () => {
+        history.push('/');
+    }
 
     const handleSubmit = async (values: registration) => {
         try {
@@ -31,16 +34,21 @@ const Register = () => {
     return (
         <>
             <div className="registerContainer">
+
                 <div className="register">
+
                     <Form
                         name="registerForm"
                         form={form}
                         layout="vertical"
                         style={{ marginTop: '2rem' }}
+                        labelCol={{ span: 24 }}
+                        wrapperCol={{ span: 24 }}
                         onFinish={handleSubmit}
                     >
+                        <h4 style={{ display: "flex", alignItems: "center", justifyContent: "center", fontSize: "40px" }}>Register Now</h4>
                         <Row gutter={FORMROWGUTTER}>
-                            <Col span={12}>
+                            <Col span={11}>
                                 <Form.Item
                                     label="First Name"
                                     name="firstName"
@@ -49,7 +57,7 @@ const Register = () => {
                                     <Input size="large" />
                                 </Form.Item>
                             </Col>
-                            <Col span={12}>
+                            <Col span={11}>
                                 <Form.Item
                                     label="Last Name"
                                     name="lastName"
@@ -59,7 +67,7 @@ const Register = () => {
                                 </Form.Item>
                             </Col>
 
-                            <Col span={12}>
+                            <Col span={11}>
                                 <Form.Item
                                     label="Email"
                                     name="email"
@@ -71,7 +79,7 @@ const Register = () => {
                                     <Input size="large" />
                                 </Form.Item>
                             </Col>
-                            <Col span={12}>
+                            <Col span={11}>
                                 <Form.Item
                                     label="Contactnumber"
                                     name="phone"
@@ -85,7 +93,7 @@ const Register = () => {
                             </Col>
 
 
-                            <Col span={12}>
+                            <Col span={11}>
                                 <Form.Item
                                     label="Password"
                                     name="password"
@@ -97,7 +105,7 @@ const Register = () => {
                                     <Input.Password size="large" />
                                 </Form.Item>
                             </Col>
-                            <Col span={12}>
+                            <Col span={11}>
                                 <Form.Item
                                     label="Confirm Password"
 
@@ -110,11 +118,19 @@ const Register = () => {
                                 </Form.Item>
                             </Col>
 
-                            <Col span={24}>
+                            <Col span={20}>
                                 <Form.Item>
-                                    <Button size="large" type="primary" htmlType="submit">
-                                        Register
-                                    </Button>
+                                    <Button.Group>
+                                        <Button size="large" type="primary" htmlType="submit">
+                                            Register
+                                        </Button>
+                                        <Button size="large" type="dashed" onClick={handlenavigate}>
+                                            Go Back
+                                        </Button>
+                                    </Button.Group>
+                                </Form.Item>
+                                <Form.Item>
+
                                 </Form.Item>
                             </Col>
                         </Row>

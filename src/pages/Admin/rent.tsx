@@ -2,7 +2,7 @@
 
 import { Table } from 'antd';
 import { useEffect, useState } from 'react';
-import {  Rental } from '../../models/Rent';
+import { Rental } from '../../models/Rent';
 
 import { getCards, getRent } from '../../Services/axios';
 
@@ -35,6 +35,12 @@ const columns = [
         dataIndex: 'price',
         key: 'price',
     },
+    {
+        title: 'Image URL',
+        dataIndex: 'imageUrl',
+        key: 'imageUrl',
+        render: (url: string) => <img src={url} width={100} />,
+    }
 
 ];
 
@@ -67,7 +73,7 @@ const Rent = () => {
                         setTotal(RentResponse.total);
                         setLoading(false);
                     });
-                 
+
                 },
             }}
         />

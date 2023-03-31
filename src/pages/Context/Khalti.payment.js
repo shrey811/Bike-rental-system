@@ -1,7 +1,7 @@
 import React from "react";
 import KhaltiCheckout from "khalti-checkout-web";
 import config from "./khaltiConfig";
-import { Modal, Radio } from "antd";
+import { Col, Modal, Radio, Row } from "antd";
 
 const RentModal = ({ visible, onOk, onCancel }) => {
     let checkout = new KhaltiCheckout(config);
@@ -19,27 +19,40 @@ const RentModal = ({ visible, onOk, onCancel }) => {
         boxShadow: "0 0 10px 0 rgba(0,0,0,0.2)",
     };
 
-    
+
     return (
         <div>
-                <Modal
-      title="Rent Confirmation"
-      visible={visible}
-      onOk={onOk}
-      onCancel={onCancel}
-    >
-            <button
-                onClick={() => checkout.show({ amount: 10000 })}
-                style={buttonStyles}
+            <Modal
+                title="Rent Confirmation"
+                visible={visible}
+                onOk={onOk}
+                onCancel={onCancel}
             >
-                Pay Via Khalti
-                </button>
-                <br></br>
-                or
-                <Radio>
-                    Pay Via Cash
-                </Radio>
-        </Modal>
+                <Row>
+                    <Col span={8}>
+                        <button
+                            onClick={() => checkout.show({ amount: 10000 })}
+                            style={buttonStyles}
+                        >
+                            Pay Via Khalti
+                        </button>
+                    </Col>
+                    <Col span={3}>
+                        <p style={{
+                            fontWeight: "bold",
+                            fontSize: "20px",
+                        }} >
+                            or
+                        </p>
+                    </Col>
+                    <Col>
+
+                        <Radio>
+                            Pay Via Cash
+                        </Radio>
+                    </Col>
+                </Row>
+            </Modal>
         </div>
     );
 }

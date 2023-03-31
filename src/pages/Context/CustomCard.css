@@ -1,20 +1,21 @@
 .custom-card {
-    width: 320px;
-    height: 450px;
-    background-color: rgba(0.0, 0.0, 0.0, 1.0);
+    width: 400px;
+    height: 390px;
+    background-color: rgba(28, 28, 28, 0.8);
     color: white;
-    border: white 1px solid;
+    border: rgb(26, 26, 26) 1px solid;
+    border-radius: 10px;
 }
 
 .card-image-container {
     height: 200px;
     overflow: hidden;
-    border: white 1px solid;
+    border:rgb(26, 26, 26) 1px solid;
 }
 
 .card-image {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 .card-title {

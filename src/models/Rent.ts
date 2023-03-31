@@ -6,14 +6,15 @@ export interface Rental {
     price: number,
     rentedUntil: Date,
     remark: string,
-    
+
 }
 
-export interface rentModel{
+export interface rentModel {
     userId: number,
     bikeId: number,
     rentedOn: Date,
     price: number,
-    rentedUntil: Date ,
-    remarks: string
-  }
+    rentedUntil: Date,
+    remarks: string,
+    imageUrl: string
+}

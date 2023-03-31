@@ -16,7 +16,7 @@ import InventoryAdmin from './inentory';
 import Rent from './rent';
 import ReviewTable from './review';
 import UserList from './userList';
-
+import Logo from "../Logo/Logo.png";
 
 
 
@@ -37,7 +37,7 @@ const Admin: React.FC = () => {
             setShowrentList(false);
             setDashboard(true);
             setShowReview(false);
-            
+
         } else if (menu === "inventory") {
             setShowAddEntry(false);
             setShowInventory(true);
@@ -63,8 +63,8 @@ const Admin: React.FC = () => {
             setDashboard(false);
             setShowReview(false);
         }
-        else if 
-        (menu === "addEntry") {
+        else if
+            (menu === "addEntry") {
             setShowAddEntry(true);
             setShowInventory(false);
             setShowUserList(false);
@@ -72,8 +72,8 @@ const Admin: React.FC = () => {
             setDashboard(false);
             setShowReview(false);
         }
-        else if 
-        (menu === "showReview") {
+        else if
+            (menu === "showReview") {
             setShowAddEntry(false);
             setShowInventory(false);
             setShowUserList(false);
@@ -88,7 +88,7 @@ const Admin: React.FC = () => {
 
 
     return (
-        <>
+        <div style={{ backgroundColor: "#f1f1f1" }}>
             <Layout hasSider >
                 <Sider breakpoint="sm"
                     collapsible
@@ -101,9 +101,9 @@ const Admin: React.FC = () => {
                     }}
 
                     style={{
-                        backgroundColor: "white",
+                        backgroundColor: "black",
                         height: '100vh',
-                        width: '100vh',
+                        width: '20vw',
                         position: 'fixed',
                         left: 0,
                         top: 0,
@@ -111,16 +111,16 @@ const Admin: React.FC = () => {
 
                     }}
                 >
-                    <div className="logo" >
-                        <Row>
-                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXOu5OD_aXGOn6A-2WAsF5xTldronHXQzq9Q&usqp=CAU'
-                                width={"150rem"} height={"60rem"} style={{ marginLeft: "20px" }} />
+                    {/* <div className="logo" > */}
+                    <Row>
+                        <img src={Logo}
+                            width={"150rem"} height={"130rem"} style={{ marginLeft: "20px" }} />
 
-                            <h3 style={{ marginLeft: "30px" }}>  BIKERS CHOICE</h3>
-                        </Row>
-                    </div>
+                        {/* <h3 style={{ marginLeft: "30px" }}>  BIKERS CHOICE</h3> */}
+                    </Row>
+                    {/* </div> */}
 
-                    <Menu mode="inline" style={{ marginTop: "10rem", backgroundColor: "white", color: "black", fontSize: "19px" }}>
+                    <Menu mode="inline" className="menuinventory" style={{ marginTop: "10rem", backgroundColor: "black", color: "white", fontSize: "19px" }}>
                         <Menu.Item key="addEntry" onClick={() => handleMenuItemClick("addEntry")}>
                             {collapsed ? <PhoneOutlined style={{ fontSize: "19px" }} /> : null}
                             <span> <PhoneOutlined style={{ fontSize: "19px" }} /> Add Entry</span>
@@ -177,12 +177,12 @@ const Admin: React.FC = () => {
                     {showUserList && <UserList />}
                     {showRentList && <Rent />}
                     {dashboard && <DemoLine />}
-                    {showReview &&  <ReviewTable/>}
+                    {showReview && <ReviewTable />}
                 </Content>
 
 
             </Layout>
-        </>
+        </div>
     )
 }
 

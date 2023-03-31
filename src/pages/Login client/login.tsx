@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { AuthService } from '../../Services/authServices'
 
-import Logo from "./Logo.png";
+import Logo from "../Logo/Logo.png";
 const Login = () => {
     const history = useHistory();
     const [loading, setLoading] = useState<boolean>(false);
@@ -18,7 +18,7 @@ const Login = () => {
         try {
 
             // check if the email and password are "admin" and "admin"
-            if ( values.email === "admin" && values.password === "admin") {
+            if (values.email === "admin" && values.password === "admin") {
                 history.push('/admin');
                 return;
             }
@@ -55,7 +55,7 @@ const Login = () => {
                     <div className='last-child'>
                         <div style={{ display: "flex", justifyContent: "cener", alignItems: "center", marginBottom: "1rem" }}>
                             <img src={Logo}
-                                width={"170rem"} height={"85rem"} />
+                                width={"100rem"} height={"85rem"} />
 
 
                         </div>
@@ -98,9 +98,9 @@ const Login = () => {
                                 />
                             </Form.Item>
                             <Form.Item>
-                                <Form.Item valuePropName="checked" noStyle>
+                                {/* <Form.Item valuePropName="checked" noStyle>
                                     <Checkbox>Remember me</Checkbox>
-                                </Form.Item>
+                                </Form.Item> */}
 
                                 <a className="login-form-forgot" href="/forget-password">
                                     Forgot password
@@ -109,7 +109,7 @@ const Login = () => {
 
                             <Form.Item>
                                 <div >
-                                    <Button style={{ width: "15rem" }} size='middle' type="primary" htmlType="submit" loading={loading}>
+                                    <Button style={{ width: "15rem", backgroundColor: "darkcyan" }} size='middle' type="primary" htmlType="submit" loading={loading}>
                                         Log in
                                     </Button>
 

@@ -2,12 +2,12 @@ import axios from 'axios';
 import { Bikepost } from '../models/bike';
 import { Bike } from '../models/Inventory';
 import { registration } from '../models/registration';
-import {  Rental, rentModel } from '../models/Rent';
+import { Rental, rentModel } from '../models/Rent';
 import { user } from '../models/user';
 import { API_URL } from './ajaxservice';
 
 interface inventory {
-  data: Bike [];
+  data: Bike[];
   total: number;
 }
 interface UsersResponse {
@@ -30,14 +30,14 @@ interface RentResponse {
 //   const response = await axios.get(`${API_URL}/bike`);
 //   const { data, headers } = response;
 //   const total = Number(headers['x-total-count']);
-  
+
 //   if (searchText) {
 //     const filteredData = data.filter((card: { name: string; }) =>
 //       card.name.toLowerCase().includes(searchText.toLowerCase())
 //     );
 //     return { data: filteredData, total };
 //   }
-  
+
 //   return { data, total };
 // }
 
@@ -50,18 +50,18 @@ interface RentResponse {
 //   const { data, headers } = response;
 
 //   const total = Number(headers['x-total-count']);
-  
-  
+
+
 //   if (searchText) {
 //     const filteredData = data.filter((card: { name: string; }) =>
 //       card.name.toLowerCase().includes(searchText.toLowerCase())
 //     );
 //     return { data: filteredData, total };
 //   }
-  
+
 //   return { data, total };
 
-  
+
 // }
 
 export async function getCards(
@@ -113,9 +113,16 @@ export async function addBike(bike: Bikepost): Promise<Bikepost> {
   return response.data;
 }
 export async function rent(rents: rentModel): Promise<rentModel> {
-  const response = await axios.post(`${API_URL}/Rent/rent`,rents);
+  const response = await axios.post(`${API_URL}/Rent/rent`, rents);
   return response.data;
 }
+
+export const rentBike = async (bikeId: string): Promise<void> => {
+
+  const response = await axios.put(`${API_URL}/bike/${bikeId}/rental-status`);
+  console.log(response.data); // Optional: Log the response data
+  return response.data;
+};
 
 export async function getUsers(page: number, pageSize: number): Promise<UsersResponse> {
   const response = await axios.get(`${API_URL}/user/users`);

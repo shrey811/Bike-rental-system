@@ -4,6 +4,7 @@ import { Footer } from "antd/es/layout/layout";
 import React, { ReactNode } from "react";
 import MenuList from "../pages/Components/menu";
 import "./ContentStyle.scss";
+import FloatButton from "./Floatbutton";
 
 
 
@@ -56,8 +57,8 @@ const ContentLayout = ({
 
           <div className="body_part">{children}</div>
         </div>
-        <Footer className="footer" style={{ backgroundColor:"black",color:"white"}}>
-          <h3 style={{ backgroundColor:"darkslategray",color:"white"}}>Bikers Choice Since 2013 @ABC</h3>
+        <Footer className="footer" style={{ backgroundColor: "black", color: "white" }}>
+          <h3 style={{ color: "white" }}>Bikers Choice Since 2013 @ABC</h3>
 
           <br></br>
           <br></br>
@@ -83,7 +84,9 @@ const ContentLayout = ({
               <p style={{ fontSize: "17px" }}> 01-5230380 / 9847337476 / 9811308122 </p>
             </Col>
           </Row>
+
         </Footer>
+        {/* <FloatButton /> */}
       </React.Fragment>
     </>
   );
@@ -101,11 +104,13 @@ export const MakeBgWhite = ({ padding, children }: makeProps) => {
 
     <div
       style={{
-        background: "black",
+        // background: "black",
         color: "white",
         padding: padding ? padding : "1rem",
+        // background: "rgba(56, 56, 56, 0.8)",
+        backgroundImage: " linear-gradient(to right top, #a6a6a6, #8f8f8f, #7a7979, #646464, #504f4f, #434242, #363535, #2a2929, #212020, #191818, #0f0f0f, #000000)",
         margin: "2rem",
-        borderRadius: "0.2rem",
+        borderRadius: "20px",
       }}
     >
       {children}
@@ -144,17 +149,19 @@ export const MakeBgblue = ({ padding, children }: makeProps) => {
   return (
     <div
       style={{
-        background: "black",
+        // background: "black",
         color: "white",
         padding: padding ? padding : "1rem",
-        margin: " 2rem",
-        borderRadius: "0.2rem",
+        background: "rgba(56, 56, 56, 0.8)",
+        margin: "2rem",
+        borderRadius: "20px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         flexDirection: "column",
-        gap: "1rem",
+        // gap: "1rem",
         boxShadow: "rgb(0 0 0 / 20%) 0px 3px   10px",
+        width: "97%",
       }}
     >
       {children}
@@ -173,6 +180,7 @@ export const MakeBggrey = ({ padding, children }: makeProps) => {
         background: "black",
         color: "white",
         padding: padding ? padding : "1rem",
+
         margin: " 2rem",
         borderRadius: "0.2rem",
         display: "flex",
@@ -205,9 +213,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, imageUrl, header, desc
           <img src={imageUrl} alt="Content Image" />
         </div>
         <div className="col">
-          <h1>{header}</h1>
-          <p>{description}</p>
-          <p style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "10px" }}>{children}</p>
+          <h1 style={{ color: "whitesmoke", fontFamily: "Mouse Memoirs" }}>{header}</h1>
+          <p style={{ marginTop: "10px", fontFamily: "sans-serif" }}>{description}</p>
+          <p style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }}>{children}</p>
         </div>
       </div>
 

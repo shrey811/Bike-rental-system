@@ -1,5 +1,7 @@
+import { MailOutlined, PhoneOutlined, PushpinOutlined } from '@ant-design/icons'
 import { Button, Col, Form, Input, Row } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
+import { Footer } from 'antd/es/layout/layout'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import ContentLayout, { Layout } from '../../Shared/ContentLayout'
@@ -39,12 +41,70 @@ const Contact = () => {
                         </div>
                     </Col>
                     <Col xl={24}>
-                        <div className="contactContainer">
-                            <div className="contact">
-                                {/* <h1>Get in touch with us
+                        <Layout
+
+                            imageUrl="https://etatsug.com/contact.svg"
+                            header="For Futher Queries "
+                            description=""
+                            // If you have any further queries, please feel free to contact us at the following 
+                            // 01-5230380 / 9847337476 / 9811308122
+                            //  or  Bikerchoice@gmail.com . We will be more than happy to assist you. For email queries, we aim to reply within 24 hours
+                            imageRight={false}
+
+                        >
+
+                            <Footer className="footer" style={{ backgroundColor: "black", color: "white" }}>
+                                <h3 style={{ color: "white" }}>Bikers Choice Since 2013 @ABC</h3>
+
+                                <br></br>
+                                <br></br>
+                                <h5> <PushpinOutlined />   Address:
+                                </h5>
+                                <br></br>
+                                <p style={{ fontSize: "17px" }}> Lalitpur - 14, Chapagau</p>
+                                <br></br>
+                                <br></br>
+                                <h5> <MailOutlined />   Email:
+                                </h5>
+                                <br></br>
+                                <p style={{ fontSize: "17px" }}> Bikerchoice@gmail.com</p>
+                                <br></br>
+                                <h5> <PhoneOutlined />   Contact:
+                                </h5>
+                                <br></br>
+                                <p style={{ fontSize: "17px" }}> 01-5230380 / 9847337476 / 9811308122 </p>
+
+                                {/* <Row>
+                                    <Col >
+                                        <h5> <PushpinOutlined />   Address:
+                                        </h5>
+                                        <br></br>
+                                        <p style={{ fontSize: "17px" }}> Lalitpur - 14, Chapagau</p>
+                                    </Col>
+                                    <Col>
+                                        <h5> <MailOutlined />   Email:
+                                        </h5>
+                                        <br></br>
+                                        <p style={{ fontSize: "17px" }}> Bikerchoice@gmail.com</p>
+
+                                    </Col>
+                                    <Col >
+                                        <h5> <PhoneOutlined />   Contact:
+                                        </h5>
+                                        <br></br>
+                                        <p style={{ fontSize: "17px" }}> 01-5230380 / 9847337476 / 9811308122 </p>
+                                    </Col>
+                                </Row> */}
+
+                            </Footer>
+
+                        </Layout>
+                        {/* <div className="contactContainer">
+                            <div className="contact"> */}
+                        {/* <h1>Get in touch with us
                                 </h1> */}
-                                {/* <p style={{ fontSize: "16px" }}> Our team is here to help you!</p> */}
-                                <Form
+                        {/* <p style={{ fontSize: "16px" }}> Our team is here to help you!</p> */}
+                        {/* <Form
                                     name="registerForm"
                                     form={form}
                                     layout="vertical"
@@ -78,16 +138,16 @@ const Contact = () => {
                                         <Button htmlType='submit' >Submit </Button>
                                     </Row>
 
-                                </Form>
-                            </div>
-                        </div>
+                                </Form> */}
+                        {/* </div>
+                </div>*/}
                     </Col>
 
                 </Row>
 
 
-            </ContentLayout>
-        </div>
+            </ContentLayout >
+        </div >
     )
 }
 

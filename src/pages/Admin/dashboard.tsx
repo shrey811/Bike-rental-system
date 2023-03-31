@@ -48,7 +48,7 @@ const DemoLine = () => {
     fetch(`${API_URL}/Rent/rented`)
       .then((response) => response.json())
       .then((json) => {
-        const formattedData = json.map(({ rentedOn, rentedUntil }:any) => ({
+        const formattedData = json.map(({ rentedOn, rentedUntil }: any) => ({
           Date: new Date(rentedOn).getTime(),
           Price: rentedUntil,
         }));
@@ -61,7 +61,8 @@ const DemoLine = () => {
 
   const config = {
     data,
-    padding: [20, 40, 50, 20],
+    padding: [70, 40, 50, 200],
+
     xField: 'Date',
     yField: 'Price',
     xAxis: {
@@ -70,7 +71,7 @@ const DemoLine = () => {
     },
   };
 
-  return <Line {...config} />;
+  return <Line style={{ height: "40rem" }} {...config} />;
 };
 
 export default DemoLine;

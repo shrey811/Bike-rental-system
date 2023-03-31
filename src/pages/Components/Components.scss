@@ -57,7 +57,10 @@
   background-color: black;
     // // background-image: linear-gradient(to right top, #e8e8e8, #e8e8ec, #e7e9f1, #e5eaf6, #e1ebfa, #e0ebfa, #e0ecfb, #dfecfb, #e2ebf8, #e4ebf4, #e6eaf1, #e8eaed);
     color: white;
-
+  :hover {
+    background-color: #000000;
+    color: rgb(255, 252, 252);
+  }
 }
 
 .user_search_box {
