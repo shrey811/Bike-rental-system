@@ -30,7 +30,7 @@ const Moreinfo: React.FC = () => {
   const [userId, setUserId] = useState<number>();
   const [image, setImage] = useState<File | null>(null);
   const location = useLocation();
-
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -117,6 +117,8 @@ const Moreinfo: React.FC = () => {
   };
 
   const onFinish = async (value: any) => {
+    setIsLoading(true)
+
     if (!image) {
       message.error('Please upload an image');
       return;
@@ -172,6 +174,7 @@ const Moreinfo: React.FC = () => {
       console.error(error);
       // show error message
     }
+    setIsLoading(false);
   }
 
   return (
@@ -214,7 +217,7 @@ const Moreinfo: React.FC = () => {
       >
         <Form form={form} labelCol={{ span: 24 }}
           wrapperCol={{ span: 24 }} onFinish={onFinish} >
-          <Form.Item label="Rental date" name={"rentedOn"}>
+          <Form.Item label="Rental date" name={"rentedOn"} rules={[{ required: true }]}>
             <DatePicker onChange={handleRentalDatesChange} />
           </Form.Item>
 
@@ -226,29 +229,24 @@ const Moreinfo: React.FC = () => {
               </div>
             </div>
           </Form.Item>
-          <Form.Item label="Rent until" name={"rentedUntil"}>
+          <Form.Item label="Rent until" name={"rentedUntil"} rules={[{ required: true }]}>
             <DatePicker onChange={handleRentalDatesChange} />
           </Form.Item>
-          <Form.Item label="price">
+          <Form.Item label="Price">
             <Input disabled value={selectedCard.price} />
           </Form.Item>
-          <Form.Item label="Remarks" name={"remarks"}>
-            <Input.TextArea placeholder="Remarks" />
+          <Form.Item label="Remarks" name={"Remarks"} rules={[{ required: true }]}>
+            <Input.TextArea placeholder="For any extra help like delevery" />
           </Form.Item>
-          {/* <Form.Item label="Images">
-          <Upload>
-            <Button icon={<UploadOutlined />}>Select files to upload</Button>
-          </Upload>
-        </Form.Item> */}
+          =
         </Form>
-        {/* <Button type="primary"  onClick={handleSubmit}>
-            Submit
-          </Button> */}
+
       </Modal>
       <RentModal
         visible={secondModalVisible}
         onOk={onFinish}
         onCancel={handleSecondModalCancel}
+
       />
     </div>
   );

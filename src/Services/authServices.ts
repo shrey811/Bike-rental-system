@@ -57,15 +57,15 @@ export class AuthService {
   private readonly API_URL: string = 'http://localhost:5279/api';
   private readonly LOCAL_STORAGE_KEY: string = 'auth_token';
 
-  async login(payload: LoginPayload): Promise<boolean > {
+  async login(payload: LoginPayload): Promise<boolean> {
     const response = await axios.post<{ token: string }>(`${this.API_URL}/user/login`, payload);
     localStorage.setItem(this.LOCAL_STORAGE_KEY, response.data.token);
     return true;
-    } catch (error: any) {
-      console.error(error);
-      return false;
-    }
-  
+  } catch(error: any) {
+    console.error(error);
+    return false;
+  }
+
 
   logout(): void {
     localStorage.removeItem(this.LOCAL_STORAGE_KEY);

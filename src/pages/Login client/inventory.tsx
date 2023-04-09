@@ -45,35 +45,6 @@ const Inventory: React.FC = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   axios.get(`${API_URL}/bike`).then((response) => {
-  //     setData(response.data);
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //    async function fetchCards(searchText?: string) {
-  //     const { data, total } = await getCards(page, pageSize);
-  //     setCardData(data);
-  //     setTotal(total);
-  //   };
-  //   fetchCards();
-  // }, [page, pageSize]);
-  // function handlePageChange(page: number, pageSize?: number) {
-  //   setPage(page);
-  //   // default to 10 if pageSize is not specified
-  // }
-
-  // const handleSort = (field) => {
-  //   const sortedData = [...data].sort((a, b) => {
-  //     if (sortOrder === "asc") {
-  //       return a[field] - b[field];
-  //     } else {
-  //       return b[field] - a[field];
-  //     }
-  //   });
-  //   setData(sortedData);
-  //   setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   // };
 
   const itemRender: PaginationProps['itemRender'] = (_, type, originalElement) => {
@@ -199,6 +170,12 @@ const Inventory: React.FC = () => {
 
             <Row gutter={[16, 16]} style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "20px" }} >
               <Col xs={24} sm={26} md={24} lg={24} xl={12} style={{ display: "flex", justifyContent: "flex-start", backgroundColor: "black", color: "white" }}>
+                <h2 style={{
+                  marginLeft: "4rem",
+                  marginRight: "1rem",
+                  color: "white",
+                  fontSize: "16px"
+                }}> SORT BY :-</h2>
                 <Select
                   dropdownMatchSelectWidth
                   defaultValue="Price"
@@ -249,7 +226,7 @@ const Inventory: React.FC = () => {
               </Col>
 
               {cardData.map((card) => (
-                <Col xs={24} md={24} lg={12} xl={6} key={card.id}>
+                <Col xs={24} md={24} lg={12} xl={7} key={card.id}>
                   <CustomCard
 
                     id={card.id}

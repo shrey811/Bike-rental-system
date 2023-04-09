@@ -21,7 +21,7 @@ const Contact = () => {
 
                 <Layout
 
-                    imageUrl="https://etatsug.com/contact.svg"
+                    imageUrl="https://res.cloudinary.com/dvqdtqrou/image/upload/v1680165914/3321539_xx0151.jpg"
                     header="Contact Us Now"
                     description="At Biker Choice, we understand the importance of keeping your motorcycle in top condition for optimal performance and safety. That's why we offer a range of repair and maintenance services to help you maintain your ride. From routine oil changes and tire replacements to more extensive engine repairs and customization, our team of experienced mechanics is equipped to handle it all. We use high-quality parts and equipment to ensure your bike stays running smoothly and reliably for years to come. Whether you're a seasoned rider or just starting out, trust Biker Choice for all your motorcycle repair and maintenance needs."
                     imageRight={true}
@@ -43,7 +43,7 @@ const Contact = () => {
                     <Col xl={24}>
                         <Layout
 
-                            imageUrl="https://etatsug.com/contact.svg"
+                            imageUrl="https://res.cloudinary.com/dvqdtqrou/image/upload/v1680165612/fde18c997b613e8d08cf567920deaa6c_1_ngnrqs.jpg"
                             header="For Futher Queries "
                             description=""
                             // If you have any further queries, please feel free to contact us at the following 

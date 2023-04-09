@@ -1,9 +1,17 @@
 .custom-card {
-    width: 400px;
+    width: 500px;
     height: 390px;
     background-color: rgba(28, 28, 28, 0.8);
     color: white;
     border: rgb(26, 26, 26) 1px solid;
+    border-radius: 10px;
+
+    
+}
+.custom-card:hover {
+    background-color: rgba(61, 61, 61, 0.9);
+    color: rgb(255, 211, 211);
+    border: rgb(63, 63, 63) 1px solid;
     border-radius: 10px;
 }
 

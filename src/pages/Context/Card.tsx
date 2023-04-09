@@ -35,9 +35,9 @@ export const CustomCard: React.FC<Bike> = ({ id, name, description, rating, kmRu
 
       >
         <Row style={{ gap: "20px" }}>
-          <Col xl={10} span={12}>
+          <Col xl={11} span={18}>
 
-            <img src={imageUrl} height={"60%"} width={"100%"} />
+            <img src={imageUrl} height={"80%"} width={"100%"} />
 
           </Col>
           <Col xl={10}>

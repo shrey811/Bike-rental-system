@@ -10,43 +10,21 @@ const ReviewTable = () => {
   const [reviews, setReviews] = useState([]);
   const [reviewsData, setReviewsData] = useState([]);
   const [bikesData, setBikesData] = useState<Bike[]>([]);
-//   useEffect(() => {
-//     async function fetchReviews() {
-//       try {
-//         const reviewResponse = await axios.get(`${API_URL}/review`);
-//         const bikeResponse = await axios.get(`${API_URL}/bike`);
 
-//         const reviewData = reviewResponse.data.map((review :any )=> {
-//           const bike = bikeResponse.data.find((bike: { id: any; }) => bike.id === review.bikeId);
-//           return {
-//             ...review,
-//             bikeName: bike ? bike.bikeName : 'Unknown',
-//           };
-//         });
-//         console.log();
-        
-//         setReviews(reviewData);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     }
 
-//     fetchReviews();
-//   }, []);
-    
-useEffect(() => {
+  useEffect(() => {
     async function fetchData() {
       const reviewsResponse = await axios.get(`${API_URL}/review`);
       const bikesResponse = await axios.get(`${API_URL}/bike`);
       setReviewsData(reviewsResponse.data);
-      setBikesData(bikesResponse.data); 
+      setBikesData(bikesResponse.data);
     }
     fetchData();
-}, []);
-    
-    
-    
-const columns = [
+  }, []);
+
+
+
+  const columns = [
     {
       title: 'ID',
       dataIndex: 'id',

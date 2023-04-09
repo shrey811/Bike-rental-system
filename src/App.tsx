@@ -49,7 +49,7 @@ function App() {
           <PrivateRoute path='/forget-password' component={EmailVerification} />
           <Route path='/register' component={Register} />
           <PrivateRoute path='/admin' component={Admin} />
-        
+
         </Switch>
       </AuthProvider>
 

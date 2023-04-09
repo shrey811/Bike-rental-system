@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Switch, Button, Badge } from 'antd';
+import { Table, Switch, Button, Badge, Select, Input } from 'antd';
 import { Bike } from '../../models/Inventory';
 import { getCards, rentBike } from '../../Services/axios';
 
@@ -11,7 +11,18 @@ const InventoryAdmin = () => {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState<Bike[]>([]);
     const [total, setTotal] = useState(0);
+    const { Search } = Input;
+    const [cardData, setCardData] = useState<Bike[]>([]);
 
+    const handleSearch = async (value: string) => {
+        const { data } = await getCards(1, 10, value);
+        setCardData(data);
+    };
+
+    const handleSort = async (value: string) => {
+        const { data } = await getCards(1, 10, undefined, value);
+        setCardData(data);
+    };
 
     const columns = [
         {
@@ -24,11 +35,6 @@ const InventoryAdmin = () => {
             dataIndex: 'numberPlate',
             key: 'numberPlate',
         },
-        // {
-        //     title: 'Brand ID',
-        //     dataIndex: 'brandId',
-        //     key: 'brandId',
-        // },
         {
             title: 'Rating',
             dataIndex: 'rating',
@@ -91,34 +97,68 @@ const InventoryAdmin = () => {
     //     });
     // }, []);
 
+
     useEffect(() => {
         setLoading(true);
         getCards(1, 10).then((response) => {
-            setData(response.data);
+            // setData(response.data);
             setTotal(response.total);
+            setCardData(response.data);
             setLoading(false);
         });
     }, []);
 
     return (
-        <Table
-            columns={columns}
-            dataSource={data}
-            loading={loading}
+        <>
+            <Select
+                dropdownMatchSelectWidth
+                defaultValue="Price"
+                style={{ width: "20rem" }}
+                onChange={handleSort}
+                options={[
+                    {
+                        value: 'rating',
+                        label: 'Rating',
+                    },
+                    {
+                        value: 'milage',
+                        label: 'Milage',
+                    },
+                    {
+                        value: 'price',
+                        label: 'Price',
+                    },
+                ]}
+            />
+            <Search
+                placeholder="Search inventory"
+                onSearch={handleSearch}
+                enterButton
+                allowClear
+                style={{ width: 200, margin: '0 20px' }}
 
-            pagination={{
-                total,
-                pageSize: 10,
-                onChange: (page) => {
-                    setLoading(true);
-                    getCards(page, 10).then((Bike) => {
-                        setData(Bike.data);
-                        setTotal(Bike.total);
-                        setLoading(false);
-                    });
-                },
-            }}
-        />
+            />
+            <Table
+                columns={columns}
+                dataSource={cardData}
+                loading={loading}
+
+                pagination={{
+                    total,
+                    pageSize: 10,
+                    onChange: (page) => {
+                        setLoading(true);
+                        getCards(page, 10).then((Bike) => {
+                            // setData(Bike.data);
+                            setTotal(Bike.total);
+                            setLoading(false);
+                            setCardData(Bike.data);
+                        });
+                    },
+                }}
+            />
+        </>
+
     );
 };
 

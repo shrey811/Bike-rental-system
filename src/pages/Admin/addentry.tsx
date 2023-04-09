@@ -1,5 +1,5 @@
     // import { UploadOutlined } from '@ant-design/icons';
-import { Button, Col, Form, FormInstance, Input, Layout, message, Row, Select } from 'antd';
+import { Button, Col, Form, FormInstance, Input, InputNumber, Layout, message, Row, Select } from 'antd';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { Bikepost } from '../../models/bike';
@@ -180,24 +180,24 @@ import { addBike } from '../../Services/axios';
                         <Form.Item label="Name" name="name" rules={[{ required: true }]}>
                             <Input />
                         </Form.Item>
-                        <Form.Item label="NumberPlate" name="numberPlate" rules={[{ required: true }]}>
+                        <Form.Item label="Number Plate" name="numberPlate" rules={[{ required: true }]}>
                             <Input />
                         </Form.Item>
-                        <Form.Item label="rating" name="rating" rules={[{ min: 0, max: 5 }]}>
+                        <Form.Item label="Rating" name="rating" rules={[{ min: 0, max: 5 }]}>
                             <Input />
                         </Form.Item>
-                        <Form.Item label="kmRun" name="kmRun" rules={[{ min: 1 }]}>
+                        <Form.Item label="Km Run" name="kmRun" rules={[{ min: 1 }]}>
                             <Input />
                         </Form.Item>
-                        <Form.Item label="milage" name="milage" rules={[{ min: 1 }]} >
+                        <Form.Item label="Milage" name="milage" rules={[{ min: 1 }]} >
                             <Input />
                         </Form.Item>
-                        <Form.Item label="price" name="price"  >
-                            <Input />
+                        <Form.Item label="Price" name="price"  >
+                            <InputNumber />
                         </Form.Item>
                     
                         
-                      <Form.Item label="imageUrl" name="imageUrl" rules={[{ required: true }]}>
+                      <Form.Item label="Image Of Bike" name="imageUrl" rules={[{ required: true }]}>
   <div>
     <div>
       <input type="file" onChange={(e) => setImage(e.target.files?.[0] || null)} />
