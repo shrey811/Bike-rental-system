@@ -21,72 +21,7 @@ import { addBike } from '../../Services/axios';
   
     const AddEntry = () => {
     
-        // const [brands, setBrands] = useState<Brand[]>([]);
-
-        // const [selectedBrandId, setSelectedBrandId] = useState<number | undefined>(undefined); 
-        // const [image, setImage] = useState<File | null>(null);
-    
-        // const submitImage = () => {
-        //     if (!image) {
-        //         return;
-        //     }
         
-        //     const data = new FormData();
-        //     data.append("file", image);
-        //     data.append("upload_preset", "TestImage");
-        //     data.append("cloud_name", "dvqdtqrou");
-        
-        //     fetch("https://api.cloudinary.com/v1_1/dvqdtqrou/image/upload", {
-        //         method: "post",
-        //         body: data,
-        //     })
-        //         .then((res) => res.json())
-        //         .then((data) => {
-        //             console.log(data);
-        //         });
-        // };
-    
-
-       
-      
-
-        // const layout = {
-        //     labelCol: { span: 8 },
-        //     wrapperCol: { span: 16 },
-        // };
-
-
-    
-
-    
-        // useEffect(() => {
-        // axios.get(`${API_URL}/brand`)
-        //     .then(response => setBrands(response.data))
-        //     .catch(error => console.error(error));
-        // }, []);
-
-        // const handleBrandSelect = (value: number) => {
-        //     setSelectedBrandId(value); // Update selectedBrandId when an Option is clicked
-        // }
-    
-        // const onFinish = async (values: any) => {
-        
-        
-        //     const bike: Bikepost = {
-        //         name: values.name,
-        //         numberPlate: values.numberPlate,
-        //         brandId: selectedBrandId ?? 0,
-        //         kmRun: values.kmRun,
-        //         description: values.description,
-        //         milage: values.milage,
-        //         imageUrl:values.imgUrl ,
-        //         price: values.price,
-        //     };
-        //     await addBike(bike);
-        
-        // };
-
-        // const [form] = Form.useForm();
         
         const [brands, setBrands] = useState<Brand[]>([]);
         const [selectedBrandId, setSelectedBrandId] = useState<number>();

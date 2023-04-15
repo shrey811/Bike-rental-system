@@ -100,8 +100,16 @@ const Moreinfo: React.FC = () => {
   };
 
   const handleOk = () => {
-    setVisible(false);
-    setSecondModalVisible(true);
+    form.validateFields()
+      .then(() => {
+        setVisible(false);
+        setSecondModalVisible(true);
+      })
+      .catch((error) => {
+        console.log('Validation error:', error);
+      });
+    // setVisible(false);
+    // setSecondModalVisible(true);
   };
 
   const handleCancel = () => {
@@ -147,7 +155,7 @@ const Moreinfo: React.FC = () => {
           remarks: formData.remarks,
           bikeId: selectedCard.id,
           price: selectedCard.price,
-          userId: 1,
+          userId: 2,
           imageUrl: data.url,
         };
 
@@ -217,11 +225,11 @@ const Moreinfo: React.FC = () => {
       >
         <Form form={form} labelCol={{ span: 24 }}
           wrapperCol={{ span: 24 }} onFinish={onFinish} >
-          <Form.Item label="Rental date" name={"rentedOn"} rules={[{ required: true }]}>
+          <Form.Item label="Rental date" name={"Rente On"} rules={[{ required: true }]}>
             <DatePicker onChange={handleRentalDatesChange} />
           </Form.Item>
 
-          <Form.Item label="Citizen Ship OR License" name="imageUrl" rules={[{ required: true }]}>
+          <Form.Item label="Citizen Ship OR License" name="Image" rules={[{ required: true }]}>
             <div>
               <div>
                 <input type="file" onChange={(e) => setImage(e.target.files?.[0] || null)} />
@@ -229,7 +237,7 @@ const Moreinfo: React.FC = () => {
               </div>
             </div>
           </Form.Item>
-          <Form.Item label="Rent until" name={"rentedUntil"} rules={[{ required: true }]}>
+          <Form.Item label="Rent until" name={"Rent Until"} rules={[{ required: true }]}>
             <DatePicker onChange={handleRentalDatesChange} />
           </Form.Item>
           <Form.Item label="Price">
@@ -238,7 +246,7 @@ const Moreinfo: React.FC = () => {
           <Form.Item label="Remarks" name={"Remarks"} rules={[{ required: true }]}>
             <Input.TextArea placeholder="For any extra help like delevery" />
           </Form.Item>
-          =
+
         </Form>
 
       </Modal>

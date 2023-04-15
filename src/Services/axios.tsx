@@ -19,58 +19,13 @@ interface RentResponse {
   total: number;
 }
 
-// export async function getCards(page?: number, pageSize?: number,searchText?: string): Promise<inventory> {
-//   const response = await axios.get(`${API_URL}/bike`);
-//   const { data, headers } = response;
-//   const total = Number(headers['x-total-count']);
-//   return { data, total };
-// }
-
-// export async function getCards(page?: number, pageSize?: number, searchText?: string): Promise<inventory> {
-//   const response = await axios.get(`${API_URL}/bike`);
-//   const { data, headers } = response;
-//   const total = Number(headers['x-total-count']);
-
-//   if (searchText) {
-//     const filteredData = data.filter((card: { name: string; }) =>
-//       card.name.toLowerCase().includes(searchText.toLowerCase())
-//     );
-//     return { data: filteredData, total };
-//   }
-
-//   return { data, total };
-// }
-
-// export async function getCards(page?: number, pageSize?: number, searchText?: string, sort?: string): Promise<inventory> {
-//   let url = `${API_URL}/bike`;
-
-
-
-//   const response = await axios.get(url);
-//   const { data, headers } = response;
-
-//   const total = Number(headers['x-total-count']);
-
-
-//   if (searchText) {
-//     const filteredData = data.filter((card: { name: string; }) =>
-//       card.name.toLowerCase().includes(searchText.toLowerCase())
-//     );
-//     return { data: filteredData, total };
-//   }
-
-//   return { data, total };
-
-
-// }
-
 export async function getCards(
   page?: number,
   pageSize?: number,
   searchText?: string,
   sort?: string
 ): Promise<inventory> {
-  let url = `${API_URL}/bike`;
+  let url = `${API_URL}/bike?sort=rating&name=${searchText}`;
 
   const response = await axios.get(url);
   const { data, headers } = response;
@@ -95,18 +50,6 @@ export async function getCards(
   const total = Number(headers['x-total-count']);
   return { data: filteredData, total };
 }
-
-
-
-
-
-// export async function getCards(page: number, pageSize: number): Promise<inventory> {
-//   const response = await axios.get(`${API_URL}/bike`);
-//   const { data, headers } = response;
-//   const total = Number(headers['x-total-count']);
-//   return { data, total };
-// }
-
 
 export async function addBike(bike: Bikepost): Promise<Bikepost> {
   const response = await axios.post(`${API_URL}/bike`, bike);
@@ -142,14 +85,5 @@ export async function getRent(page: number, pageSize: number): Promise<RentRespo
   return { data, total };
 }
 
-// export async function getRent(page: number, pageSize: number): Promise<RentResponse> {
-//   const response = await axios.get(`${API_URL}/Rent/rent`);
-//   const { data, headers } = response;
-//   const total = Number(headers['x-total-count']);
-//   return { data, total };
-// }
-// export async function getUsers(): Promise<registration[]> {
-//   const response = await axios.get<UsersResponse>(`${API_URL}/users/users`);
-//   return response.data.data;
-// }
+
 

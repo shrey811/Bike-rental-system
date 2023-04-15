@@ -1,5 +1,5 @@
 import { DashboardOutlined, InfoCircleOutlined, LogoutOutlined, PhoneOutlined, PieChartOutlined } from '@ant-design/icons';
-import { Col, Divider, Layout, Menu, PaginationProps, Row, Select } from 'antd';
+import { Col, Divider, Layout, Menu, PaginationProps, Row, Select, message } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 import { Content } from 'antd/es/layout/layout';
 import React, { useEffect, useState } from 'react';
@@ -32,7 +32,10 @@ const Inventory: React.FC = () => {
   const handleSearch = async (value: string) => {
     const { data } = await getCards(1, 10, value);
     setCardData(data);
-  };
+    if (data.length === 0) {
+      message.error("Oops! No bikes found.");
+    };
+  }
 
   const handleSort = async (value: string) => {
     const { data } = await getCards(1, 10, undefined, value);
@@ -224,6 +227,7 @@ const Inventory: React.FC = () => {
 
                 />
               </Col>
+              {cardData.length === 0 && <div>Oops! No bikes found.</div>}
 
               {cardData.map((card) => (
                 <Col xs={24} md={24} lg={12} xl={7} key={card.id}>

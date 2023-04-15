@@ -12,7 +12,7 @@ const Login = () => {
     const history = useHistory();
     const [loading, setLoading] = useState<boolean>(false);
     const authService = new AuthService();
-
+    // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const handleSubmit = async (values: any) => {
         setLoading(true);
         try {
@@ -29,7 +29,7 @@ const Login = () => {
                 message.error('Login unsucessfull')
             }
         } catch (error) {
-            console.error(error);
+            message.error('Login unsucessfull')
         } finally {
             setLoading(false);
         }
@@ -75,9 +75,13 @@ const Login = () => {
                                         required: true,
                                         message: 'Please input your Username!',
                                     },
+                                    // {
+                                    //     pattern: emailRegex,
+                                    //     message: 'Please input a valid email address!',
+                                    // },
                                 ]}
                             >
-                                <Input size='middle' name="email" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                                <Input size='middle' name="email" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
                             </Form.Item>
                             <Form.Item
 

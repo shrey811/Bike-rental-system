@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Row, Col, Card, message } from 'antd';
 import { API_URL } from '../../Services/ajaxservice';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 
 interface updatebike {
@@ -16,7 +17,7 @@ const EmailVerification = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [email, setEmail] = useState('');
-
+  const history = useHistory();
   const handleNextClick = (values: { email: any; otp: number; newPassword: string }) => {
 
 
@@ -71,6 +72,7 @@ const EmailVerification = () => {
               .then(response => {
                 if (response) {
                   message.success('Password updated successfully.');
+                  history.push("./");
                 } else {
                   message.error('Password was not updated.');
                 }
@@ -132,7 +134,10 @@ const EmailVerification = () => {
                 <h2> Change Your Password</h2>
                 <br>
                 </br>
-                <Form.Item name="newPassword" label="New Password" rules={[{ required: true }]}>
+                <Form.Item name="newPassword" label="New Password" rules={[
+                  { required: true, message: 'Please input your password!' },
+                  { min: 8, message: 'Password should be at least 8 characters!' },
+                ]}>
                   <Input.Password />
                 </Form.Item>
                 <Form.Item

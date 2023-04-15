@@ -1,12 +1,10 @@
 import {
     DashboardOutlined,
     InfoCircleOutlined,
-    LoadingOutlined,
     LogoutOutlined,
     PhoneOutlined,
     PieChartOutlined,
-    PlusOutlined,
-    RollbackOutlined,
+    RollbackOutlined
 } from "@ant-design/icons";
 import {
     Button,
@@ -15,28 +13,17 @@ import {
     Form,
     Layout,
     Menu,
-    message,
-    Modal,
-    QRCode,
-    Radio,
     Rate,
-    Row,
-    Upload,
-    UploadProps,
+    Row
 } from "antd";
-import { Content, Footer, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
-import { RcFile, UploadChangeParam, UploadFile } from "antd/es/upload";
-import axios from "axios";
+import { Content } from "antd/es/layout/layout";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Bike } from "../models/Inventory";
-import { API_URL } from "../Services/ajaxservice";
-import { required } from "./constants";
-import { MakeBgWhite } from "./ContentLayout";
 import Logo from "../pages/Logo/Logo.png";
 
 const CustomCard: React.FC<Bike> = ({
@@ -52,16 +39,6 @@ const CustomCard: React.FC<Bike> = ({
     description,
 }) => {
     const [collapsed, setCollapsed] = useState(false);
-    const [sFirstModalOpen, setIsFirstModalOpen] = useState(false);
-
-    // const handleOpenModal = () => {
-    //     setIsFirstModalOpen(true);
-    // };
-    const layout = {
-        labelCol: { span: 24 },
-        wrapperCol: { span: 24 },
-    };
-
     const [value, setValue] = useState(rating);
     const history = useHistory();
     const [loading, setLoading] = useState<boolean>(false);
@@ -415,3 +392,4 @@ const CustomCard: React.FC<Bike> = ({
 };
 
 export { CustomCard };
+

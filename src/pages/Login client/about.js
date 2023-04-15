@@ -36,9 +36,9 @@ export const About = () => {
           <Col>
             <MapContainer
               style={{
-              height: "50vh",
-              width: "70vw"
-            }}
+                height: "50vh",
+                width: "70vw"
+              }}
               center={position} zoom={13} scrollWheelZoom={false}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -51,15 +51,15 @@ export const About = () => {
               </Marker>
             </MapContainer>
           </Col>
-          <Col style={{ marginLeft: "20px", marginTop: "10rem" ,color:"white"}}>
+          <Col style={{ marginLeft: "20px", marginTop: "10rem", color: "white" }}>
             <h4 style={{
-              display: "flex", alignItems: "center", justifyContent: "center",color:"white"
+              display: "flex", alignItems: "center", justifyContent: "center", color: "white"
             }}>FIND US HERE </h4>
             <h4 style={{
-              display: "flex", alignItems: "center", justifyContent: "center",color:"white"
+              display: "flex", alignItems: "center", justifyContent: "center", color: "white"
             }}>AVALILABLE FROM SUNDAY </h4>
             <h4 style={{
-              display: "flex", alignItems: "center", justifyContent: "center",  color:"white"
+              display: "flex", alignItems: "center", justifyContent: "center", color: "white"
             }}> TO FRIDAY</h4>
           </Col>
         </Row>
