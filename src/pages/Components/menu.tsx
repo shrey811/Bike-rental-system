@@ -30,51 +30,6 @@ function getItem(
   } as MenuItem;
 }
 
-
-
-// const items: MenuProps['items'] = [
-
-
-//     {
-//         label: ' Home',
-//         key: 'home',
-//         icon: < PieChartOutlined />,
-//     },
-//     {
-//         label: 'inventory',
-//         key: 'inventory',
-//         icon: < DashboardOutlined />,
-
-//     },
-//     {
-//         label: 'About',
-//         key: 'about',
-//         icon: < InfoCircleOutlined />,
-//     },
-
-
-
-// ]
-
-// const itemslogin: MenuProps['items'] = [
-//     {
-//         label: ' Login',
-//         key: "login",
-//         icon: <UserOutlined />,
-
-//     },
-//     {
-//         label: ' Sign UP',
-//         key: 'signup',
-//         icon: < LoginOutlined />,
-
-//     }
-
-// ]
-
-
-
-
 const MenuList = () => {
 
   const { isAuthenticated } = useAuth();
@@ -85,13 +40,13 @@ const MenuList = () => {
       position: "sticky",
       top: 0,
       zIndex: 1,
-      backgroundColor:"black",
-     
+      backgroundColor: "black",
+
       color: "white",
     }}>
       <Row  >
         <Col  >
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "black",color:"white", boxShadow: "rgb(255 255 255 / 22%) 0px 3px 10px" }} >
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "black", color: "white", boxShadow: "rgb(255 255 255 / 22%) 0px 3px 10px" }} >
             <Col span={1}></Col>
             <Col span={2}  >
 
@@ -107,15 +62,15 @@ const MenuList = () => {
               <Menu.Item key="home">
                 <Link to="/dashboard"> < PieChartOutlined />Home</Link>
               </Menu.Item>
-              
+
               <Menu.Item key="about">
                 <Link to="/about"> < InfoCircleOutlined /> About</Link>
               </Menu.Item>
-              
+
               <Menu.Item key="inventory">
                 <Link to="/inventory"> < DashboardOutlined /> Inventory</Link>
               </Menu.Item>
-              
+
               <Menu.Item key="Contact">
                 <Link to="/contact-us"> < DashboardOutlined /> Contact</Link>
               </Menu.Item>
@@ -123,12 +78,12 @@ const MenuList = () => {
             </Menu>
 
             <Col >
-       
+
             </Col>
             <Menu className='menu'>
               {isAuthenticated ? (
                 <>
-                  <Menu.Item key="logout" style={{ display:'flex',alignItems:"flex-end",justifyContent:"flex-end" }}>
+                  <Menu.Item key="logout" style={{ display: 'flex', alignItems: "flex-end", justifyContent: "flex-end" }}>
                     <Link to="/"><LogoutOutlined /> Logout</Link>
                   </Menu.Item>
                 </>
