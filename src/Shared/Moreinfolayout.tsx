@@ -234,6 +234,7 @@ const CustomCard: React.FC<Bike> = ({
                                             alignItems: "center",
                                             justifyContent: "center",
                                             gap: "30px",
+                                            marginBottom: "20px",
                                         }}
                                         disabled
                                         defaultValue={2}
@@ -257,13 +258,13 @@ const CustomCard: React.FC<Bike> = ({
                                     </div>
                                 </Form.Item> */}
                                 <Form.Item>
-                                    <div style={{ display: "flex", gap: "30px", color: "white" }}>
+                                    <div style={{ display: "flex", gap: "30px", color: "white", marginBottom: "20px", }}>
                                         <h6 style={{
-                                            fontSize: "1.2rem",
+                                            fontSize: "2rem",
 
                                         }}> Description:</h6>
                                         <p style={{
-                                            fontSize: "1rem",
+                                            fontSize: "1.4rem",
 
                                         }} className="writing"> {description}</p>
                                     </div>
@@ -276,15 +277,16 @@ const CustomCard: React.FC<Bike> = ({
                                             // textAlign: "right",
                                             display: "flex",
                                             gap: "30px",
-                                            color: "white"
+                                            color: "white",
+                                            marginBottom: "20px",
                                         }}
                                     >
                                         <h6 style={{
-                                            fontSize: "1.2rem",
+                                            fontSize: "2.2rem",
 
                                         }}> KM Run:</h6>
                                         <p style={{
-                                            fontSize: "1rem",
+                                            fontSize: "2rem",
 
                                         }} className="writing">{kmRun}</p>
                                     </div>
@@ -296,15 +298,16 @@ const CustomCard: React.FC<Bike> = ({
                                             // textAlign: "right",
                                             display: "flex",
                                             gap: "30px",
-                                            color: "white"
+                                            color: "white",
+                                            marginBottom: "40px",
                                         }}
                                     >
                                         <h6 style={{
-                                            fontSize: "1.2rem",
+                                            fontSize: "2.2rem",
 
                                         }}> Milage:</h6>
                                         <p style={{
-                                            fontSize: "1rem",
+                                            fontSize: "2rem",
 
                                         }} className="writing"> {milage}  kmpl</p>
                                     </div>
@@ -319,15 +322,16 @@ const CustomCard: React.FC<Bike> = ({
                                             // textAlign: "right",
                                             display: "flex",
                                             gap: "30px",
-                                            color: "white"
+                                            color: "white",
+                                            marginBottom: "80px",
                                         }}
                                     >
                                         <h6 style={{
-                                            fontSize: "1.2rem",
+                                            fontSize: "2.2rem",
 
                                         }}> NumberPlate:</h6>
                                         <p style={{
-                                            fontSize: "1rem",
+                                            fontSize: "2rem",
 
                                         }} className="writing"> {numberPlate}</p>
                                     </div>
@@ -336,11 +340,11 @@ const CustomCard: React.FC<Bike> = ({
                                 <Col xl={12}>
                                     <div style={{ display: "flex", gap: "30px", color: "white" }}>
                                         <h6 style={{
-                                            fontSize: "1.2rem",
+                                            fontSize: "2.2rem",
 
                                         }}> Price:</h6>
                                         <p style={{
-                                            fontSize: "1rem",
+                                            fontSize: "2rem",
 
                                         }} className="writing"> {price}  NRS/Hour</p>
                                     </div>

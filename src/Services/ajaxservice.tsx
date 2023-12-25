@@ -1,3 +1,4 @@
+import { useToken } from "antd/es/theme/internal";
 
 
 export const API_URL = 'http://localhost:5279/api';
@@ -7,8 +8,10 @@ export async function postData(url: string, data: any) {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${useToken}`
     },
     body: JSON.stringify(data),
+
   });
 
   if (!response.ok) {
@@ -17,6 +20,7 @@ export async function postData(url: string, data: any) {
   }
 
   const result = await response.json();
+
   return result;
 }
 

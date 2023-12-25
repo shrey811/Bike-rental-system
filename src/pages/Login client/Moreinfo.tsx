@@ -1,5 +1,5 @@
 import { background } from "@cloudinary/base/qualifiers/focusOn";
-import { Button, Col, DatePicker, Form, Input, message, Modal, Row } from "antd";
+import { Button, Col, DatePicker, Form, Input, message, Modal, Row, Spin } from "antd";
 import axios from "axios";
 import moment from "moment";
 import React, { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import { getCards, getUser } from "../../Services/axios";
 import { CustomCard } from "../../Shared/Moreinfolayout";
 
 import RentModal from "../Context/Khalti.payment";
+
 
 interface CardParams {
   id: string;
@@ -31,6 +32,8 @@ const Moreinfo: React.FC = () => {
   const [image, setImage] = useState<File | null>(null);
   const location = useLocation();
   const [isLoading, setIsLoading] = useState(false);
+
+
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -100,6 +103,7 @@ const Moreinfo: React.FC = () => {
   };
 
   const handleOk = () => {
+
     form.validateFields()
       .then(() => {
         setVisible(false);
@@ -149,13 +153,15 @@ const Moreinfo: React.FC = () => {
       if (response.ok) {
         const formData = await form.validateFields();
         const data = await response.json();
+
+        const userId = localStorage.getItem('userId');
         const rental: rentModel = {
           rentedOn: formData.rentedOn,
           rentedUntil: formData.rentedUntil,
           remarks: formData.remarks,
           bikeId: selectedCard.id,
           price: selectedCard.price,
-          userId: 2,
+          userId: userId ? parseInt(userId, 10) : 0,
           imageUrl: data.url,
         };
 
@@ -171,7 +177,7 @@ const Moreinfo: React.FC = () => {
         history.push("/inventory");
         // Show success message
         Modal.success({
-          content: "Thanks for renting!",
+          content: "Thanks for renting! Please contact the customer support for further details on your order also if u want to cancel the order please contact the customer support.",
         });
         localStorage.setItem("hasRentOrder", "true");
         console.groupCollapsed("My Logs");
@@ -217,44 +223,47 @@ const Moreinfo: React.FC = () => {
         </Col> */}
       </Row>
       <Modal
+        style={{ backgroundColor: "rgb(56, 56, 56)", color: "white" }}
         title="Please Fill The Following Information"
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancel}
-        style={{ backgroundColor: "black", color: "white" }}
+        confirmLoading={isLoading}
+
       >
-        <Form form={form} labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }} onFinish={onFinish} >
-          <Form.Item label="Rental date" name={"Rente On"} rules={[{ required: true }]}>
-            <DatePicker onChange={handleRentalDatesChange} />
-          </Form.Item>
+        <Spin spinning={isLoading}>
+          <Form form={form} labelCol={{ span: 24 }}
+            wrapperCol={{ span: 24 }} onFinish={onFinish} >
+            <Form.Item label="Rental date" name={"renteOn"} rules={[{ required: true }]}>
+              <DatePicker className="dark-datepicker" onChange={handleRentalDatesChange} />
+            </Form.Item>
 
-          <Form.Item label="Citizen Ship OR License" name="Image" rules={[{ required: true }]}>
-            <div>
+            <Form.Item label="Citizen Ship OR License" name="Image" rules={[{ required: true }]}>
               <div>
-                <input type="file" onChange={(e) => setImage(e.target.files?.[0] || null)} />
-                {/* <button onClick={handleImageChange}>Upload</button> */}
+                <div>
+                  <input type="file" onChange={(e) => setImage(e.target.files?.[0] || null)} />
+                  {/* <button onClick={handleImageChange}>Upload</button> */}
+                </div>
               </div>
-            </div>
-          </Form.Item>
-          <Form.Item label="Rent until" name={"Rent Until"} rules={[{ required: true }]}>
-            <DatePicker onChange={handleRentalDatesChange} />
-          </Form.Item>
-          <Form.Item label="Price">
-            <Input disabled value={selectedCard.price} />
-          </Form.Item>
-          <Form.Item label="Remarks" name={"Remarks"} rules={[{ required: true }]}>
-            <Input.TextArea placeholder="For any extra help like delevery" />
-          </Form.Item>
+            </Form.Item>
+            <Form.Item label="Rent until" name={"rentedUntil"} rules={[{ required: true }]}>
+              <DatePicker onChange={handleRentalDatesChange} />
+            </Form.Item>
+            <Form.Item label="Price">
+              <Input disabled value={selectedCard.price} />
+            </Form.Item>
+            <Form.Item label="Remarks" name={"Remarks"} rules={[{ required: true }]}>
+              <Input.TextArea placeholder="For any extra help like delevery" />
+            </Form.Item>
 
-        </Form>
-
+          </Form>
+        </Spin>
       </Modal>
       <RentModal
         visible={secondModalVisible}
         onOk={onFinish}
         onCancel={handleSecondModalCancel}
-
+        confirmLoading={isLoading}
       />
     </div>
   );

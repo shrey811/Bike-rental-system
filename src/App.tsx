@@ -35,20 +35,20 @@ function App() {
       <AuthProvider>
         <Switch>
           <Route exact path="/" component={Login} />
-          <PrivateRoute path='/dashboard' component={Dashboard} />
-          <PrivateRoute path='/about' component={About} />
-          <PrivateRoute path='/inventory' component={Inventory} />
-          <PrivateRoute path='/inventory-admin' component={InventoryAdmin} />
-          <PrivateRoute path='/add-entry' component={AddEntry} />
-          <PrivateRoute path='/user-list' component={userList} />
-          <PrivateRoute path='/rent-list' component={Rent} />
-          <PrivateRoute path='/rent-now' component={Rental} />
-          <PrivateRoute path='/contact-us' component={Contact} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/about' component={About} />
+          <Route path='/inventory' component={Inventory} />
+          <Route path='/inventory-admin' component={InventoryAdmin} />
+          <Route path='/add-entry' component={AddEntry} />
+          <Route path='/user-list' component={userList} />
+          <Route path='/rent-list' component={Rent} />
+          <Route path='/rent-now' component={Rental} />
+          <Route path='/contact-us' component={Contact} />
           {/* <PrivateRoute path='/modal-page' component={Payment} /> */}
-          <PrivateRoute path='/more-info/:id' component={Moreinfo} />
-          <PrivateRoute path='/forget-password' component={EmailVerification} />
+          <Route path='/more-info/:id' component={Moreinfo} />
+          <Route path='/forget-password' component={EmailVerification} />
           <Route path='/register' component={Register} />
-          <PrivateRoute path='/admin' component={Admin} />
+          <Route path='/admin' component={Admin} />
 
         </Switch>
       </AuthProvider>

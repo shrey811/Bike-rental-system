@@ -115,34 +115,6 @@ export default function Dashboard() {
 
                     <Col xl={16} >
                         <Carousel autoplay style={{ marginBottom: "2rem" }} >
-
-                            <div className="carousel">
-
-                                <img style={contentStyle} src="https://res.cloudinary.com/dvqdtqrou/image/upload/v1680167490/wp3740066_vpxxxf.jpg" />
-                                <div className="click">
-                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
-
-                                </div>
-
-                            </div>
-
-                            <div className="carousel" >
-                                <img style={contentStyle} src="https://res.cloudinary.com/dvqdtqrou/image/upload/v1680167490/wp3740066_vpxxxf.jpg" />
-
-                                <div className="click">
-
-                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
-                                </div>
-                            </div>
-                            <div className="carousel" >
-                                <img style={contentStyle} src="https://res.cloudinary.com/dvqdtqrou/image/upload/v1680167620/Black_Stylist_Wonderful_Bike_euqokb.jpg" />
-
-
-                                <div className="click">
-
-                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
-                                </div>
-                            </div>
                             <div className="carousel">
                                 <img style={contentStyle} src="https://res.cloudinary.com/dvqdtqrou/image/upload/v1680167641/wp3647910_vrczxq.jpg" />
                                 <div className="click">
@@ -150,10 +122,39 @@ export default function Dashboard() {
 
                                 </div>
                             </div>
+                            <div className="carousel" >
+                                <img style={contentStyle} src="https://res.cloudinary.com/dvqdtqrou/image/upload/v1685204651/Bike/1907914_qi7fso.jpg" />
+
+                                <div className="click">
+
+                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
+                                </div>
+                            </div>
+                            <div className="carousel">
+
+                                <img style={contentStyle} src="https://res.cloudinary.com/dvqdtqrou/image/upload/v1685204825/Bike/360_F_239334594_vDzfcUp4c94uWJValUZkX6z61MuHhS8S_tgepj7.jpg" />
+                                <div className="click">
+                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
+
+                                </div>
+
+                            </div>
+
+
+                            <div className="carousel" >
+                                <img style={contentStyle} src="https://res.cloudinary.com/dvqdtqrou/image/upload/v1685204910/Bike/139039-motorcycle-exhaust_system-automotive_lighting-car-ducati-4000x2666_orywrc.jpg" />
+
+
+                                <div className="click">
+
+                                    <Button className="dashbutton" onClick={handleNavigate}> RENT NOW </Button>
+                                </div>
+                            </div>
+
 
                         </Carousel>
                     </Col>
-                    <Col xl={6} style={{ backgroundColor: "rgba(56, 56, 56, 0.8)", height: "42rem", borderRadius: "20px" }}>
+                    <Col xl={6} style={{ backgroundColor: "rgba(56, 56, 56, 0.8)", height: "46rem", borderRadius: "20px" }}>
                         <h4 style={{ fontFamily: "merriweather", color: "white", marginBottom: "10px", marginTop: "10px", display: "flex", alignItems: "center", justifyContent: "center" }}> Recently added </h4>
                         <div style={{
 

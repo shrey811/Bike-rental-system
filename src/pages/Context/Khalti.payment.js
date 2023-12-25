@@ -1,9 +1,9 @@
 import React from "react";
 import KhaltiCheckout from "khalti-checkout-web";
 import config from "./khaltiConfig";
-import { Col, Modal, Radio, Row } from "antd";
+import { Col, Modal, Radio, Row, Spin } from "antd";
 
-const RentModal = ({ visible, onOk, onCancel }) => {
+const RentModal = ({ visible, onOk, onCancel, confirmLoading }) => {
     let checkout = new KhaltiCheckout(config);
 
     let buttonStyles = {
@@ -27,31 +27,36 @@ const RentModal = ({ visible, onOk, onCancel }) => {
                 visible={visible}
                 onOk={onOk}
                 onCancel={onCancel}
-            >
-                <Row>
-                    <Col span={8}>
-                        <button
-                            onClick={() => checkout.show({ amount: 10000 })}
-                            style={buttonStyles}
-                        >
-                            Pay Via Khalti
-                        </button>
-                    </Col>
-                    <Col span={3}>
-                        <p style={{
-                            fontWeight: "bold",
-                            fontSize: "20px",
-                        }} >
-                            or
-                        </p>
-                    </Col>
-                    <Col>
 
-                        <Radio>
-                            Pay Via Cash
-                        </Radio>
-                    </Col>
-                </Row>
+
+            >
+                <Spin spinning={confirmLoading}>
+                    <Row>
+
+                        <Col span={8}>
+                            <button
+                                onClick={() => checkout.show({ amount: 10000 })}
+                                style={buttonStyles}
+                            >
+                                Pay Via Khalti
+                            </button>
+                        </Col>
+                        <Col span={3}>
+                            <p style={{
+                                fontWeight: "bold",
+                                fontSize: "20px",
+                            }} >
+                                or
+                            </p>
+                        </Col>
+                        <Col>
+
+                            <Radio>
+                                Pay Via Cash
+                            </Radio>
+                        </Col>
+                    </Row>
+                </Spin>
             </Modal>
         </div>
     );

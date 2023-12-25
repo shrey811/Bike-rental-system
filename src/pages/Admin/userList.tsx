@@ -1,10 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
-import { Table, Input, Button, Popconfirm } from 'antd';
+import { Table, Input, Button, Popconfirm, message } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { registration } from '../../models/registration';
 import { user } from '../../models/user';
 import { getUsers } from '../../Services/axios';
+import axios from 'axios';
 
 const { Column } = Table;
 
@@ -25,12 +26,17 @@ const UserList = () => {
         })
     }, []);
 
-    const handleDelete = async (record: user) => {
-        setLoading(true);
-        setData((prevData) => prevData.filter((user) => user.id !== record.id));
-        setTotal((prevTotal) => prevTotal - 1);
-        localStorage.setItem('userData', JSON.stringify(data.filter((user) => user.id !== record.id)));
-        setLoading(false);
+    const handleDelete = async (id: number) => {
+        try {
+            // Make the delete request to the API endpoint
+            await axios.delete(`https://localhost:7111/deleteuser/${id}`);
+            // Optionally, update the table data after successful deletion
+            // You may need to fetch the updated data from the server
+            message.success('Bike deleted successfully');
+        } catch (error) {
+            console.error(error);
+            message.error('Failed to delete bike');
+        }
     };
 
     const handleSearch = (value: string) => {
@@ -56,22 +62,24 @@ const UserList = () => {
                 <Column title="Last Name" dataIndex="lastName" key="lastName" />
                 <Column title="Email" dataIndex="email" key="email" />
                 <Column
-                    title="Registration Date"
-                    dataIndex="registrationDate"
-                    key="registrationDate"
-                    render={(text: string) => new Date(text).toLocaleDateString()}
+                    title="Phone number"
+                    dataIndex="phoneNumber"
+                    key="phoneNumber"
+
                 />
                 <Column
                     title="Action"
                     key="action"
-                    render={(text: any, record: user) =>
-                        data.length > 0 ? (
-                            <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record)}>
-                                <Button type="primary" danger>
-                                    Delete
-                                </Button>
-                            </Popconfirm>
-                        ) : null
+                    render={(text: any, record: any) => (
+                        <Popconfirm
+                            title="Are you sure you want to delete this user?"
+                            onConfirm={() => handleDelete(record.id)}
+                            okText="Yes"
+                            cancelText="No"
+                        >
+                            <Button type="primary" danger>Delete</Button>
+                        </Popconfirm>
+                    )
                     }
                 />
             </Table>

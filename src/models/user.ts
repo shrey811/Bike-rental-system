@@ -12,3 +12,19 @@ export interface user {
   email: string,
 
 }
+export interface LoginResponse {
+  token: string;
+  user: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+    email: string;
+    password: string;
+    document: {
+      id: number;
+      citizenship: any;
+      license: any;
+    };
+  };
+}

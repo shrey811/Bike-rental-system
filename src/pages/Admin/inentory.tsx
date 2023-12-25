@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Switch, Button, Badge, Select, Input } from 'antd';
+import { Table, Switch, Button, Badge, Select, Input, Popconfirm, message } from 'antd';
 import { Bike } from '../../models/Inventory';
 import { getCards, rentBike } from '../../Services/axios';
+import axios from 'axios';
 
 
 
@@ -22,6 +23,18 @@ const InventoryAdmin = () => {
     const handleSort = async (value: string) => {
         const { data } = await getCards(1, 10, undefined, value);
         setCardData(data);
+    };
+    const handleDelete = async (id: number) => {
+        try {
+            // Make the delete request to the API endpoint
+            await axios.delete(`https://localhost:7111/deletebike/${id}`);
+            // Optionally, update the table data after successful deletion
+            // You may need to fetch the updated data from the server
+            message.success('Bike deleted successfully');
+        } catch (error) {
+            console.error(error);
+            message.error('Failed to delete bike');
+        }
     };
 
     const columns = [
@@ -85,7 +98,21 @@ const InventoryAdmin = () => {
                 </>
             ),
 
-        }
+        },
+        {
+            title: 'Actions',
+            key: 'actions',
+            render: (text: any, record: any) => (
+                <Popconfirm
+                    title="Are you sure you want to delete this bike?"
+                    onConfirm={() => handleDelete(record.id)}
+                    okText="Yes"
+                    cancelText="No"
+                >
+                    <Button type="primary" danger>Delete</Button>
+                </Popconfirm>
+            ),
+        },
 
     ];
     // useEffect(() => {

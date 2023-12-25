@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Line } from '@ant-design/plots';
 import { API_URL } from '../../Services/ajaxservice';
 import { Card, Progress, Statistic } from 'antd';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { AuditOutlined, CarOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 
 const DemoLine = () => {
   const [data, setData] = useState<{ Date: number; Rentals: any; }[]>([]);
@@ -109,7 +109,7 @@ const DemoLine = () => {
               <Statistic value={totalBikes} />
               <Progress type="dashboard" percent={100} format={() => totalBikes} />
             </div>
-            <ShoppingCartOutlined style={{ fontSize: '3rem', color: 'black' }} />
+            <CarOutlined style={{ fontSize: '3rem', color: 'black' }} />
           </div>
         </Card>
         <Card style={{ backgroundColor: "lightblue", width: "20rem", marginRight: "20px" }}>
@@ -119,7 +119,7 @@ const DemoLine = () => {
               <Statistic value={totalReviews} />
               <Progress type="dashboard" percent={100} format={() => totalReviews} />
             </div>
-            <ShoppingCartOutlined style={{ fontSize: '3rem', color: 'black' }} />
+            <AuditOutlined style={{ fontSize: '3rem', color: 'black' }} />
           </div>
         </Card>
         <Card style={{ backgroundColor: "lightyellow", width: "20rem", marginRight: "20px" }}>
@@ -129,7 +129,7 @@ const DemoLine = () => {
               <Statistic value={totalUsers} />
               <Progress type="dashboard" percent={100} format={() => totalUsers} />
             </div>
-            <ShoppingCartOutlined style={{ fontSize: '3rem', color: 'black' }} />
+            <UserOutlined style={{ fontSize: '3rem', color: 'black' }} />
           </div>
         </Card>
       </div>

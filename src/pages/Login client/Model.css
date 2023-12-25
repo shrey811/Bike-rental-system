@@ -1,0 +1,9 @@
+.dark-modal {
+    background-color: rgb(56, 56, 56);
+    color: white;
+  }
+  
+  .dark-datepicker .ant-picker {
+    background-color: rgb(247, 0, 0);
+    color: white;
+  }

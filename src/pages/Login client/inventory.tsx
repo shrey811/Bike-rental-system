@@ -230,7 +230,7 @@ const Inventory: React.FC = () => {
               {cardData.length === 0 && <div>Oops! No bikes found.</div>}
 
               {cardData.map((card) => (
-                <Col xs={24} md={24} lg={12} xl={7} key={card.id}>
+                <Col xs={24} md={24} lg={24} xl={12} xxl={6} key={card.id}>
                   <CustomCard
 
                     id={card.id}

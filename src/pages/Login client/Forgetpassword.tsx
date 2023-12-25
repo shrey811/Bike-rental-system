@@ -17,6 +17,7 @@ const EmailVerification = () => {
   const [showOTP, setShowOTP] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [email, setEmail] = useState('');
+
   const history = useHistory();
   const handleNextClick = (values: { email: any; otp: number; newPassword: string }) => {
 

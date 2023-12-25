@@ -2,8 +2,9 @@
 import { Button, Col, Form, Input, InputNumber, message, Row } from 'antd';
 import { useHistory } from 'react-router-dom';
 import { registration } from '../../models/registration';
-import { postData } from '../../Services/ajaxservice';
+import { API_URL, postData } from '../../Services/ajaxservice';
 import { FORMROWGUTTER } from '../../Shared/constants';
+import axios from 'axios';
 
 
 const Register = () => {
@@ -22,7 +23,7 @@ const Register = () => {
 
     const handleSubmit = async (values: registration) => {
         try {
-            await postData('user/register', values);
+            await axios.post(`${API_URL}/user/register`, values);
             message.success('Registration successful!');
             form.resetFields();
             history.push('/');

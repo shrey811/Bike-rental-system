@@ -60,7 +60,7 @@ const MenuList = () => {
 
             <Menu mode="horizontal" className='menu'>
               <Menu.Item key="home">
-                <Link to="/dashboard"> < PieChartOutlined />Home</Link>
+                <Link to="/dashboard"> < PieChartOutlined /> Home</Link>
               </Menu.Item>
 
               <Menu.Item key="about">

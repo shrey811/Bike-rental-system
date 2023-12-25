@@ -26,7 +26,7 @@ const AddEntry = () => {
   const [brands, setBrands] = useState<Brand[]>([]);
   const [selectedBrandId, setSelectedBrandId] = useState<number>();
   const formRef = useRef<FormInstance>(null);
-
+  const [isLoading, setIsLoading] = useState(false);
   const [image, setImage] = useState<File | null>(null);
 
 
@@ -46,6 +46,7 @@ const AddEntry = () => {
     setImage(e.target.files[0]);
   };
   const onFinish = async (values: any) => {
+    setIsLoading(true);
     if (!image) {
       message.error('Please upload an image');
       return;
@@ -88,6 +89,7 @@ const AddEntry = () => {
       console.error(error);
       message.error('Failed to add bike');
     }
+    setIsLoading(false);
   };
 
   return (
@@ -149,10 +151,10 @@ const AddEntry = () => {
 
 
           <Form.Item name="description" label="Description" rules={[{ required: true }]}>
-            <Input.TextArea />
+            <Input.TextArea autoSize={{ minRows: 3, maxRows: 5 }} />
           </Form.Item>
           <Form.Item>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" style={{ marginLeft: "20rem" }} loading={isLoading }>
               Submit
             </Button>
           </Form.Item>
